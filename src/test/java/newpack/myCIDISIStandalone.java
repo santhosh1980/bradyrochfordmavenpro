@@ -18,7 +18,7 @@ import pagefactory.myRBlogin;
 public class myCIDISIStandalone {
 
 	@Test
-	public void myCIDBankruptcyViewResults() throws Exception {
+	public void myCIDISIStandaloneViewResults() throws Exception {
 
 		WebDriver driver;
 
