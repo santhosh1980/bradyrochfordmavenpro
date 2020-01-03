@@ -18,7 +18,7 @@ import pagefactory.myRBlogin;
 public class myLawlinkISIStandalone {
 
 	@Test
-	public void myLawlinkBankruptcyViewResults() throws Exception {
+	public void myLawlinkISIStandaloneViewResults() throws Exception {
 
 		WebDriver driver;
 
