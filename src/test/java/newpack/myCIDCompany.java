@@ -100,7 +100,9 @@ public class myCIDCompany {
 
 				//driver.findElement(By.name("compName")).sendKeys(excel.getData(1, i, 2));
 				
-				rbcid.setcompanyname(excel.getData(1, i, 2));
+				//rbcid.setcompanyname(excel.getData(1, i, 2));
+				
+				rbcid.setcompanynumber(excel.getNumericData(1, i, 3));
 
 				// *[@id="form1"]/table/tbody/tr[14]/td[2]/input[1]
 
