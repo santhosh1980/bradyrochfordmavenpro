@@ -9,8 +9,8 @@
 <!--       <class name="newpack.myCIDBusiness"/> -->
 <!--       <class name="newpack.myLawlinkJudgement"/> -->
 <!--       <class name="newpack.myLawlinkWinding"/> -->
-      <class name="newpack.myCIDISIStandalone"/>
-<!--       <class name="newpack.myLawLinkClosingOnlineOffline"/> -->
+<!--       <class name="newpack.myCIDISIStandalone"/> -->
+      <class name="newpack.myLawLinkClosingOnlineOffline"/>
 <!--       <class name="example.NewTest"/> -->
 <!--       <class name="newpack.myLawlinkDirector"/> -->
 <!--       <class name="newpack.myLawlinkSheriff"/> -->
@@ -21,7 +21,7 @@
 <!--       <class name="newpack.myLawlinkCompany"/> -->
 <!--       <class name="newpack.myCIDJudgement"/> -->
 <!--       <class name="newpack.myLawlinkReceiverOfFine"/> -->
-      <class name="newpack.myLawlinkISIStandalone"/>
+<!--       <class name="newpack.myLawlinkISIStandalone"/> -->
 <!--       <class name="newpack.myCIDCompany"/> -->
 <!--       <class name="WebMavenTest.WebMavenTest.AppTest"/> -->
 <!--       <class name="newpack.myLawlinkPlanning"/> -->
