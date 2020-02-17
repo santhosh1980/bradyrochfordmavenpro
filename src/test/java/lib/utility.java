@@ -189,11 +189,13 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 				
 				windownumber++;
 				
-				if (windownumber==2) {
+				if (windownumber==2 || windownumber==3) {
 					
 					winpdfurl = driver.getCurrentUrl();
 										
 				}
+				
+				
 			}
 			
 		}

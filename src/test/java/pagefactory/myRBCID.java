@@ -104,8 +104,30 @@ public class myRBCID {
 	@FindBy(xpath = "//*[@id=\"compform\"]/table/tbody/tr[7]/td[3]/input")
 
 	WebElement rbCIDWatchlistSubmit;
-	
-	
+
+	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[1]/a")
+
+	WebElement rbCIDHomeLink;
+
+	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[2]/a")
+
+	WebElement rbCIDAboutUsLink;
+
+	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[3]/a")
+
+	WebElement rbCIDSubscribeLink;
+
+	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[4]/a")
+
+	WebElement rbCIDCostsLink;
+
+	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[5]/a")
+
+	WebElement rbCIDSupportLink;
+
+	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[6]/a")
+
+	WebElement rbCIDContactUsLink;
 
 	public myRBCID(WebDriver driver) {
 
@@ -242,7 +264,7 @@ public class myRBCID {
 		rbCIDNewWatchlistLink.click();
 	}
 
-	// Select CID Watch type 
+	// Select CID Watch type
 
 	public void clickCIDWatchType() {
 
@@ -256,31 +278,74 @@ public class myRBCID {
 		rbWatchlistCompanyNumber.sendKeys(strwatchlistcompanynumber);
 	}
 
-	// Click CID Watchlist Find 
+	// Click CID Watchlist Find
 
 	public void clickCIDWatchlistFindLink() {
 
 		rbCIDWatchlistFind.click();
 	}
 
-	// Select CID Watchlist Status Change 
+	// Select CID Watchlist Status Change
 
 	public void clickCIDWatchlistStatusChange() {
 
 		rbCIDWatchlistStatusChange.click();
 	}
 
-	// Select CID Watchlist ARD 
+	// Select CID Watchlist ARD
 
 	public void clickCIDWatchlistARD() {
 
 		rbCIDWatchlistARD.click();
 	}
-	
+
 	// Click CID Watchlist Submit
 
 	public void clickCIDWatchlistSubmit() {
 
 		rbCIDWatchlistSubmit.click();
 	}
+
+	// Click CID Home Link
+
+	public void clickCIDHomeLink() {
+
+		rbCIDHomeLink.click();
+	}
+
+	// Click CID About Us Link
+
+	public void clickCIDAboutUsLink() {
+
+		rbCIDAboutUsLink.click();
+	}
+
+	// Click CID Subscribe Link
+
+	public void clickCIDSubscribeLink() {
+
+		rbCIDSubscribeLink.click();
+	}
+
+	// Click CID Costs Link
+
+	public void clickCIDCostsLink() {
+
+		rbCIDCostsLink.click();
+	}
+
+	// Click CID Support Link
+
+	public void clickCIDSupportLink() {
+
+		rbCIDSupportLink.click();
+	}
+
+	// Click CID Contact Us Link
+
+	public void clickCIDContactUsLink() {
+
+		rbCIDContactUsLink.click();
+	}
+
 }

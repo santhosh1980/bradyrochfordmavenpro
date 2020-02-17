@@ -175,6 +175,30 @@ public class myRBLawlink {
 
 	WebElement rbLawlinkClosingCheckWindingUpBox;
 
+	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[1]/a")
+
+	WebElement rbLawlinkHomeLink;
+
+	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[2]/a")
+
+	WebElement rbLawlinkAboutUsLink;
+
+	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[3]/a")
+
+	WebElement rbLawlinkSubscribeLink;
+
+	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[4]/a")
+
+	WebElement rbLawlinkCostsLink;
+
+	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[5]/a")
+
+	WebElement rbLawlinkSupportLink;
+
+	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[6]/a")
+
+	WebElement rbLawlinkContactUsLink;
+
 	public myRBLawlink(WebDriver driver) {
 
 		this.driver = driver;
@@ -470,5 +494,47 @@ public class myRBLawlink {
 	public void selectLawlinkClosingCheckWindingUpBox() {
 
 		rbLawlinkClosingCheckWindingUpBox.click();
+	}
+
+	// Click Lawlink Home Link
+
+	public void clickLawlinkHomeLink() {
+
+		rbLawlinkHomeLink.click();
+	}
+
+	// Click Lawlink About Us Link
+
+	public void clickLawlinkAboutUsLink() {
+
+		rbLawlinkAboutUsLink.click();
+	}
+
+	// Click Lawlink Subscribe Link
+
+	public void clickLawlinkSubscribeLink() {
+
+		rbLawlinkSubscribeLink.click();
+	}
+
+	// Click Lawlink Costs Link
+
+	public void clickLawlinkCostsLink() {
+
+		rbLawlinkCostsLink.click();
+	}
+
+	// Click Lawlink Support Link
+
+	public void clickLawlinkSupportLink() {
+
+		rbLawlinkSupportLink.click();
+	}
+
+	// Click Lawlink Contact Us Link
+
+	public void clickLawlinkContactUsLink() {
+
+		rbLawlinkContactUsLink.click();
 	}
 }
