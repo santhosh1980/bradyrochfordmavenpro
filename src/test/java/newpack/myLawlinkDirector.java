@@ -3,6 +3,7 @@ package newpack;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -47,6 +48,8 @@ public class myLawlinkDirector {
 				myRBLawlink rblawlink = new myRBLawlink(driver);
 
 				driver.manage().window().maximize();
+				
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 				// base url
 

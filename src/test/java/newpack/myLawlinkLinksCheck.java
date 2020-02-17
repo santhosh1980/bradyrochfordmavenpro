@@ -3,24 +3,21 @@ package newpack;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
 import lib.ExcelDataConfig;
 import lib.utility;
+import pagefactory.myRBCID;
 import pagefactory.myRBLawlink;
-import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myLawlinkCompany {
-
-	@Test
-	public void myLawlinkCompanyViewResults() throws Exception {
-		// to use chrome
-		try {
+public class myLawlinkLinksCheck {
+  @Test
+  public void myLawlinkLinksCheckViewResults() {
+	  
+	  try {
 
 			WebDriver driver;
 
@@ -35,14 +32,13 @@ public class myLawlinkCompany {
 			// create chrome instance
 			System.setProperty("webdriver.chrome.driver", driverpath);
 
-			for (int i = 0; i <= excel.getrownum(3); i++) {
+			for (int i = 0; i <= excel.getrownum(7); i++) {
 
 				driver = new ChromeDriver();
 
 				myRBlogin rb = new myRBlogin(driver);
 				
-				myRBcommon rbcom = new myRBcommon(driver);
-				
+					
 				myRBLawlink rblawlink = new myRBLawlink(driver);
 
 				driver.manage().window().maximize();
@@ -54,8 +50,6 @@ public class myLawlinkCompany {
 				String baseurl = "https://qa.lawlink.ie";
 
 				driver.get(baseurl);
-
-				//driver.findElement(By.xpath("//*[@id=\"header_right\"]/p/span/a")).click();
 				
 				rblawlink.clickLawlinkLoginNowlink();
 
@@ -67,9 +61,11 @@ public class myLawlinkCompany {
 
 				// pass credential
 
-				rb.setusername(excel.getData(3, i, 0));
+				rb.setusername(excel.getData(7, i, 0));
 
-				rb.setpassword(excel.getData(3, i, 1));
+				rb.setpassword(excel.getData(7, i, 1));
+				
+				Thread.sleep(5000);
 
 				// RESI value status of user
 
@@ -77,7 +73,7 @@ public class myLawlinkCompany {
 
 				// click submit button
 
-				// driver.findElement(By.xpath("//*[@id=\"loginpanel\"]/form/p[3]/a/img")).click();
+				// driver.findElement(By.className("submit")).click();;
 
 				rb.clicklawlinklogin();
 
@@ -85,45 +81,55 @@ public class myLawlinkCompany {
 
 				System.out.println("Values passed");
 
-				// Click Company Search link
-
-				//driver.findElement(By.xpath("//*[@id=\"leftmenu\"]/ul[3]/li[4]/a")).click();
+				// Click Lawlink Home Link
 				
-				rblawlink.clickLawlinkCompanylink();
-
-				// Pass search values and click search button
-
-				// driver.findElement(By.name("userRef")).sendKeys("mysantest"+
-				// rand.nextInt(1000));
-
-				rbcom.setuserRef("myautotest" + rand.nextInt(1000));
-
-				Thread.sleep(5000);
-
-				//driver.findElement(By.name("compNumber")).sendKeys(excel.getNumericData(3, i, 3));
+				rblawlink.clickLawlinkHomeLink();
 				
-				rblawlink.setcompanynumber(excel.getNumericData(3, i, 3));
-
-				//driver.findElement(By.name("search")).click();
-				
-				rblawlink.clickLawlinkSearchLink();
-
-				// Click accept charge button
-
-				driver.findElement(By.name("acceptCharge")).click();
-
 				Thread.sleep(5000);
 				
-				//Click PDF link
-
-				//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/div[1]/p/a[2]")).click();
+				utility.fullscreenshotcapture(driver, "Lawlink Home");
 				
-				rblawlink.clickLawlinkJudgementPDFLink();
-
+				// Click Lawlink About Us Link
+				
+				rblawlink.clickLawlinkAboutUsLink();
+				
 				Thread.sleep(5000);
-
-				// excel.writeData(0, i, 3);
-
+				
+				utility.fullscreenshotcapture(driver, "Lawlink About Us");
+				
+				// Click Lawlink Subscribe Link
+				
+				rblawlink.clickLawlinkSubscribeLink();
+				
+				Thread.sleep(5000);
+				
+				utility.fullscreenshotcapture(driver, "Lawlink Subscribe");
+				
+				// Click Lawlink Costs Link
+				
+				rblawlink.clickLawlinkCostsLink();
+				
+				Thread.sleep(5000);
+				
+				utility.fullscreenshotcapture(driver, "Lawlink Costs");
+				
+				// Click Lawlink Support Link
+				
+				rblawlink.clickLawlinkSupportLink();
+				
+				Thread.sleep(5000);
+				
+				utility.fullscreenshotcapture(driver, "Lawlink Support");
+				
+				// Click Lawlink Contact Us Link
+				
+				rblawlink.clickLawlinkContactUsLink();
+				
+				Thread.sleep(5000);
+				
+				utility.fullscreenshotcapture(driver, "Lawlink Contact Us");
+				
+				
 				// close chrome
 				driver.quit();
 
@@ -134,7 +140,5 @@ public class myLawlinkCompany {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
-
+  }
 }

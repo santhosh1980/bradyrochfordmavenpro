@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
@@ -15,12 +14,11 @@ import pagefactory.myRBCID;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myCIDCompany {
-
-	@Test
-	public void myCIDCompanyViewResults() throws Exception {
-		// to use chrome
-		try {
+public class myCIDLinksCheck {
+  @Test
+  public void myCIDLinksCheckViewResults() throws Exception {
+	  
+	  try {
 
 			WebDriver driver;
 
@@ -35,14 +33,13 @@ public class myCIDCompany {
 			// create chrome instance
 			System.setProperty("webdriver.chrome.driver", driverpath);
 
-			for (int i = 0; i <= excel.getrownum(1); i++) {
+			for (int i = 0; i <= excel.getrownum(6); i++) {
 
 				driver = new ChromeDriver();
 
 				myRBlogin rb = new myRBlogin(driver);
 				
-				myRBcommon rbcom = new myRBcommon(driver);
-				
+					
 				myRBCID rbcid = new myRBCID(driver);
 
 
@@ -64,9 +61,11 @@ public class myCIDCompany {
 
 				// pass credential
 
-				rb.setusername(excel.getData(1, i, 0));
+				rb.setusername(excel.getData(6, i, 0));
 
-				rb.setpassword(excel.getData(1, i, 1));
+				rb.setpassword(excel.getData(6, i, 1));
+				
+				Thread.sleep(5000);
 
 				// RESI value status of user
 
@@ -82,53 +81,55 @@ public class myCIDCompany {
 
 				System.out.println("Values passed");
 
-				// Click CID and Company Search link
-
-				//driver.findElement(By.xpath("//*[@id=\"left_menu\"]/ul/li[1]/a")).click();
-
-				//driver.findElement(By.xpath("//*[@id=\"left_menu\"]/ul/li[2]/a")).click();
+				// Click CID Home Link
 				
-				rbcid.clickCIDlink();
+				rbcid.clickCIDHomeLink();
 				
-				rbcid.clickCIDCompanyLink();
-
-				// Pass search values and click search button
-
-				// driver.findElement(By.id("userRef")).sendKeys("mysantest"+
-				// rand.nextInt(1000));
-
-				rbcom.setuserRef("myautotest" + rand.nextInt(1000));
-
 				Thread.sleep(5000);
-
-				//driver.findElement(By.name("compName")).sendKeys(excel.getData(1, i, 2));
 				
-				//rbcid.setcompanyname(excel.getData(1, i, 2));
+				utility.fullscreenshotcapture(driver, "CID Home");
 				
-				rbcid.setcompanynumber(excel.getNumericData(1, i, 3));
-
-				// *[@id="form1"]/table/tbody/tr[14]/td[2]/input[1]
-
-				//driver.findElement(By.xpath("//*[@id=\"form1\"]/table/tbody/tr[14]/td[2]/input[1]")).click();
+				// Click CID About Us Link
 				
-				rbcid.clickCIDCompanySearchLink();
-
-				// Click accept charge button
-
-				driver.findElement(By.name("acceptCharge")).click();
-
+				rbcid.clickCIDAboutUsLink();
+				
 				Thread.sleep(5000);
-
-				// Capture company report
-
-				utility.screenshotcapture(driver, "companyreport");
-
-				driver.findElement(By.xpath("//*[@id=\"topLinks\"]/tbody/tr[3]/td[2]/a")).click();
-
+				
+				utility.fullscreenshotcapture(driver, "CID About Us");
+				
+				// Click CID Subscribe Link
+				
+				rbcid.clickCIDSubscribeLink();
+				
 				Thread.sleep(5000);
-
-				// excel.writeData(0, i, 3);
-
+				
+				utility.fullscreenshotcapture(driver, "CID Subscribe");
+				
+				// Click CID Costs Link
+				
+				rbcid.clickCIDCostsLink();
+				
+				Thread.sleep(5000);
+				
+				utility.fullscreenshotcapture(driver, "CID Costs");
+				
+				// Click CID Support Link
+				
+				rbcid.clickCIDSupportLink();
+				
+				Thread.sleep(5000);
+				
+				utility.fullscreenshotcapture(driver, "CID Support");
+				
+				// Click CID Contact Us Link
+				
+				rbcid.clickCIDContactUsLink();
+				
+				Thread.sleep(5000);
+				
+				utility.fullscreenshotcapture(driver, "CID Contact Us");
+				
+				
 				// close chrome
 				driver.quit();
 
@@ -139,7 +140,6 @@ public class myCIDCompany {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-	}
-
+	  
+  }
 }

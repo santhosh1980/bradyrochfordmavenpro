@@ -1,6 +1,7 @@
 package newpack;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -45,6 +46,8 @@ public class myCIDBusiness {
 				myRBCID rbcid = new myRBCID(driver);
 
 				driver.manage().window().maximize();
+				
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 				// base url
 

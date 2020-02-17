@@ -2,6 +2,7 @@ package newpack;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,7 +19,7 @@ import pagefactory.myRBlogin;
 public class myLawlinkISIStandalone {
 
 	@Test
-	public void myLawlinkISIStandaloneViewResults() throws Exception {
+	public void myLawlinkBankruptcyViewResults() throws Exception {
 
 		WebDriver driver;
 
@@ -57,6 +58,8 @@ public class myLawlinkISIStandalone {
 			// driver = new FirefoxDriver();
 
 			driver.manage().window().maximize();
+			
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 			// base url
 
