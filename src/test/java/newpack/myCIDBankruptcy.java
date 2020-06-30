@@ -22,6 +22,7 @@ public class myCIDBankruptcy {
 	public void myCIDBankruptcyViewResults() throws Exception {
 
 		WebDriver driver;
+		
 
 		String driverpath = "C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
 

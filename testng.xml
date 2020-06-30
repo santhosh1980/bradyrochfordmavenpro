@@ -21,14 +21,14 @@
 <!--       <class name="newpack.myCIDBusiness"/> -->
 <!--       <class name="newpack.myLawlinkJudgement"/> -->
 <!--       <class name="newpack.myCIDISIStandalone"/> -->
-<!--       <class name="newpack.myLawLinkClosingOnlineOffline"/> -->
+      <class name="newpack.myLawLinkClosingOnlineOffline"/>
 <!--       <class name="newpack.myCIDWatchlist"/> -->
 <!--       <class name="newpack.NewTest"/> -->
 <!--       <class name="newpack.myLawlinkBankruptcy"/> -->
 <!--       <class name="newpack.myLawlinkLinksCheck"/> -->
 <!--       <class name="newpack.myCIDJudgement"/> -->
 <!--       <class name="newpack.myCIDCompany"/> -->
-      <class name="newpack.myLawLinkClosingOnline"/>
+<!--       <class name="newpack.myLawLinkClosingOnline"/> -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
