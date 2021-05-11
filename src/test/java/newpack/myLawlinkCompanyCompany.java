@@ -15,11 +15,11 @@ import pagefactory.myRBLawlink;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myLawlinkCompany {
+public class myLawlinkCompanyCompany {
 
 	@Test
-	public void myLawlinkCompanyViewResults() throws Exception {
-		// to use chrome
+	public void myLawlinkCompanyCompanyViewResults() throws Exception {
+		
 		try {
 
 			WebDriver driver;
@@ -51,7 +51,7 @@ public class myLawlinkCompany {
 
 				// base url
 
-				String baseurl = "https://qa.lawlink.ie";
+				String baseurl = "https://uat.lawlink.ie";
 
 				driver.get(baseurl);
 
@@ -85,11 +85,11 @@ public class myLawlinkCompany {
 
 				System.out.println("Values passed");
 
-				// Click Company Search link
+				// Click Company/Business - Company Search link
 
-				//driver.findElement(By.xpath("//*[@id=\"leftmenu\"]/ul[3]/li[4]/a")).click();
+				//driver.findElement(By.xpath("//*[@id="leftmenu"]/ul[1]/li[1]/a")).click();
 				
-				rblawlink.clickLawlinkCompanylink();
+				rblawlink.clickLawlinkCompanyCompanylink();
 
 				// Pass search values and click search button
 

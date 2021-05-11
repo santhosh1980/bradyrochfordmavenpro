@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class myRBCID {
 
@@ -64,6 +65,10 @@ public class myRBCID {
 	@FindBy(xpath = "//*[@id=\"all_reports\"]/a")
 
 	WebElement rbCIDISIPDF;
+	
+	@FindBy(xpath = "//*[@id=\"left_menu\"]/ul/li[5]/a")
+
+	WebElement rbCIDDirectorLink;
 
 	@FindBy(xpath = "//*[@id=\"left_menu\"]/ul/li[6]/a")
 
@@ -128,6 +133,119 @@ public class myRBCID {
 	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[6]/a")
 
 	WebElement rbCIDContactUsLink;
+
+	@FindBy(xpath = "//*[@id=\"sub_content\"]/p[2]/a")
+
+	WebElement rbCIDEmailSupportLink;
+
+	@FindBy(xpath = "//*[@id=\"sub_content\"]/p[1]/a")
+
+	WebElement rbCIDEmailCostLink;
+
+	@FindBy(xpath = "//*[@id=\"address\"]/ul[3]/li[2]/a")
+
+	WebElement rbCIDEmailContactUsLink;
+
+	@FindBy(id = "emailAddress")
+
+	WebElement rbCIDCaptchaEmailAddress;
+
+	@FindBy(id = "emailSubject")
+
+	WebElement rbCIDCaptchaEmailSubject;
+
+	@FindBy(id = "emailContent")
+
+	WebElement rbCIDCaptchaEmailContent;
+
+	@FindBy(id = "captchaAnswer")
+
+	WebElement rbCIDCaptchaAnswer;
+
+	@FindBy(name = "Submit")
+
+	WebElement rbCIDCaptchaSubmit;
+
+	@FindBy(xpath = "//*[@id=\"sub_content\"]/p[2]/a")
+
+	WebElement rbCIDCaptchaGoBack;
+	
+	@FindBy(name="acceptCharge")
+
+	WebElement rbCIDAcceptCharge;
+	
+	@FindBy(name="docButton")
+
+	WebElement rbCIDDocumentOrder;
+	
+	@FindBy(xpath="//*[@id=\"sub_content\"]/form/table/tbody/tr[4]/td[2]/input")
+
+	WebElement rbCIDAcceptChargeSubmit;
+	
+	@FindBy(xpath = "//*[@id=\"left_menu\"]/ul/li[3]/a")
+
+	WebElement rbCIDDocumentLink;
+	
+	@FindBy(name="documentGroup")
+
+	WebElement rbCIDDocumentType;
+	
+	@FindBy(xpath = "//*[@id=\"form1\"]/table/tbody/tr[4]/td[2]/input[1]")
+
+	WebElement rbCIDDocumentSearch;
+	
+	@FindBy(xpath="//*[@id=\"sub_content\"]/form/table/tbody/tr[1]/td[1]/input")
+	
+	WebElement rbCIDViewOnlineRadioButton;
+	
+	@FindBy(xpath="//*[@id=\"sub_content\"]/form/table/tbody/tr[2]/td[1]/input")
+	
+	WebElement rbCIDEmailRadioButton;
+	
+	@FindBy(xpath="//*[@id=\"sub_content\"]/form/table/tbody/tr[7]/td[2]/input")
+	
+	WebElement rbCIDSendEmailSubmit;
+	
+	@FindBy(xpath="//*[@id=\"form2\"]/table/tbody/tr[2]/td[2]/input")
+	
+	WebElement rbCIDImageDownloadWebDownloadRadioButton;
+	
+	@FindBy(xpath="//*[@id=\"form2\"]/table/tbody/tr[3]/td[2]/input")
+	
+	WebElement rbCIDImageDownloadEmailRadioButton;
+	
+	@FindBy(name="dirName")
+
+	WebElement rbCIDDirectorName;
+	
+	@FindBy(name="Submit4")
+
+	WebElement rbCIDDirectorSearch;
+	
+	@FindBy(id = "watchLinkAll")
+
+	WebElement rbCIDWatchLinkAll;
+	
+	@FindBy(name="btnAcceptChargeDirWatchAll")
+
+	WebElement rbCIDDirectorAcceptChargeDirWatchAll;
+	
+	@FindBy(name="continue")
+
+	WebElement rbCIDDirectorWatchlistContinue;
+	
+	@FindBy(xpath="//*[@id=\"watchDirectorsModal\"]/p[3]/a")
+	
+	WebElement rbCIDWatchDirectorsModelButton;
+	
+	@FindBy(name="watchReferenceDirs")
+
+	WebElement rbCIDDirectorWatchlistReference;
+	
+	@FindBy(name="addReference")
+
+	WebElement rbCIDDirectorAddReference;
+	
 
 	public myRBCID(WebDriver driver) {
 
@@ -234,6 +352,13 @@ public class myRBCID {
 	public void clickCIDISIPDFLink() {
 
 		rbCIDISIPDF.click();
+	}
+	
+	// Click CID Director SearchLink
+
+	public void clickCIDDirectorlink() {
+
+		rbCIDDirectorLink.click();
 	}
 
 	// Click CID JudgementLink
@@ -348,4 +473,201 @@ public class myRBCID {
 		rbCIDContactUsLink.click();
 	}
 
+	// Click CID Email Support Link
+
+	public void clickCIDEmailSupportLink() {
+
+		rbCIDEmailSupportLink.click();
+	}
+
+	// Click CID Email Cost Link
+
+	public void clickCIDEmailCostLink() {
+
+		rbCIDEmailCostLink.click();
+	}
+
+	// Click CID Email Contact Us Link
+
+	public void clickCIDEmailContactUsLink() {
+
+		rbCIDEmailContactUsLink.click();
+	}
+
+	// set captcha email address
+
+	public void setcaptchaemailaddress(String strcaptchaemailaddress) {
+
+		rbCIDCaptchaEmailAddress.sendKeys(strcaptchaemailaddress);
+	}
+
+	// set captcha email subject
+
+	public void setcaptchaemailsubject(String strcaptchaemailsubject) {
+
+		rbCIDCaptchaEmailSubject.sendKeys(strcaptchaemailsubject);
+	}
+
+	// set captcha email content
+
+	public void setcaptchaemailcontent(String strcaptchaemailcontent) {
+
+		rbCIDCaptchaEmailContent.sendKeys(strcaptchaemailcontent);
+	}
+
+	// set captcha answer
+
+	public void setcaptchaanswer(String strcaptchaanswer) {
+
+		rbCIDCaptchaAnswer.sendKeys(strcaptchaanswer);
+	}
+
+	// Click CID Captcha Submit
+
+	public void clickCIDCaptchaSubmit() {
+
+		rbCIDCaptchaSubmit.click();
+	}
+	
+	// Click CID Captcha Go back
+
+	public void clickCIDCaptchaGoBack() {
+
+			rbCIDCaptchaGoBack.click();
+	}
+
+	// Click CID Accept Charge
+
+	public void clickCIDAcceptCharge() {
+
+		rbCIDAcceptCharge.click();
+	}
+	
+	// Click CID Document Order
+
+	public void clickCIDDocumentOrder() {
+
+		rbCIDDocumentOrder.click();
+	}
+	
+	// Click CID Accept Charge Submit
+
+	public void clickCIDAcceptChargeSubmit() {
+
+			rbCIDAcceptChargeSubmit.click();
+	}
+		
+	
+	// Click CID Document link
+
+	public void clickCIDDocumentLink() {
+
+			rbCIDDocumentLink.click();
+	}
+	
+	// Select Document type
+
+	public void setdocumenttype(String doctype) {
+			
+		Select doctypedropdown = new Select(rbCIDDocumentType);
+			doctypedropdown.selectByVisibleText(doctype);
+	}
+	
+	// Click CID Document Search button
+
+	public void clickCIDDocumentSearchLink() {
+
+			rbCIDDocumentSearch.click();
+	}
+	
+	// Click View Online radio button
+
+	public void clickCIDViewOnlineRadioButton() {
+
+			rbCIDViewOnlineRadioButton.click();
+	}
+		
+	// Click Email radio button
+
+	public void clickCIDEmailRadioButton() {
+
+			rbCIDEmailRadioButton.click();
+	}
+		
+	// Click Send Email Submit button
+
+	public void clickCIDSendEmailSubmit() {
+
+			rbCIDSendEmailSubmit.click();
+	}
+	
+	// Click Web Download radio button - Image download
+
+	public void clickCIDImageDownloadWebDownloadRadioButton() {
+
+			rbCIDImageDownloadWebDownloadRadioButton.click();
+	}
+		
+	// Click Delivery By Email radio button - Image download
+
+	public void clickCIDImageDownloadEmailRadioButton() {
+
+			rbCIDImageDownloadEmailRadioButton.click();
+	}
+	
+	// set Director Name
+
+	public void setdirectorname(String strdirectorname) {
+
+			rbCIDDirectorName.sendKeys(strdirectorname);
+	}
+	
+	// Click CID Director Search button
+
+	public void clickCIDDirectorSearchLink() {
+
+			rbCIDDirectorSearch.click();
+	}
+	
+	// Click CID Director Watch All Selected button
+
+	public void clickCIDDirectorWatchAllSelectedLink() {
+
+				rbCIDWatchLinkAll.click();
+	}
+	
+	// Click CID Director Accept Charge Director Watch All Link
+
+	public void clickCIDDirectorAcceptChargeDirWatchAllLink() {
+
+				rbCIDDirectorAcceptChargeDirWatchAll.click();
+	}
+	
+	// Click CID Director Watchlist - Director Added - Continue
+
+	public void clickCIDDirectorWatchlistAddedContinue() {
+
+				rbCIDDirectorWatchlistContinue.click();
+	}
+	
+	// Click CID Director Watchlist - view watchlist
+
+	public void clickCIDDirectorWatchDirectorsModelButton() {
+
+				rbCIDWatchDirectorsModelButton.click();
+	}
+	
+	// set Director Watchlist Reference
+
+	public void setdirectorwatchlistreference(String strdirectorwatchlistreference) {
+
+				rbCIDDirectorWatchlistReference.sendKeys(strdirectorwatchlistreference);
+	}
+	
+	// Click CID Director Watchlist - Add Reference Button
+
+	public void clickCIDDirectorWatchlistAddReference() {
+
+				rbCIDDirectorAddReference.click();
+		}
 }

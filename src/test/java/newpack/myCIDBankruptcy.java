@@ -22,7 +22,6 @@ public class myCIDBankruptcy {
 	public void myCIDBankruptcyViewResults() throws Exception {
 
 		WebDriver driver;
-		
 
 		String driverpath = "C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
 
@@ -169,6 +168,8 @@ public class myCIDBankruptcy {
 
 			List<WebElement> elements = driver.findElements(By.xpath(".//*[starts-with(@name,'namesCheckBox')]"));
 
+			
+			
 			int numberofelements = elements.size();
 
 			for (int k = 1; k <= numberofelements; k++) {

@@ -1,13 +1,18 @@
 package newpack;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
 
 import lib.ExcelDataConfig;
 import lib.utility;
@@ -15,10 +20,10 @@ import pagefactory.myRBCID;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myCIDCompany {
+public class myCIDCompanyImageDownload {
 
 	@Test
-	public void myCIDCompanyViewResults() throws Exception {
+	public void myCIDCompanyImageDownloadViewResults() throws Exception {
 		// to use chrome
 		try {
 
@@ -38,14 +43,16 @@ public class myCIDCompany {
 			for (int i = 0; i <= excel.getrownum(1); i++) {
 
 				driver = new ChromeDriver();
+				
+				WebDriverWait mywaitvar = null;
 
 				myRBlogin rb = new myRBlogin(driver);
 				
 				myRBcommon rbcom = new myRBcommon(driver);
 				
 				myRBCID rbcid = new myRBCID(driver);
-
-
+				
+				
 				driver.manage().window().maximize();
 				
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -120,7 +127,57 @@ public class myCIDCompany {
 				rbcid.clickCIDAcceptCharge();
 
 				Thread.sleep(5000);
+				
+				
+				
+				mywaitvar = new WebDriverWait(driver, 80);
 
+				mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				
+				//Get the count of image links with NO checkboxes
+				//List<WebElement> imagelinks=driver.findElements(By.cssSelector("table.costs tr td a"));
+				
+				//List<WebElement> imagelinks = driver.findElements(By.xpath("//*[starts-with(@id, 'document-report')]"));
+				
+				//To get all the elements that id start with the string and id contains the string
+				
+				//List<WebElement> imagelinks = driver.findElements(By.xpath("//*[starts-with(@id, 'document-report') and contains(@id, '-0')]"));
+				
+				
+				//To get all the anchor links which contains the string mentioned below in href attribute
+				List<WebElement> imagelinks = driver.findElements(By.xpath(".//a[contains(@href,'sub-search-accept-charge')]"));
+				int numberofimagelinks = imagelinks.size();
+				
+				if (numberofimagelinks>0)
+				{
+					
+					System.out.println("Number of Image links without checkbox available are:" + numberofimagelinks);
+					
+					
+				
+					
+					
+					
+					//Click each image link one by one and download
+					for(int k=0; k<numberofimagelinks; k++) {
+						
+						//Click image link using index
+						imagelinks.get(k).click();
+						//Click Accept charge link
+						rbcid.clickCIDAcceptCharge();
+						//Wait for image to download
+						Thread.sleep(30000);
+						//Go back to the screen for selecting the next image link
+						driver.navigate().back();
+						//To exit from the loop for avoiding stale element exception
+						break;
+					}
+					
+					
+				}
+				
+				else
+				{
 				// Capture company report
 
 				utility.screenshotcapture(driver, "companyreport");
@@ -128,6 +185,7 @@ public class myCIDCompany {
 				driver.findElement(By.xpath("//*[@id=\"topLinks\"]/tbody/tr[3]/td[2]/a")).click();
 
 				Thread.sleep(5000);
+				}
 				
 				// Write to Excel - PDF URL
 				

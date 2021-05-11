@@ -1,13 +1,18 @@
 package newpack;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
 
 import lib.ExcelDataConfig;
 import lib.utility;
@@ -15,14 +20,16 @@ import pagefactory.myRBLawlink;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myLawlinkCompany {
+public class myLawlinkCompanyImageEmailDelivery {
 
 	@Test
-	public void myLawlinkCompanyViewResults() throws Exception {
+	public void myLawlinkCompanyImageEmailDeliveryViewResults() throws Exception {
 		// to use chrome
 		try {
 
 			WebDriver driver;
+			
+			WebDriverWait mywaitvar = null;
 
 			String driverpath = "C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
 
@@ -114,15 +121,63 @@ public class myLawlinkCompany {
 				
 				rblawlink.clickLawlinkAcceptChargelink();
 
-				Thread.sleep(5000);
-				
-				//Click PDF link
+						
+				mywaitvar = new WebDriverWait(driver, 80);
 
-				//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/div[1]/p/a[2]")).click();
-				
-				rblawlink.clickLawlinkJudgementPDFLink();
+				mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
 
-				Thread.sleep(5000);
+				//Get the count of image links with NO checkboxes
+				List<WebElement> imagelinks=driver.findElements(By.cssSelector("table.ReportChoiceInfo td.blue11 a"));
+				int numberofimagelinks = imagelinks.size();
+				System.out.println("Number of Image links without Checkbox available are:" + numberofimagelinks);
+				
+				if (numberofimagelinks>0)
+				{
+					
+						
+									
+					
+					//Click each image link one by one and download
+					for(int k=0; k<numberofimagelinks; k++) {
+						
+							//Click image link using index
+							imagelinks.get(k).click();
+							//Click delivery by email radio button
+							rblawlink.clickLawlinkImageDownloadEmailRadioButton();
+							//Click Accept charge link
+							rblawlink.clickLawlinkAcceptChargelink();
+							//Wait for image to send in email
+							Thread.sleep(30000);
+							
+							//Go back to the image select screen for selecting the next image link - 2 screen previous from email confirm screen
+							driver.navigate().back();
+							driver.navigate().back();
+							//To exit from the loop for avoiding stale element exception
+							break;
+					}
+					
+					
+					
+					
+				}		
+				
+					
+							
+				
+					
+				else
+					{
+					//Click PDF link
+
+					//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/div[1]/p/a[2]")).click();
+					
+					rblawlink.clickLawlinkJudgementPDFLink();
+					
+					}
+					
+				
+				
+				
 
 				// excel.writeData(0, i, 3);
 

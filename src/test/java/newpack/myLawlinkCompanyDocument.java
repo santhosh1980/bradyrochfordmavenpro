@@ -15,11 +15,11 @@ import pagefactory.myRBLawlink;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myLawlinkCompany {
+public class myLawlinkCompanyDocument {
 
 	@Test
-	public void myLawlinkCompanyViewResults() throws Exception {
-		// to use chrome
+	public void myLawlinkCompanyDocumentViewResults() throws Exception {
+		
 		try {
 
 			WebDriver driver;
@@ -51,7 +51,7 @@ public class myLawlinkCompany {
 
 				// base url
 
-				String baseurl = "https://qa.lawlink.ie";
+				String baseurl = "https://uat.lawlink.ie";
 
 				driver.get(baseurl);
 
@@ -85,11 +85,15 @@ public class myLawlinkCompany {
 
 				System.out.println("Values passed");
 
-				// Click Company Search link
+				// Click Company/Business - Company Search link
 
-				//driver.findElement(By.xpath("//*[@id=\"leftmenu\"]/ul[3]/li[4]/a")).click();
+				//driver.findElement(By.xpath("//*[@id="leftmenu"]/ul[1]/li[1]/a")).click();
 				
-				rblawlink.clickLawlinkCompanylink();
+				rblawlink.clickLawlinkCompanyCompanylink();
+				
+				//Click Company/Business - Document Search link
+				
+				rblawlink.clickLawlinkCompanyDocumentlink();
 
 				// Pass search values and click search button
 
@@ -103,16 +107,16 @@ public class myLawlinkCompany {
 				//driver.findElement(By.name("compNumber")).sendKeys(excel.getNumericData(3, i, 3));
 				
 				rblawlink.setcompanynumber(excel.getNumericData(3, i, 3));
-
-				//driver.findElement(By.name("search")).click();
 				
-				rblawlink.clickLawlinkSearchLink();
-
-				// Click accept charge button
-
-				//driver.findElement(By.name("acceptCharge")).click();
+				//Select Document type
 				
-				rblawlink.clickLawlinkAcceptChargelink();
+				rblawlink.setdocumenttype(excel.getData(3, i, 4));
+
+				//Click Search button
+				
+				rblawlink.clickLawlinkCaptchaSubmit();
+				
+				
 
 				Thread.sleep(5000);
 				

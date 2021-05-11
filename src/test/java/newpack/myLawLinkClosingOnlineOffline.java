@@ -1,6 +1,12 @@
 package newpack;
 
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -33,9 +39,14 @@ public class myLawLinkClosingOnlineOffline {
 		WebDriver driver = null;
 
 		WebDriverWait mywaitvar = null;
+		
+		ExtentReports extent;
+		
+		ExtentTest logger1;
 
 		Logger log = Logger.getLogger("");
 
+		
 		String driverpath = "C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
 
 		String datapath = "C:\\Users\\U35035\\eclipse-workspace\\Data\\TestDataOnlineOffline.xlsx";
@@ -57,6 +68,14 @@ public class myLawLinkClosingOnlineOffline {
 
 
 		// utility.dbconnect();
+		
+		ExtentHtmlReporter reporter = new ExtentHtmlReporter("./Reports/ExtendedReportmain.html");
+		  
+		extent = new ExtentReports();
+		  
+		extent.attachReporter(reporter);
+		  
+		logger1 = extent.createTest("Closing deeds search");
 
 		try {
 
@@ -83,7 +102,7 @@ public class myLawLinkClosingOnlineOffline {
 
 				// base url
 
-				// String baseurl="https://qa.lawlink.ie";
+				 String baseurl="https://uat.lawlink.ie";
 
 				// BVT
 
@@ -91,15 +110,17 @@ public class myLawLinkClosingOnlineOffline {
 
 				// UAT
 
-				 String baseurl=excel.getData(4, 0, 1);
+				 //String baseurl=excel.getData(4, 0, 1);
 
 				// Staging
 
-				 //String baseurl=excel.getData(4, 0, 2);
+				//String baseurl=excel.getData(4, 0, 2);
 
 				driver.get(baseurl);
 
 				log.debug("Opening website");
+				
+				logger1.log(Status.PASS, "Lawlink Website opened");
 
 				// driver.findElement(By.xpath("//*[@id=\"header_right\"]/p/span/a")).click();
 
@@ -112,6 +133,8 @@ public class myLawLinkClosingOnlineOffline {
 				// WebElement pass=driver.findElement(By.id("password"));
 
 				log.debug("Opening Login screen");
+				
+				
 
 				// pass credential and submit
 				
@@ -145,6 +168,8 @@ public class myLawLinkClosingOnlineOffline {
 				// driver.findElement(By.xpath("//*[@id=\"loginpanel\"]/form/p[3]/a/img")).click();
 
 				rb.clicklawlinklogin();
+				
+				logger1.log(Status.PASS, "Lawlink successfully logged in");
 
 				// click closing search button
 				Thread.sleep(5000);
@@ -154,6 +179,8 @@ public class myLawLinkClosingOnlineOffline {
 				rblawlink.clickLawlinkClosingSearchlink();
 
 				log.debug("Clicking Closing search button");
+				
+				
 
 				// capture screenshot 1
 
@@ -171,7 +198,7 @@ public class myLawLinkClosingOnlineOffline {
 				// driver.findElement(By.id("chkJudg")).click();
 
 				rblawlink.selectLawlinkClosingCheckJudgBox();
-
+				
 				// driver.findElement(By.id("chkDeeds")).click();
 
 				rblawlink.selectLawlinkClosingCheckDeedsBox();
@@ -246,7 +273,7 @@ public class myLawLinkClosingOnlineOffline {
 						Resi = "NO";
 					}
 
-					if (offcount == 1 && (Resi.equalsIgnoreCase("NO") || Resi.equalsIgnoreCase("YES"))) {
+					/*if (offcount == 1 && (Resi.equalsIgnoreCase("NO") || Resi.equalsIgnoreCase("YES"))) {
 						fname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[1]/td[2]/input";
 						lname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[2]/td[2]/input";
 						deedsfrom = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[3]/td[2]/input[1]";
@@ -265,7 +292,60 @@ public class myLawLinkClosingOnlineOffline {
 								.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[3]/td[2]/input[2]");
 						deedsaddress = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
 								.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[4]/td/textarea");
-					}
+					}*/
+					
+					
+					
+					
+					//Non-RESI Handled here
+					
+					if (offcount == 1 && (Resi.equalsIgnoreCase("NO"))) {
+					fname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[1]/td[2]/input";
+					lname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[2]/td[2]/input";
+					deedsfrom = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[3]/td[2]/input[1]";
+					deedsto = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[3]/td[2]/input[2]";
+					deedsaddress = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[4]/td/textarea";
+				}
+
+				else if (offcount != 1 && (Resi.equalsIgnoreCase("NO")))  {
+					fname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[1]/td[2]/input");
+					lname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[2]/td[2]/input");
+					deedsfrom = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[3]/td[2]/input[1]");
+					deedsto = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[3]/td[2]/input[2]");
+					deedsaddress = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[4]/td/textarea");
+				}
+					
+					
+					
+					//RESI Handled here
+					
+					if (offcount == 1 && (Resi.equalsIgnoreCase("YES"))) {
+					fname = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[1]/td[2]/input";
+					lname = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[2]/td[2]/input";
+					deedsfrom = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[3]/td[2]/input[1]";
+					deedsto = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[3]/td[2]/input[2]";
+					deedsaddress = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[4]/td/textarea";
+				}
+
+				else if (offcount != 1 && (Resi.equalsIgnoreCase("YES")))  {
+					fname = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[1]/td[2]/input");
+					lname = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[2]/td[2]/input");
+					deedsfrom = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[3]/td[2]/input[1]");
+					deedsto = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[3]/td[2]/input[2]");
+					deedsaddress = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[4]/td/textarea");
+				}
+					
+					
 
 					driver.findElement(By.xpath(fname)).sendKeys(excel.getData(2, i, k));
 
@@ -323,14 +403,19 @@ public class myLawLinkClosingOnlineOffline {
 				// Write to Excel - PDF URL
 
 				String pdfurl = utility.getPDFURL(driver);
-
+				
 				excel.writeData(1, i, 21, pdfurl);
+				
+				logger1.log(Status.PASS, "Closing search PDF generated");
 
 				// Download PDF
 
 				// utility.downloadPDF(driver);
 
 				// close chrome
+				
+				extent.flush();
+				
 				driver.quit();
 
 				System.out.println("Browser closed");

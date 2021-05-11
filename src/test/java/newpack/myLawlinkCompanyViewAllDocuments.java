@@ -1,13 +1,18 @@
 package newpack;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
 
 import lib.ExcelDataConfig;
 import lib.utility;
@@ -15,14 +20,16 @@ import pagefactory.myRBLawlink;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myLawlinkCompany {
+public class myLawlinkCompanyViewAllDocuments {
 
 	@Test
-	public void myLawlinkCompanyViewResults() throws Exception {
+	public void myLawlinkCompanyViewAllDocumentsViewResults() throws Exception {
 		// to use chrome
 		try {
 
 			WebDriver driver;
+			
+			WebDriverWait mywaitvar = null;
 
 			String driverpath = "C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
 
@@ -51,7 +58,7 @@ public class myLawlinkCompany {
 
 				// base url
 
-				String baseurl = "https://qa.lawlink.ie";
+				String baseurl = "https://uat.lawlink.ie";
 
 				driver.get(baseurl);
 
@@ -114,15 +121,97 @@ public class myLawlinkCompany {
 				
 				rblawlink.clickLawlinkAcceptChargelink();
 
-				Thread.sleep(5000);
-				
-				//Click PDF link
+						
+				mywaitvar = new WebDriverWait(driver, 80);
 
-				//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/div[1]/p/a[2]")).click();
-				
-				rblawlink.clickLawlinkJudgementPDFLink();
+				mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
 
-				Thread.sleep(5000);
+								
+				
+				//Get the count of image checkboxes
+				List<WebElement> imageboxes=driver.findElements(By.cssSelector("input[type='checkbox']"));
+				int numberofimageboxes = imageboxes.size();
+				//To restrict maximum document selection to 20
+				int maxdoc = 1;
+				
+				if (numberofimageboxes>0)
+				{
+					
+					System.out.println("Number of Image checkboxed available are:" + numberofimageboxes);
+					
+					//Select all checkboxes
+					for(WebElement ele : imageboxes) {
+						
+						if(!(ele.isSelected()) && maxdoc<=20) {
+							ele.click();
+							maxdoc++;
+						}
+					}
+					
+					//Click Document Order button
+					
+					rblawlink.clickLawlinkDocumentOrderlink();
+
+					Thread.sleep(5000);
+					
+					//Assert the text for Number of Image boxes selected for viewing
+					
+					String imagetotaltext = driver.findElement(By.xpath("//*[@id=\"sub_content\"]/p")).getText();
+					
+					System.out.println(imagetotaltext);
+					
+					//Assert.assertEquals("You have selected "+numberofimageboxes+" documents.", imagetotaltext);
+					
+					if(numberofimageboxes<=20) {
+						
+						Assert.assertTrue(imagetotaltext.contains("You have selected "+numberofimageboxes+" documents."));
+						
+					}
+					else {
+						
+						Assert.assertTrue(imagetotaltext.contains("You have selected "+(maxdoc-1)+" documents."));
+					}
+						
+					
+					
+					
+					//Click Accept charge submit link
+					
+					rblawlink.clickLawlinkAcceptChargeSubmitlink();
+					
+					
+					//Get the count of imagelinks
+					List<WebElement> imagelinks=driver.findElements(By.cssSelector("ul.orange-list li"));
+					int numberofimagelinks = imagelinks.size();
+					
+					System.out.println("Number of Image links available are:" + numberofimagelinks);
+					
+					//Click each image link one by one and capture screenshots
+					for(int k=1; k<=numberofimagelinks; k++) {
+						
+							String submissionno = driver.findElement(By.xpath("//*[@id=\"sub_content\"]/ul/li["+k+"]/a")).getText();
+							driver.findElement(By.xpath("//*[@id=\"sub_content\"]/ul/li["+k+"]/a")).click();
+							
+							Thread.sleep(5000);
+							utility.fullscreenshotcapture(driver, submissionno);
+							driver.navigate().back();
+					}
+					
+				}
+					
+				else
+					{
+					//Click PDF link
+
+					//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/div[1]/p/a[2]")).click();
+					
+					rblawlink.clickLawlinkJudgementPDFLink();
+					
+					}
+					
+				
+				
+				
 
 				// excel.writeData(0, i, 3);
 

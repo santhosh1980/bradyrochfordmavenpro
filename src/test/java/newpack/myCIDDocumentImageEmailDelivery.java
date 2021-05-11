@@ -1,13 +1,18 @@
 package newpack;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
 
 import lib.ExcelDataConfig;
 import lib.utility;
@@ -15,10 +20,10 @@ import pagefactory.myRBCID;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myCIDCompany {
+public class myCIDDocumentImageEmailDelivery {
 
 	@Test
-	public void myCIDCompanyViewResults() throws Exception {
+	public void myCIDDocumentImageEmailDeliveryViewResults() throws Exception {
 		// to use chrome
 		try {
 
@@ -38,21 +43,23 @@ public class myCIDCompany {
 			for (int i = 0; i <= excel.getrownum(1); i++) {
 
 				driver = new ChromeDriver();
+				
+				WebDriverWait mywaitvar = null;
 
 				myRBlogin rb = new myRBlogin(driver);
 				
 				myRBcommon rbcom = new myRBcommon(driver);
 				
 				myRBCID rbcid = new myRBCID(driver);
-
-
+				
+				
 				driver.manage().window().maximize();
 				
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 				// base url
 
-				String baseurl = "https://qa.cid.ie";
+				String baseurl = "https://uat.cid.ie";
 
 				driver.get(baseurl);
 
@@ -90,7 +97,7 @@ public class myCIDCompany {
 				
 				rbcid.clickCIDlink();
 				
-				rbcid.clickCIDCompanyLink();
+				rbcid.clickCIDDocumentLink();
 
 				// Pass search values and click search button
 
@@ -111,16 +118,66 @@ public class myCIDCompany {
 
 				//driver.findElement(By.xpath("//*[@id=\"form1\"]/table/tbody/tr[14]/td[2]/input[1]")).click();
 				
-				rbcid.clickCIDCompanySearchLink();
-
-				// Click accept charge button
-
-				//driver.findElement(By.name("acceptCharge")).click();
+				//Select document type
 				
-				rbcid.clickCIDAcceptCharge();
+				rbcid.setdocumenttype(excel.getData(1, i, 4));
+				
+				//Click search button
+				
+				rbcid.clickCIDDocumentSearchLink();
 
-				Thread.sleep(5000);
+				
 
+							
+				
+				
+				mywaitvar = new WebDriverWait(driver, 80);
+
+				mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				
+				//To get all the anchor links which contains the string mentioned below in href attribute
+				List<WebElement> imagelinks = driver.findElements(By.xpath(".//a[contains(@href,'sub-search-accept-charge')]"));
+				int numberofimagelinks = imagelinks.size();
+				
+				if (numberofimagelinks>0)
+				{
+					
+					System.out.println("Number of Image links without checkbox available are:" + numberofimagelinks);
+					
+					
+				
+					
+					
+					
+					//Click each image link one by one and download
+					for(int k=0; k<numberofimagelinks; k++) {
+						
+						//Click image link using index
+						imagelinks.get(k).click();
+						//Click Delivery by email radio button
+						rbcid.clickCIDImageDownloadEmailRadioButton();
+						//Click Accept charge link
+						rbcid.clickCIDAcceptCharge();
+						//Wait for image to send in email
+						Thread.sleep(30000);
+						//Go back to the image select screen for selecting the next image link - 2 screen previous from email confirm screen
+						driver.navigate().back();
+						driver.navigate().back();
+						//To exit from the loop for avoiding stale element exception
+						break;
+					}
+					
+					
+				
+					
+					
+					
+					
+					
+				}
+				
+				else
+				{
 				// Capture company report
 
 				utility.screenshotcapture(driver, "companyreport");
@@ -128,6 +185,7 @@ public class myCIDCompany {
 				driver.findElement(By.xpath("//*[@id=\"topLinks\"]/tbody/tr[3]/td[2]/a")).click();
 
 				Thread.sleep(5000);
+				}
 				
 				// Write to Excel - PDF URL
 				

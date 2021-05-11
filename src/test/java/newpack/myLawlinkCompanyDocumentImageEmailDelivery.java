@@ -1,13 +1,18 @@
 package newpack;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
+
 
 import lib.ExcelDataConfig;
 import lib.utility;
@@ -15,14 +20,16 @@ import pagefactory.myRBLawlink;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myLawlinkCompany {
+public class myLawlinkCompanyDocumentImageEmailDelivery {
 
 	@Test
-	public void myLawlinkCompanyViewResults() throws Exception {
-		// to use chrome
+	public void myLawlinkCompanyDocumentImageEmailDeliveryViewResults() throws Exception {
+		
 		try {
 
 			WebDriver driver;
+			
+			WebDriverWait mywaitvar = null;
 
 			String driverpath = "C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
 
@@ -51,7 +58,7 @@ public class myLawlinkCompany {
 
 				// base url
 
-				String baseurl = "https://qa.lawlink.ie";
+				String baseurl = "https://uat.lawlink.ie";
 
 				driver.get(baseurl);
 
@@ -85,11 +92,15 @@ public class myLawlinkCompany {
 
 				System.out.println("Values passed");
 
-				// Click Company Search link
+				// Click Company/Business - Company Search link
 
-				//driver.findElement(By.xpath("//*[@id=\"leftmenu\"]/ul[3]/li[4]/a")).click();
+				//driver.findElement(By.xpath("//*[@id="leftmenu"]/ul[1]/li[1]/a")).click();
 				
-				rblawlink.clickLawlinkCompanylink();
+				rblawlink.clickLawlinkCompanyCompanylink();
+				
+				//Click Company/Business - Document Search link
+				
+				rblawlink.clickLawlinkCompanyDocumentlink();
 
 				// Pass search values and click search button
 
@@ -103,18 +114,61 @@ public class myLawlinkCompany {
 				//driver.findElement(By.name("compNumber")).sendKeys(excel.getNumericData(3, i, 3));
 				
 				rblawlink.setcompanynumber(excel.getNumericData(3, i, 3));
-
-				//driver.findElement(By.name("search")).click();
 				
-				rblawlink.clickLawlinkSearchLink();
-
-				// Click accept charge button
-
-				//driver.findElement(By.name("acceptCharge")).click();
+				//Select Document type
 				
-				rblawlink.clickLawlinkAcceptChargelink();
+				rblawlink.setdocumenttype(excel.getData(3, i, 4));
 
-				Thread.sleep(5000);
+				//Click Search button
+				
+				rblawlink.clickLawlinkCaptchaSubmit();
+				
+				mywaitvar = new WebDriverWait(driver, 80);
+
+				mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				
+				
+				
+				//Get the count of image links with NO checkboxes
+				List<WebElement> imagelinks=driver.findElements(By.cssSelector("table.ReportChoiceInfo td.blue11 a"));
+				int numberofimagelinks = imagelinks.size();
+				System.out.println("Number of Image links without Checkbox available are:" + numberofimagelinks);
+				
+				if (numberofimagelinks>0)
+				{
+					
+						
+									
+					
+					//Click each image link one by one and download
+					for(int k=0; k<numberofimagelinks; k++) {
+						
+							//Click image link using index
+							imagelinks.get(k).click();
+							//Click delivery by email radio button
+							rblawlink.clickLawlinkImageDownloadEmailRadioButton();
+							//Click Accept charge link
+							rblawlink.clickLawlinkAcceptChargelink();
+							//Wait for image to send in email
+							Thread.sleep(30000);
+							
+							//Go back to the image select screen for selecting the next image link - 2 screen previous from email confirm screen
+							driver.navigate().back();
+							driver.navigate().back();
+							//To exit from the loop for avoiding stale element exception
+							break;
+					}
+					
+					
+					
+					
+				
+					
+				}
+				
+				else
+				{
+					
 				
 				//Click PDF link
 
@@ -123,6 +177,8 @@ public class myLawlinkCompany {
 				rblawlink.clickLawlinkJudgementPDFLink();
 
 				Thread.sleep(5000);
+				
+				}
 
 				// excel.writeData(0, i, 3);
 

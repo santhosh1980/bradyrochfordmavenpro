@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class myRBLawlink {
 
@@ -198,6 +199,131 @@ public class myRBLawlink {
 	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[6]/a")
 
 	WebElement rbLawlinkContactUsLink;
+
+	@FindBy(xpath = "//*[@id=\"panel_col_1\"]/div[2]/p/a")
+
+	WebElement rbLawlinkEmailHomeLink;
+
+	@FindBy(xpath = "//*[@id=\"panel\"]/div[1]/p[3]/a")
+
+	WebElement rbLawlinkEmailCostLink;
+
+	@FindBy(xpath = "//*[@id=\"panel\"]/div[1]/p[2]/a")
+
+	WebElement rbLawlinkEmailSupportLink;
+
+	@FindBy(xpath = "//*[@id=\"panel_col_2\"]/p[4]/a")
+
+	WebElement rbLawlinkEmailContactUsSupportLink;
+
+	@FindBy(xpath = "//*[@id=\"panel_col_2\"]/p[5]/a")
+
+	WebElement rbLawlinkEmailContactUsReigstrationLink;
+
+	@FindBy(xpath = "//*[@id=\"panel_col_2\"]/p[6]/a")
+
+	WebElement rbLawlinkEmailContactUsBillingLink;
+
+	@FindBy(xpath = "//*[@id=\"panel\"]/div[1]/p[4]/a")
+
+	WebElement rbLawlinkEmailClosingSearchLink;
+
+	@FindBy(id = "emailAddress")
+
+	WebElement rbLawlinkCaptchaEmailAddress;
+
+	@FindBy(id = "emailSubject")
+
+	WebElement rbLawlinkCaptchaEmailSubject;
+
+	@FindBy(id = "emailContent")
+
+	WebElement rbLawlinkCaptchaEmailContent;
+
+	@FindBy(id = "captchaAnswer")
+
+	WebElement rbLawlinkCaptchaAnswer;
+
+	@FindBy(name = "Submit")
+
+	WebElement rbLawlinkCaptchaSubmit;
+
+	@FindBy(xpath = "//*[@id=\"sub_content\"]/p[2]/a")
+
+	WebElement rbLawlinkCaptchaGoBack;
+	
+	@FindBy(xpath="//*[@id=\"leftmenu\"]/ul[1]/li[1]/a")
+	
+	WebElement rbLawlinkCompanyCompanyLink;
+	
+	@FindBy(xpath="//*[@id=\"leftmenu\"]/ul[1]/li[3]/a")
+	
+	WebElement rbLawlinkCompanyBusinessLink;
+	
+	@FindBy(xpath="//*[@id=\"panel\"]/div[1]/table/tbody/tr/td[1]/a")
+	
+	WebElement rbLawlinkBusinessNumberLink;
+	
+	@FindBy(name="acceptCharge")
+	
+	WebElement rbLawlinkAcceptChargeLink;
+	
+	@FindBy(xpath="//*[@id=\"leftmenu\"]/ul[1]/li[5]/a")
+	
+	WebElement rbLawlinkCompanyDocumentLink;
+	
+	@FindBy(name = "documentGroup")
+
+	WebElement rbLawlinkDocumentType;
+	
+	@FindBy(name="Submit")
+	
+	WebElement rbLawlinkAcceptChargeSubmit;
+	
+	@FindBy(name="docButton")
+	
+	WebElement rbLawlinkDocumentOrder;
+	
+	@FindBy(xpath="//*[@id=\"leftmenu\"]/ul[1]/li[4]/a")
+	
+	WebElement rbLawlinkSubmissionNUmberLink;
+	
+	@FindBy(name="submissionNum")
+	
+	WebElement rbSubmissionNumber;
+	
+	@FindBy(name="submissionDocNum")
+	
+	WebElement rbSubmissionDocNumber;
+	
+	@FindBy(xpath="//*[@id=\"form1\"]/table/tbody/tr[3]/td/input[1]")
+	
+	WebElement rbLawlinkWebDownloadRadioButton;
+	
+	@FindBy(xpath="//*[@id=\"form1\"]/table/tbody/tr[3]/td/input[2]")
+	
+	WebElement rbLawlinkDeliverByEmailRadioButton;
+	
+	@FindBy(xpath="//*[@id=\"formgeneric\"]/table/tbody/tr[1]/td[1]/input")
+	
+	WebElement rbLawlinkViewOnlineRadioButton;
+	
+	@FindBy(xpath="//*[@id=\"formgeneric\"]/table/tbody/tr[2]/td[1]/input")
+	
+	WebElement rbLawlinkEmailRadioButton;
+	
+	@FindBy(xpath="//*[@id=\"panel\"]/div[1]/form/table/tbody/tr[6]/td[2]/input")
+	
+	WebElement rbLawlinkSendEmailSubmit;
+	
+	@FindBy(xpath="//*[@id=\"form2\"]/table/tbody/tr[2]/td[2]/input")
+	
+	WebElement rbLawlinkImageDownloadWebDownloadRadioButton;
+	
+	@FindBy(xpath="//*[@id=\"form2\"]/table/tbody/tr[3]/td[2]/input")
+	
+	WebElement rbLawlinkImageDownloadEmailRadioButton;
+	
 
 	public myRBLawlink(WebDriver driver) {
 
@@ -536,5 +662,223 @@ public class myRBLawlink {
 	public void clickLawlinkContactUsLink() {
 
 		rbLawlinkContactUsLink.click();
+	}
+
+	// Click Lawlink Email Home Link
+
+	public void clickLawlinkEmailHomeLink() {
+
+		rbLawlinkEmailHomeLink.click();
+	}
+
+	// Click Lawlink Email Cost Link
+
+	public void clickLawlinkEmailCostLink() {
+
+		rbLawlinkEmailCostLink.click();
+	}
+
+	// Click Lawlink Email Support Link
+
+	public void clickLawlinkEmailSupportLink() {
+
+		rbLawlinkEmailSupportLink.click();
+	}
+
+	// Click Lawlink Email Contact Us Support Link
+
+	public void clickLawlinkEmailContactUsSupportLink() {
+
+		rbLawlinkEmailContactUsSupportLink.click();
+	}
+
+	// Click Lawlink Email Contact Us Register Link
+
+	public void clickLawlinkEmailContactUsRegistrationLink() {
+
+		rbLawlinkEmailContactUsReigstrationLink.click();
+	}
+
+	// Click Lawlink Email Contact Us Billing Link
+
+	public void clickLawlinkEmailContactUsBillingLink() {
+
+		rbLawlinkEmailContactUsBillingLink.click();
+	}
+
+	// Click Lawlink Email Closing Search Link
+
+	public void clickLawlinkEmailClosingSearchLink() {
+
+		rbLawlinkEmailClosingSearchLink.click();
+	}
+
+	// set captcha email address
+
+	public void setcaptchaemailaddress(String strcaptchaemailaddress) {
+
+		rbLawlinkCaptchaEmailAddress.sendKeys(strcaptchaemailaddress);
+	}
+
+	// set captcha email subject
+
+	public void setcaptchaemailsubject(String strcaptchaemailsubject) {
+
+		rbLawlinkCaptchaEmailSubject.sendKeys(strcaptchaemailsubject);
+	}
+
+	// set captcha email content
+
+	public void setcaptchaemailcontent(String strcaptchaemailcontent) {
+
+		rbLawlinkCaptchaEmailContent.sendKeys(strcaptchaemailcontent);
+	}
+
+	// set captcha answer
+
+	public void setcaptchaanswer(String strcaptchaanswer) {
+
+		rbLawlinkCaptchaAnswer.sendKeys(strcaptchaanswer);
+	}
+
+	// Click Lawlink Captcha Submit
+
+	public void clickLawlinkCaptchaSubmit() {
+
+		rbLawlinkCaptchaSubmit.click();
+	}
+
+	// Click Lawlink Captcha Go back
+
+	public void clickLawlinkCaptchaGoBack() {
+
+		rbLawlinkCaptchaGoBack.click();
+	}
+	
+	// Click Lawlink Company/Business - Company Link
+
+	public void clickLawlinkCompanyCompanylink() {
+
+		rbLawlinkCompanyCompanyLink.click();
+	}
+	
+	// Click Lawlink Company/Business - Business Link
+
+	public void clickLawlinkCompanyBusinesslink() {
+
+		rbLawlinkCompanyBusinessLink.click();
+	}
+	
+	// Click Lawlink Company/Business - Business Number Link from search results
+
+	public void clickLawlinkBusinessNumberlink() {
+
+		rbLawlinkBusinessNumberLink.click();
+	}
+	
+	// Click Lawlink Company/Business - Accept Charge Link 
+
+	public void clickLawlinkAcceptChargelink() {
+
+			rbLawlinkAcceptChargeLink.click();
+	}
+	
+	// Click Lawlink Company/Business - Document Link
+
+	public void clickLawlinkCompanyDocumentlink() {
+
+			rbLawlinkCompanyDocumentLink.click();
+	}
+	
+	// Select Document type
+
+	public void setdocumenttype(String doctype) {
+			
+		Select doctypedropdown = new Select(rbLawlinkDocumentType);
+			doctypedropdown.selectByVisibleText(doctype);
+	}
+	
+	// Click Lawlink Company/Business - Accept Charge Submit Link 
+
+	public void clickLawlinkAcceptChargeSubmitlink() {
+
+			rbLawlinkAcceptChargeSubmit.click();
+	}
+	
+	// Click Lawlink Company/Business - Document Order Link 
+
+	public void clickLawlinkDocumentOrderlink() {
+
+			rbLawlinkDocumentOrder.click();
+	}
+	
+	// Click Lawlink Company/Business - Submission NUmber Link
+
+	public void clickLawlinkCompanySubmissionNumberlink() {
+
+				rbLawlinkSubmissionNUmberLink.click();
+	}
+	
+	// Set submission number
+
+	public void setsubmissionnumber(String strsubmissionnumber) {
+
+			rbSubmissionNumber.sendKeys(strsubmissionnumber);
+	}
+	
+	// Set submission document number
+
+	public void setsubmissiodocnnumber(String strsubmissiondocnumber) {
+
+			rbSubmissionDocNumber.sendKeys(strsubmissiondocnumber);
+	}
+	
+	// Click Web Download radio button - Submission Number search
+
+	public void clickLawlinkWebDownloadRadioButton() {
+
+			rbLawlinkWebDownloadRadioButton.click();
+	}
+	
+	// Click Delivery By Email radio button - Submission Number search
+
+	public void clickLawlinkDeliveryByEmailRadioButton() {
+
+			rbLawlinkDeliverByEmailRadioButton.click();
+	}
+	
+	// Click View Online radio button
+
+	public void clickLawlinkViewOnlineRadioButton() {
+
+			rbLawlinkViewOnlineRadioButton.click();
+	}
+	
+	// Click Email radio button
+
+	public void clickLawlinkEmailRadioButton() {
+
+			rbLawlinkEmailRadioButton.click();
+	}
+	
+	// Click Send Email Submit button
+
+	public void clickLawlinkSendEmailSubmit() {
+
+			rbLawlinkSendEmailSubmit.click();
+	}
+	
+	// Click Web Download radio button - Image download
+
+	public void clickLawlinkImageDownloadWebDownloadRadioButton() {
+
+			rbLawlinkImageDownloadWebDownloadRadioButton.click();
+	}
+	
+	// Click Delivery By Email radio button - Image download
+
+	public void clickLawlinkImageDownloadEmailRadioButton() {
+
+			rbLawlinkImageDownloadEmailRadioButton.click();
 	}
 }

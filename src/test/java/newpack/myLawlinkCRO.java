@@ -70,7 +70,7 @@ public class myLawlinkCRO {
 
 			// base url
 
-			String baseurl = "https://qa.lawlink.ie";
+			String baseurl = "https://staging.lawlink.ie";
 
 			driver.get(baseurl);
 

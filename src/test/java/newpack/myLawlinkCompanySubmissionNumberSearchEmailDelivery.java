@@ -1,5 +1,6 @@
 package newpack;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -7,22 +8,27 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
+import org.junit.Assert;
 import lib.ExcelDataConfig;
 import lib.utility;
 import pagefactory.myRBLawlink;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myLawlinkCompany {
+public class myLawlinkCompanySubmissionNumberSearchEmailDelivery {
 
 	@Test
-	public void myLawlinkCompanyViewResults() throws Exception {
-		// to use chrome
+	public void myLawlinkCompanySubmissionNumberSearchEmailDeliveryViewResults() throws Exception {
+		
 		try {
 
 			WebDriver driver;
+			
+			WebDriverWait mywaitvar = null;
 
 			String driverpath = "C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
 
@@ -35,7 +41,7 @@ public class myLawlinkCompany {
 			// create chrome instance
 			System.setProperty("webdriver.chrome.driver", driverpath);
 
-			for (int i = 0; i <= excel.getrownum(3); i++) {
+			for (int i = 0; i <= excel.getrownum(12); i++) {
 
 				driver = new ChromeDriver();
 
@@ -51,7 +57,7 @@ public class myLawlinkCompany {
 
 				// base url
 
-				String baseurl = "https://qa.lawlink.ie";
+				String baseurl = "https://uat.lawlink.ie";
 
 				driver.get(baseurl);
 
@@ -67,9 +73,9 @@ public class myLawlinkCompany {
 
 				// pass credential
 
-				rb.setusername(excel.getData(3, i, 0));
+				rb.setusername(excel.getData(12, i, 0));
 
-				rb.setpassword(excel.getData(3, i, 1));
+				rb.setpassword(excel.getData(12, i, 1));
 
 				// RESI value status of user
 
@@ -85,11 +91,15 @@ public class myLawlinkCompany {
 
 				System.out.println("Values passed");
 
-				// Click Company Search link
+				// Click Company/Business - Company Search link
 
-				//driver.findElement(By.xpath("//*[@id=\"leftmenu\"]/ul[3]/li[4]/a")).click();
+				//driver.findElement(By.xpath("//*[@id="leftmenu"]/ul[1]/li[1]/a")).click();
 				
-				rblawlink.clickLawlinkCompanylink();
+				rblawlink.clickLawlinkCompanyCompanylink();
+				
+				//Click Company/Business - Submission Number Search link
+				
+				rblawlink.clickLawlinkCompanySubmissionNumberlink();
 
 				// Pass search values and click search button
 
@@ -102,31 +112,32 @@ public class myLawlinkCompany {
 
 				//driver.findElement(By.name("compNumber")).sendKeys(excel.getNumericData(3, i, 3));
 				
-				rblawlink.setcompanynumber(excel.getNumericData(3, i, 3));
-
-				//driver.findElement(By.name("search")).click();
+				//Fill in submission number and submission document number
+				
+				rblawlink.setsubmissionnumber(excel.getNumericData(12, i, 3));
+				
+				rblawlink.setsubmissiodocnnumber(excel.getNumericData(12, i, 4));
+				
+				//Click Delivery by email button
+				
+				rblawlink.clickLawlinkDeliveryByEmailRadioButton();
+				
+				//Click search button
 				
 				rblawlink.clickLawlinkSearchLink();
-
-				// Click accept charge button
-
-				//driver.findElement(By.name("acceptCharge")).click();
 				
-				rblawlink.clickLawlinkAcceptChargelink();
-
-				Thread.sleep(5000);
+				String verificationtext = "Your search results have been sent by email to";
 				
-				//Click PDF link
-
-				//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/div[1]/p/a[2]")).click();
+				String emailtext = driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/table[1]/tbody/tr/td")).getText();
 				
-				rblawlink.clickLawlinkJudgementPDFLink();
-
-				Thread.sleep(5000);
-
-				// excel.writeData(0, i, 3);
-
-				// close chrome
+				
+												
+				Thread.sleep(30000);
+				
+				Assert.assertTrue(emailtext.contains(verificationtext));
+				
+				System.out.println("Email sent successfully");
+				
 				driver.quit();
 
 				System.out.println("Browser closed");
