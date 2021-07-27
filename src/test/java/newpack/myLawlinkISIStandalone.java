@@ -148,14 +148,18 @@ public class myLawlinkISIStandalone {
 
 			// Take cost, write to excel and Click accept charge button
 
-			String cost = driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[2]/input"))
-					.getAttribute("value");
+			//String cost = driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[2]/input")).getAttribute("value");
+			
+			String cost = rblawlink.LawlinkBankruptcyAcceptChargeCost();
 
 			System.out.println(cost);
 
 			excel.writeData(6, i, 20, cost);
 
-			driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[2]/input")).click();
+			//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[2]/input")).click();
+			
+			rblawlink.clickLawlinkBankruptcyAcceptChargeButton();
+
 
 			Thread.sleep(5000);
 

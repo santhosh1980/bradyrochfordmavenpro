@@ -169,7 +169,8 @@ public class myCIDJudgement {
 			// List<WebElement>
 			// judelements=driver.findElements(By.xpath(".//*[starts-with(@name,'JUDG_NAME')]"));
 
-			List<WebElement> judelements = driver.findElements(By.xpath("//input[starts-with(@name, 'JUDG_NAME')]"));
+			//List<WebElement> judelements = driver.findElements(By.xpath("//input[starts-with(@name, 'JUDG_NAME')]"));
+			List<WebElement> judelements = rbcid.CIDJudgmentMatchJudgmentCheckboxeselements();
 			int numberofjudgements = judelements.size();
 
 			for (int k = 1; k <= numberofjudgements; k++) {
@@ -179,9 +180,8 @@ public class myCIDJudgement {
 
 			// select Lis Pendens matches
 
-			List<WebElement> lispendelements = driver
-					.findElements(By.xpath("//input[starts-with(@name,'namesCheckBox')]"));
-
+			//List<WebElement> lispendelements = driver.findElements(By.xpath("//input[starts-with(@name,'namesCheckBox')]"));
+			List<WebElement> lispendelements = rbcid.CIDJudgmentMatchLispendensCheckboxeselements();
 			int numberoflispendens = lispendelements.size();
 
 			for (int k = 1; k <= numberoflispendens; k++) {

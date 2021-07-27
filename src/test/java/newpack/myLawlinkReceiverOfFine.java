@@ -169,7 +169,7 @@ public class myLawlinkReceiverOfFine {
 
 				Thread.sleep(5000);
 
-				String receiverfirst = null;
+				/*String receiverfirst = null;
 				String receiverlast = null;
 				String receiveraddress = null;
 				String receivercounty = null;
@@ -200,12 +200,33 @@ public class myLawlinkReceiverOfFine {
 
 				driver.findElement(By.xpath(receiveraddress)).sendKeys(excel.getData(8, i, k + 2));
 
-				driver.findElement(By.xpath(receivercounty)).sendKeys(excel.getData(8, i, k + 3));
+				driver.findElement(By.xpath(receivercounty)).sendKeys(excel.getData(8, i, k + 3));*/
+				
+				//Enter Receiver of Fine - First name
+				
+				rblawlink.setreceiveroffinefirstname(receivercnt, excel.getData(8, i, k));
+				
+				//Enter Receiver of Fine - Last name
+				
+				rblawlink.setreceiveroffinelastname(receivercnt, excel.getData(8, i, k + 1));
+				
+				//Enter Receiver of Fine - Address
+				
+				rblawlink.setreceiveroffineaddress(receivercnt, excel.getData(8, i, k + 2));
+				
+				//Enter Receiver of Fine - County
+				
+				rblawlink.setreceiveroffinecounty(receivercnt, excel.getData(8, i, k + 3));
+				
+				
 
 				// click another receiver of fine search button
 
 				if (k + 4 < excel.getcolnum(8, i)) {
-					driver.findElement(By.xpath("//*[@id=\"receiverOfFines1\"]/table/tbody/tr[6]/td/span/a")).click();
+					
+					//driver.findElement(By.xpath("//*[@id=\"receiverOfFines1\"]/table/tbody/tr[6]/td/span/a")).click();
+					
+					rblawlink.clickLawlinkClosingAnotherReceiverOfFineSearchLink();
 				}
 
 				receivercnt++;

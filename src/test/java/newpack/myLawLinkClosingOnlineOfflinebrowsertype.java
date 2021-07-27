@@ -33,7 +33,7 @@ import pagefactory.myRBLawlink;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myLawLinkClosingOnlineOffline {
+public class myLawLinkClosingOnlineOfflinebrowsertype {
 
 	@Test
 	public void myLawLinkClosingOnlineOfflineViewResults() {
@@ -48,7 +48,7 @@ public class myLawLinkClosingOnlineOffline {
 		Logger log = Logger.getLogger("");
 
 		
-		String driverpath = "C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
+		//String driverpath = "C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
 
 		String datapath = "C:\\Users\\U35035\\eclipse-workspace\\Data\\TestDataOnlineOffline.xlsx";
 
@@ -57,7 +57,7 @@ public class myLawLinkClosingOnlineOffline {
 		Random rand = new Random();
 
 		// create chrome instance
-		System.setProperty("webdriver.chrome.driver", driverpath);
+		//System.setProperty("webdriver.chrome.driver", driverpath);
 		
 		// create firefox instance
 
@@ -82,9 +82,10 @@ public class myLawLinkClosingOnlineOffline {
 
 			
 			for (int i = 0; i <= excel.getrownum(1); i++) {
-
 				
-				driver = new ChromeDriver();
+				driver = utility.browserstart("Chrome");
+				
+				//driver = new ChromeDriver();
 				
 				//driver = new FirefoxDriver();
 				
@@ -103,7 +104,7 @@ public class myLawLinkClosingOnlineOffline {
 
 				// base url
 
-				 String baseurl="https://uat.lawlink.ie";
+				 String baseurl="https://qa.lawlink.ie";
 
 				// BVT
 
@@ -442,7 +443,6 @@ public class myLawLinkClosingOnlineOffline {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 			// capture exception screenshot
-			
 
 			utility.screenshotcapture(driver, "exception");
 		}

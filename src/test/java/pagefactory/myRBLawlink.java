@@ -1,12 +1,17 @@
 package pagefactory;
 
+import java.util.List;
 import java.sql.Date;
+import java.util.jar.Attributes.Name;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class myRBLawlink {
 
@@ -35,6 +40,14 @@ public class myRBLawlink {
 	@FindBy(xpath = "//*[@id=\"sub_content\"]/table/tbody/tr[2]/td/a")
 
 	WebElement rbLawlinkBankruptcyPDF;
+
+	@FindBy(xpath = "//*[@id=\"panel\"]/div[1]/form/p[2]/input")
+
+	WebElement rbLawlinkBankruptcyAcceptCharge;
+
+	@FindBy(xpath = "//*[@id=\"panel\"]/div[1]/form/p[3]/input")
+
+	WebElement rbLawlinkJudgmentAcceptCharge;
 
 	@FindBy(xpath = "//*[@id=\"leftmenu\"]/ul[3]/li[1]/a")
 
@@ -128,6 +141,18 @@ public class myRBLawlink {
 
 	WebElement rbLawlinkClosingCheckPlanningBox;
 
+	@FindBy(xpath = "//*[@id=\"plan1\"]/table/tbody/tr[4]/td/span/a")
+
+	WebElement rbLawlinkClosingAnotherPlanningSearchLink;
+	
+	@FindBy(xpath = "//*[@id=\"receiverOfFines1\"]/table/tbody/tr[6]/td/span/a")
+
+	WebElement rbLawlinkClosingAnotherReceiverOfFineSearchLink;
+	
+	@FindBy(xpath ="//*[@id=\"sheriff1\"]/table/tbody/tr[6]/td/span/a" )
+
+	WebElement rbLawlinkClosingAnotherSheriffSearchLink;
+
 	@FindBy(xpath = "//*[@id=\"panel\"]/div[1]/table[2]/tbody/tr[3]/td/input")
 
 	WebElement rbLawlinkClosingPlanningSubmitLink;
@@ -144,9 +169,21 @@ public class myRBLawlink {
 
 	WebElement rbLawlinkWatchlistLink;
 
+	@FindBy(xpath = "//*[@id=\"leftmenu\"]/ul[1]/li[5]/a")
+
+	WebElement rbLawlinkViewWatchlistLink;
+
 	@FindBy(xpath = "//*[@id=\"panel\"]/div[1]/table/tbody/tr[2]/td[2]/a")
 
 	WebElement rbLawlinkNewWatchlistLink;
+
+	@FindBy(xpath = "//*[@id=\"panel\"]/div[1]/p[2]/a")
+
+	WebElement rbLawlinkWatchlistHereLink;
+
+	@FindBy(css = "input[value='Delete Selected Item(s)']")
+
+	WebElement rbLawlinkDeleteSelectedWatchlistItemButton;
 
 	@FindBy(id = "radCompany")
 
@@ -175,6 +212,18 @@ public class myRBLawlink {
 	@FindBy(name = "chkWindup")
 
 	WebElement rbLawlinkClosingCheckWindingUpBox;
+	
+	@FindBy(name = "windupCompNum")
+
+	WebElement rbLawlinkWindingUpCompanyNumber;
+	
+	@FindBy(id = "Find")
+
+	WebElement rbLawlinkWindingUpFind;
+	
+	@FindBy(id = "0")
+
+	WebElement rbLawlinkAddWindingUpCompany;
 
 	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[1]/a")
 
@@ -251,79 +300,91 @@ public class myRBLawlink {
 	@FindBy(xpath = "//*[@id=\"sub_content\"]/p[2]/a")
 
 	WebElement rbLawlinkCaptchaGoBack;
-	
+
 	@FindBy(xpath="//*[@id=\"leftmenu\"]/ul[1]/li[1]/a")
-	
+
 	WebElement rbLawlinkCompanyCompanyLink;
-	
+
 	@FindBy(xpath="//*[@id=\"leftmenu\"]/ul[1]/li[3]/a")
-	
+
 	WebElement rbLawlinkCompanyBusinessLink;
-	
+
 	@FindBy(xpath="//*[@id=\"panel\"]/div[1]/table/tbody/tr/td[1]/a")
-	
+
 	WebElement rbLawlinkBusinessNumberLink;
-	
+
 	@FindBy(name="acceptCharge")
-	
+
 	WebElement rbLawlinkAcceptChargeLink;
-	
+
+	@FindBy(className="input")
+
+	WebElement rbLawlinkGetDirectorDetailsLink;
+
 	@FindBy(xpath="//*[@id=\"leftmenu\"]/ul[1]/li[5]/a")
-	
+
 	WebElement rbLawlinkCompanyDocumentLink;
-	
+
 	@FindBy(name = "documentGroup")
 
 	WebElement rbLawlinkDocumentType;
-	
+
 	@FindBy(name="Submit")
-	
+
 	WebElement rbLawlinkAcceptChargeSubmit;
-	
+
 	@FindBy(name="docButton")
-	
+
 	WebElement rbLawlinkDocumentOrder;
-	
+
 	@FindBy(xpath="//*[@id=\"leftmenu\"]/ul[1]/li[4]/a")
-	
+
 	WebElement rbLawlinkSubmissionNUmberLink;
-	
+
 	@FindBy(name="submissionNum")
-	
+
 	WebElement rbSubmissionNumber;
-	
+
 	@FindBy(name="submissionDocNum")
-	
+
 	WebElement rbSubmissionDocNumber;
-	
+
 	@FindBy(xpath="//*[@id=\"form1\"]/table/tbody/tr[3]/td/input[1]")
-	
+
 	WebElement rbLawlinkWebDownloadRadioButton;
-	
+
 	@FindBy(xpath="//*[@id=\"form1\"]/table/tbody/tr[3]/td/input[2]")
-	
+
 	WebElement rbLawlinkDeliverByEmailRadioButton;
-	
+
 	@FindBy(xpath="//*[@id=\"formgeneric\"]/table/tbody/tr[1]/td[1]/input")
-	
+
 	WebElement rbLawlinkViewOnlineRadioButton;
-	
+
 	@FindBy(xpath="//*[@id=\"formgeneric\"]/table/tbody/tr[2]/td[1]/input")
-	
+
 	WebElement rbLawlinkEmailRadioButton;
-	
+
 	@FindBy(xpath="//*[@id=\"panel\"]/div[1]/form/table/tbody/tr[6]/td[2]/input")
-	
+
 	WebElement rbLawlinkSendEmailSubmit;
-	
+
 	@FindBy(xpath="//*[@id=\"form2\"]/table/tbody/tr[2]/td[2]/input")
-	
+
 	WebElement rbLawlinkImageDownloadWebDownloadRadioButton;
-	
+
 	@FindBy(xpath="//*[@id=\"form2\"]/table/tbody/tr[3]/td[2]/input")
-	
+
 	WebElement rbLawlinkImageDownloadEmailRadioButton;
-	
+
+	@FindBy(xpath="//*[@id=\"panel\"]/div[1]/table[1]/tbody/tr/td")
+
+	WebElement rbLawlinkEmailDeliveryText;
+
+	@FindBy(xpath="//*[@id=\"sub_content\"]/p")
+
+	WebElement rbLawlinkNumberofImageboxesText;
+
 
 	public myRBLawlink(WebDriver driver) {
 
@@ -374,6 +435,20 @@ public class myRBLawlink {
 	public void clickLawlinkBankruptcyPDFLink() {
 
 		rbLawlinkBankruptcyPDF.click();
+	}
+
+	// Click Lawink Bankruptcy AcceptCharge Button
+
+	public void clickLawlinkBankruptcyAcceptChargeButton() {
+
+		rbLawlinkBankruptcyAcceptCharge.click();
+	}
+
+	// Click Lawink Judgment AcceptCharge Button
+
+	public void clickLawlinkJudgmentAcceptChargeButton() {
+
+		rbLawlinkJudgmentAcceptCharge.click();
 	}
 
 	// Click Lawlink Judgement Link
@@ -538,6 +613,27 @@ public class myRBLawlink {
 		rbLawlinkClosingCheckPlanningBox.click();
 	}
 
+	// select the Lawlink Closing Search Planning - Another planning search link
+
+	public void clickLawlinkClosingAnotherPlanningSearchLink() {
+
+		rbLawlinkClosingAnotherPlanningSearchLink.click();
+	}
+	
+	// select the Lawlink Closing Search ROF - Another receiver of fine search link
+
+	public void clickLawlinkClosingAnotherReceiverOfFineSearchLink() {
+
+		rbLawlinkClosingAnotherReceiverOfFineSearchLink.click();
+	}
+	
+	// select the Lawlink Closing Search Sheriff - Another Sheriff search link
+
+	public void clickLawlinkClosingAnotherSheriffSearchLink() {
+
+		rbLawlinkClosingAnotherSheriffSearchLink.click();
+	}
+
 	// Click Lawlink Closing Search Offline Planning Submit Link
 
 	public void clickLawlinkClosingPlanningSubmitlink() {
@@ -566,11 +662,32 @@ public class myRBLawlink {
 		rbLawlinkWatchlistLink.click();
 	}
 
+	// Click Lawlink View Watchlist link
+
+	public void clickLawlinkViewWatchlistLink() {
+
+		rbLawlinkViewWatchlistLink.click();
+	}
+
 	// Click Lawlink New Watchlist link
 
 	public void clickLawlinkNewWathclistLink() {
 
 		rbLawlinkNewWatchlistLink.click();
+	}
+
+	// Click Lawlink Watchlist Here link
+
+	public void clickLawlinkWathclistHereLink() {
+
+		rbLawlinkWatchlistHereLink.click();
+	}
+
+	// Click Lawlink Delete Selected Watchlist Item Button
+
+	public void clickLawlinkDeleteSelectedWatchlistItemButton() {
+
+		rbLawlinkDeleteSelectedWatchlistItemButton.click();
 	}
 
 	// Select Lawlink Watch type
@@ -620,6 +737,27 @@ public class myRBLawlink {
 	public void selectLawlinkClosingCheckWindingUpBox() {
 
 		rbLawlinkClosingCheckWindingUpBox.click();
+	}
+	
+	// Set Winding up Company Number
+
+	public void setLawlinkClosingWindingUpCompanyNumber(String strwindingupcompanynum) {
+
+		rbLawlinkWindingUpCompanyNumber.sendKeys(strwindingupcompanynum);
+	}
+	
+	// Click Winding up Find
+
+	public void clickLawlinkClosingWindingUpFind() {
+
+		rbLawlinkWindingUpFind.click();
+	}
+	
+	// Click Add Winding up Company
+
+	public void clickLawlinkAddWindingUpCompany() {
+
+		rbLawlinkAddWindingUpCompany.click();
 	}
 
 	// Click Lawlink Home Link
@@ -754,131 +892,503 @@ public class myRBLawlink {
 
 		rbLawlinkCaptchaGoBack.click();
 	}
-	
+
 	// Click Lawlink Company/Business - Company Link
 
 	public void clickLawlinkCompanyCompanylink() {
 
 		rbLawlinkCompanyCompanyLink.click();
 	}
-	
+
 	// Click Lawlink Company/Business - Business Link
 
 	public void clickLawlinkCompanyBusinesslink() {
 
 		rbLawlinkCompanyBusinessLink.click();
 	}
-	
+
 	// Click Lawlink Company/Business - Business Number Link from search results
 
 	public void clickLawlinkBusinessNumberlink() {
 
 		rbLawlinkBusinessNumberLink.click();
 	}
-	
+
 	// Click Lawlink Company/Business - Accept Charge Link 
 
 	public void clickLawlinkAcceptChargelink() {
 
-			rbLawlinkAcceptChargeLink.click();
+		rbLawlinkAcceptChargeLink.click();
 	}
-	
+
+	// Click Lawlink Company/Business - Director - Get Director Details Link 
+
+	public void clickLawlinkGetDirectorDetailslink() {
+
+		rbLawlinkGetDirectorDetailsLink.click();;
+	}
+
 	// Click Lawlink Company/Business - Document Link
 
 	public void clickLawlinkCompanyDocumentlink() {
 
-			rbLawlinkCompanyDocumentLink.click();
+		rbLawlinkCompanyDocumentLink.click();
 	}
-	
+
 	// Select Document type
 
 	public void setdocumenttype(String doctype) {
-			
+
 		Select doctypedropdown = new Select(rbLawlinkDocumentType);
-			doctypedropdown.selectByVisibleText(doctype);
+		doctypedropdown.selectByVisibleText(doctype);
 	}
-	
+
 	// Click Lawlink Company/Business - Accept Charge Submit Link 
 
 	public void clickLawlinkAcceptChargeSubmitlink() {
 
-			rbLawlinkAcceptChargeSubmit.click();
+		rbLawlinkAcceptChargeSubmit.click();
 	}
-	
+
 	// Click Lawlink Company/Business - Document Order Link 
 
 	public void clickLawlinkDocumentOrderlink() {
 
-			rbLawlinkDocumentOrder.click();
+		rbLawlinkDocumentOrder.click();
 	}
-	
+
 	// Click Lawlink Company/Business - Submission NUmber Link
 
 	public void clickLawlinkCompanySubmissionNumberlink() {
 
-				rbLawlinkSubmissionNUmberLink.click();
+		rbLawlinkSubmissionNUmberLink.click();
 	}
-	
+
 	// Set submission number
 
 	public void setsubmissionnumber(String strsubmissionnumber) {
 
-			rbSubmissionNumber.sendKeys(strsubmissionnumber);
+		rbSubmissionNumber.sendKeys(strsubmissionnumber);
 	}
-	
+
 	// Set submission document number
 
 	public void setsubmissiodocnnumber(String strsubmissiondocnumber) {
 
-			rbSubmissionDocNumber.sendKeys(strsubmissiondocnumber);
+		rbSubmissionDocNumber.sendKeys(strsubmissiondocnumber);
 	}
-	
+
 	// Click Web Download radio button - Submission Number search
 
 	public void clickLawlinkWebDownloadRadioButton() {
 
-			rbLawlinkWebDownloadRadioButton.click();
+		rbLawlinkWebDownloadRadioButton.click();
 	}
-	
+
 	// Click Delivery By Email radio button - Submission Number search
 
 	public void clickLawlinkDeliveryByEmailRadioButton() {
 
-			rbLawlinkDeliverByEmailRadioButton.click();
+		rbLawlinkDeliverByEmailRadioButton.click();
 	}
-	
+
 	// Click View Online radio button
 
 	public void clickLawlinkViewOnlineRadioButton() {
 
-			rbLawlinkViewOnlineRadioButton.click();
+		rbLawlinkViewOnlineRadioButton.click();
 	}
-	
+
 	// Click Email radio button
 
 	public void clickLawlinkEmailRadioButton() {
 
-			rbLawlinkEmailRadioButton.click();
+		rbLawlinkEmailRadioButton.click();
 	}
-	
+
 	// Click Send Email Submit button
 
 	public void clickLawlinkSendEmailSubmit() {
 
-			rbLawlinkSendEmailSubmit.click();
+		rbLawlinkSendEmailSubmit.click();
 	}
-	
+
 	// Click Web Download radio button - Image download
 
 	public void clickLawlinkImageDownloadWebDownloadRadioButton() {
 
-			rbLawlinkImageDownloadWebDownloadRadioButton.click();
+		rbLawlinkImageDownloadWebDownloadRadioButton.click();
 	}
-	
+
 	// Click Delivery By Email radio button - Image download
 
 	public void clickLawlinkImageDownloadEmailRadioButton() {
 
-			rbLawlinkImageDownloadEmailRadioButton.click();
+		rbLawlinkImageDownloadEmailRadioButton.click();
 	}
+
+	// Lawlink Company/Business - Document Order Links 
+
+	public List<WebElement> LawlinkDocumentOrderlinks() {
+
+		List<WebElement> imagedownloadlinks = driver.findElements(By.cssSelector("table.ReportChoiceInfo td.blue11 a"));
+
+		return imagedownloadlinks;
+	}
+
+	// Lawlink Company/Business - Image download checkboxes 
+
+	public List<WebElement> LawlinkImageDownloadCheckboxes() {
+
+		List<WebElement> imagedownloadcheckboxes = driver.findElements(By.cssSelector("input[type='checkbox']"));
+
+		return imagedownloadcheckboxes;
+	}
+
+	// Lawlink Company/Business - Image View Links 
+
+	public List<WebElement> LawlinkImageViewLinks() {
+
+		List<WebElement> imageviewlinks = driver.findElements(By.cssSelector("ul.orange-list li"));
+
+		return imageviewlinks;
+	}
+
+	// Delivery By Email radio button - Image download - Verify email delivery text
+
+	public String verifyLawlinkImageDownloadEmailDeliveryText() {
+
+		String emaildeliverytext = rbLawlinkEmailDeliveryText.getText();
+
+		return emaildeliverytext;
+	}
+
+	// Lawlink Company/Business - Image view - Verify Number of image text selected for viewing
+
+	public String verifyLawlinkNumberofImagecheckboxViewText() {
+
+		String imageviewtotaltext = rbLawlinkNumberofImageboxesText.getText();
+
+		return imageviewtotaltext;
+	}
+
+	// Lawlink - Explicit wait of Document order button
+
+	public void Lawlinkexplicitwaitdocbutton() {
+
+		WebDriverWait mywaitvar = null;
+
+		mywaitvar = new WebDriverWait(driver, 80);
+
+		mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+
+	}
+
+	// Lawlink - Explicit wait of Document order button
+
+	public void Lawlinkexplicitwaitdownloadpdf() {
+
+		WebDriverWait mywaitvar = null;
+
+		mywaitvar = new WebDriverWait(driver, 50);
+
+		mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"all_reports\"]/a/p")));
+
+	}
+
+	// Lawlink  - Watchlist Remove - Director checkboxes - with reference
+
+	public List<WebElement> LawlinkWatchlistRemoveDirectorCheckboxeswithreference(String reference) {
+
+		List<WebElement> watchlistelementscheckboxes=driver.findElements(By.id(reference));
+
+		return watchlistelementscheckboxes;
+	}
+
+	// Lawlink  - Watchlist Remove - Director checkboxes - without reference
+
+	public List<WebElement> LawlinkWatchlistRemoveDirectorCheckboxeswithoutreference() {
+
+		List<WebElement> watchlistelementscheckboxes=driver.findElements(By.cssSelector("input[type='checkbox']"));
+
+		return watchlistelementscheckboxes;
+	}
+
+	// Lawlink  - Bankruptcy match checkboxes 
+
+	public List<WebElement> LawlinkBankruptcyMatchCheckboxes() {
+
+		List<WebElement> bankruptcycheckboxelements = driver.findElements(By.xpath(".//*[starts-with(@name,'namesCheckBox')]"));
+
+		return bankruptcycheckboxelements;
+	}
+
+	// Lawlink  - Judgment match checkboxes 
+
+	public List<WebElement> LawlinkJudgmentMatchCheckboxes() {
+
+		List<WebElement> judgmentcheckboxelements = driver.findElements(By.xpath(".//*[starts-with(@name,'JUDG_NAME')]"));
+
+		return judgmentcheckboxelements;
+	}
+
+	// Lawlink  - Lispenden match checkboxes 
+
+	public List<WebElement> LawlinkLispendenMatchCheckboxes() {
+
+		List<WebElement> lispendencheckboxelements = driver.findElements(By.xpath(".//*[starts-with(@name,'namesCheckBox')]"));
+
+		return lispendencheckboxelements;
+	}
+
+	// Lawlink  - Director match checkboxes 
+
+	public List<WebElement> LawlinkDirectorMatchCheckboxes() {
+
+		List<WebElement> directorcheckboxelements = driver.findElements(By.xpath(".//*[starts-with(@name,'DIR')]"));
+
+		return directorcheckboxelements;
+	}
+
+	// Lawlink  - Directorship match links 
+
+	public List<WebElement> LawlinkDirectorshipMatchLinks() {
+
+		List<WebElement> directorshipcheckboxelements = driver.findElements(By.xpath(".//a[contains(@href,'report-choice')]"));
+
+		return directorshipcheckboxelements;
+	}
+
+	// Lawlink  - Web table Directorship match links 
+
+	public List<WebElement> LawlinkWebtableDirectorshipMatchLinks(int dirship) {
+
+		String webtablexpath = "//*[@id=\"panel\"]/div[1]/table["+(dirship)+"]";
+
+		WebElement webtable=driver.findElement(By.xpath(webtablexpath));
+
+		List<WebElement> webtablerows = webtable.findElements(By.tagName("tr"));
+
+		return webtablerows;
+	}
+
+	// Click Web Table Directorship Individual row links
+
+	public void clickLawlinkWebtableDirectorshipIndividualRowLink(int directorship, int webtabletabledirectorshipindividualrow) {
+
+		String webtabletabledirectorshipindividualrowxpath = "//*[@id=\"panel\"]/div[1]/table["+(directorship)+"]/tbody/tr["+(webtabletabledirectorshipindividualrow+2)+"]/td[1]/strong/a";
+
+		driver.findElement(By.xpath(webtabletabledirectorshipindividualrowxpath)).click();
+	}
+
+	// Lawlink Company/Business - Bankruptcy/ISI cost
+
+	public String LawlinkBankruptcyAcceptChargeCost() {
+
+		String bankruptcycost = rbLawlinkBankruptcyAcceptCharge.getAttribute("value");
+
+		return bankruptcycost;
+	}
+
+	// Lawlink Company/Business - Judgment cost
+
+	public String LawlinkJudgmentAcceptChargeCost() {
+
+		String judgmentcost = rbLawlinkJudgmentAcceptCharge.getAttribute("value");
+
+		return judgmentcost;
+	}
+
+	// Lawlink planning - Set Planning address
+
+	public void setplanningaddress(int planningcount,String planningaddress) {
+
+		String planaddressxpath=null;
+
+		if(planningcount==1) {
+
+			planaddressxpath = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/form/table/tbody/tr[2]/td/textarea";
+		}
+		else {
+
+			planaddressxpath="/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/form["+(planningcount)+"]/table/tbody/tr[1]/td/textarea";
+		}
+
+		driver.findElement(By.xpath(planaddressxpath)).sendKeys(planningaddress);
+
+	}
+
+
+	// Lawlink planning - Set Planning county
+
+	public void setplanningcounty(int planningcount,String planningcountyarea) {
+
+		String plancountyareaxpath=null;
+
+		if(planningcount==1) {
+
+			plancountyareaxpath = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/form/table/tbody/tr[3]/td[2]/select";
+		}
+		else {
+
+			plancountyareaxpath="/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/form["+(planningcount)+"]/table/tbody/tr[2]/td[2]/select";
+		}
+
+		driver.findElement(By.xpath(plancountyareaxpath)).sendKeys(planningcountyarea);
+
+	}
+
+	// Lawlink receiver of fine - First name
+
+	public void setreceiveroffinefirstname(int rofcount,String roffirstname) {
+
+		String roffirstnamexpath=null;
+
+		if(rofcount==1) {
+
+			roffirstnamexpath = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form/table/tbody/tr[2]/td[2]/input";
+		}
+		else {
+
+			roffirstnamexpath="/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form["+(rofcount)+"]/table/tbody/tr[1]/td[2]/input";
+		}
+
+		driver.findElement(By.xpath(roffirstnamexpath)).sendKeys(roffirstname);
+
+	}
+
+	// Lawlink receiver of fine - Last name
+
+	public void setreceiveroffinelastname(int rofcount,String roflastname) {
+
+		String roflastnamexpath=null;
+
+		if(rofcount==1) {
+
+			roflastnamexpath = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form/table/tbody/tr[3]/td[2]/input";
+		}
+		else {
+
+			roflastnamexpath="/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form["+(rofcount)+"]/table/tbody/tr[2]/td[2]/input";
+		}
+
+		driver.findElement(By.xpath(roflastnamexpath)).sendKeys(roflastname);
+
+	}
+	
+	// Lawlink receiver of fine - Address
+
+	public void setreceiveroffineaddress(int rofcount,String rofaddress) {
+
+		String rofaddressxpath=null;
+
+		if(rofcount==1) {
+
+			rofaddressxpath = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form/table/tbody/tr[4]/td/textarea";
+		}
+		else {
+
+			rofaddressxpath= "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form["+(rofcount)+"]/table/tbody/tr[3]/td/textarea";
+		}
+
+		driver.findElement(By.xpath(rofaddressxpath)).sendKeys(rofaddress);
+
+	}
+	
+	// Lawlink receiver of fine - County
+
+	public void setreceiveroffinecounty(int rofcount,String rofcounty) {
+
+		String rofcountyxpath=null;
+
+		if(rofcount==1) {
+
+			rofcountyxpath = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form/table/tbody/tr[5]/td[2]/select";
+		}
+		else {
+
+			rofcountyxpath= "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form["+(rofcount)+"]/table/tbody/tr[4]/td[2]/select";
+		}
+
+		driver.findElement(By.xpath(rofcountyxpath)).sendKeys(rofcounty);
+
+	}
+	
+	// Lawlink sheriff - First name
+
+	public void setsherifffirstname(int sheriffcount,String sherifffirstname) {
+
+		String sherifffirstnamexpath=null;
+
+		if(sheriffcount==1) {
+
+			sherifffirstnamexpath = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form[1]/table/tbody/tr[2]/td[2]/input";
+		}
+		else {
+
+			sherifffirstnamexpath="/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form["+(sheriffcount)+"]/table/tbody/tr[1]/td[2]/input";
+		}
+
+		driver.findElement(By.xpath(sherifffirstnamexpath)).sendKeys(sherifffirstname);
+
+	}
+	
+	// Lawlink sheriff - Last name
+
+	public void setsherifflastname(int sheriffcount,String sherifflastname) {
+
+		String sherifflastnamexpath=null;
+
+		if(sheriffcount==1) {
+
+			sherifflastnamexpath = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form[1]/table/tbody/tr[3]/td[2]/input";
+		}
+		else {
+
+			sherifflastnamexpath= "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form["+(sheriffcount)+"]/table/tbody/tr[2]/td[2]/input";
+		}
+
+		driver.findElement(By.xpath(sherifflastnamexpath)).sendKeys(sherifflastname);
+
+	}
+	
+	// Lawlink sheriff - Address
+
+	public void setsheriffaddress(int sheriffcount,String sheriffaddress) {
+
+		String sheriffaddressxpath=null;
+
+		if(sheriffcount==1) {
+
+			sheriffaddressxpath = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form[1]/table/tbody/tr[4]/td/textarea";
+		}
+		else {
+
+			sheriffaddressxpath= "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form["+(sheriffcount)+"]/table/tbody/tr[3]/td/textarea";
+		}
+
+		driver.findElement(By.xpath(sheriffaddressxpath)).sendKeys(sheriffaddress);
+
+	}
+	
+	// Lawlink sheriff - County
+
+	public void setsheriffcounty(int sheriffcount,String sheriffcounty) {
+
+		String sheriffcountyxpath=null;
+
+		if(sheriffcount==1) {
+
+			sheriffcountyxpath = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form[1]/table/tbody/tr[5]/td[2]/select";
+		}
+		else {
+
+			sheriffcountyxpath= "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/div[4]/div/form["+(sheriffcount)+"]/table/tbody/tr[4]/td[2]/select";
+		}
+
+		driver.findElement(By.xpath(sheriffcountyxpath)).sendKeys(sheriffcounty);
+
+	}
+
+
 }

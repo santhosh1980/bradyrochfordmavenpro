@@ -1,10 +1,15 @@
 package pagefactory;
 
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class myRBCID {
 
@@ -25,6 +30,14 @@ public class myRBCID {
 	@FindBy(name = "viewReports")
 
 	WebElement rbCIDViewReports;
+	
+	@FindBy(xpath = "//*[@id=\"topLinks\"]/tbody/tr[2]/td[2]/a")
+
+	WebElement rbCIDBusinessReports;
+	
+	@FindBy(xpath = "//*[@id=\"topLinks\"]/tbody/tr[3]/td[2]/a")
+
+	WebElement rbCIDCompanyReports;
 
 	@FindBy(xpath = "//*[@id=\"sub_content\"]/table/tbody/tr[2]/td/a")
 
@@ -45,6 +58,10 @@ public class myRBCID {
 	@FindBy(xpath = "//*[@id=\"form1\"]/table/tbody/tr[9]/td[2]/input[1]")
 
 	WebElement rbCIDBusinessSearch;
+	
+	@FindBy(xpath = "//*[@id=\"sub_content\"]/table/tbody/tr/td[1]/a")
+
+	WebElement rbCIDBusinessSearchResultsLink;
 
 	@FindBy(xpath = "//*[@id=\"left_menu\"]/ul/li[2]/a")
 
@@ -85,7 +102,23 @@ public class myRBCID {
 	@FindBy(xpath = "//*[@id=\"left_menu\"]/ul/li[11]/a")
 
 	WebElement rbCIDNewWatchlistLink;
+	
+	@FindBy(xpath = "//*[@id=\"left_menu\"]/ul/li[10]/a")
 
+	WebElement rbCIDViewWatchlistLink;
+	
+	@FindBy(xpath = "//*[@id=\"sub_content\"]/table/tbody/tr[38]/td[2]/input")
+
+	WebElement rbCIDWatchlistViewDeleteSelectedItemLink;
+	
+	@FindBy(xpath = "//*[@id=\"sub_content\"]/p[2]/a")
+
+	WebElement rbCIDWatchlistHereLink;
+	
+	@FindBy(css = "input[value='Delete Selected Item(s)']")
+
+	WebElement rbCIDDeleteSelectedWatchlistItemButton;
+	
 	@FindBy(id = "radCompany")
 
 	WebElement rbCIDWatchType;
@@ -246,6 +279,10 @@ public class myRBCID {
 
 	WebElement rbCIDDirectorAddReference;
 	
+	@FindBy(xpath="//*[@id=\"sub_content\"]/p[2]")
+	
+	WebElement rbCIDNumberofImageboxesText;
+	
 
 	public myRBCID(WebDriver driver) {
 
@@ -283,6 +320,20 @@ public class myRBCID {
 
 		rbCIDViewReports.click();
 	}
+	
+	// Click CID Business Reports link
+
+	public void clickCIDBusinessReportsLink() {
+
+		rbCIDBusinessReports.click();
+	}
+	
+	// Click CID Company Reports link
+
+	public void clickCIDCompanyReportsLink() {
+
+		rbCIDCompanyReports.click();
+	}
 
 	// Click CID PDF link
 
@@ -317,6 +368,13 @@ public class myRBCID {
 	public void clickCIDBusinessSearchLink() {
 
 		rbCIDBusinessSearch.click();
+	}
+	
+	// Click CID Business Search Results Link
+
+	public void clickCIDBusinessSearchResultsLink() {
+
+		rbCIDBusinessSearchResultsLink.click();
 	}
 
 	// Click CID Company link
@@ -388,6 +446,35 @@ public class myRBCID {
 
 		rbCIDNewWatchlistLink.click();
 	}
+	
+	// Click CID View Watchlist link
+
+	public void clickCIDViewWathclistLink() {
+
+		rbCIDViewWatchlistLink.click();
+	}
+	
+	// Click CID View Watchlist Delete Selected Item link
+
+	public void clickCIDWathclistViewDeleteSelectedItemLink() {
+
+		rbCIDWatchlistViewDeleteSelectedItemLink.click();
+	}
+	
+	// Click CID Watchlist Here link
+
+	public void clickCIDWathclistHereLink() {
+
+		rbCIDWatchlistHereLink.click();
+	}
+	
+	// Click CID Delete Selected Watchlist Item Button
+
+	public void clickCIDDeleteSelectedWatchlistItemButton() {
+
+		rbCIDDeleteSelectedWatchlistItemButton.click();
+	}
+
 
 	// Select CID Watch type
 
@@ -669,5 +756,116 @@ public class myRBCID {
 	public void clickCIDDirectorWatchlistAddReference() {
 
 				rbCIDDirectorAddReference.click();
-		}
+	}
+	
+	// Lawlink Company/Business - Document Order Links 
+	
+	public List<WebElement> CIDDocumentOrderlinks() {
+
+				List<WebElement> imagedownloadlinks = driver.findElements(By.xpath(".//a[contains(@href,'sub-search-accept-charge')]"));
+					
+				return imagedownloadlinks;
+	}
+	
+	// CID Company/Business - Image download checkboxes 
+	
+	public List<WebElement> CIDImageDownloadCheckboxes() {
+
+				List<WebElement> imagedownloadcheckboxes = driver.findElements(By.cssSelector("input[type='checkbox']"));
+						
+				return imagedownloadcheckboxes;
+	}
+	
+	// CID Company/Business - Image View Links 
+	
+	public List<WebElement> CIDImageViewLinks() {
+
+				List<WebElement> imageviewlinks = driver.findElements(By.cssSelector("ul.list_bullet li"));
+							
+				return imageviewlinks;
+	}
+	
+	// CID Company/Business - Image view - Verify Number of image text selected for viewing
+
+	public String verifyCIDNumberofImagecheckboxViewText() {
+
+				String imageviewtotaltext = rbCIDNumberofImageboxesText.getText();
+					
+				return imageviewtotaltext;
+	}
+		
+	// CID Business - Verify Business Search Cost
+
+	public String verifyCIDBusinessSearchCostText() {
+
+				String businesscost = driver.findElement(By.name("acceptCharge")).getAttribute("value");
+							
+				return businesscost;
+	}
+		
+	// CID  - Explicit wait of Document order button
+
+	public void CIDexplicitwaitdocbutton() {
+
+			WebDriverWait mywaitvar = null;
+			
+			mywaitvar = new WebDriverWait(driver, 80);
+
+			mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+
+	}
+	
+	// CID  - Watchlist Add - Director checkboxes 
+	
+	public List<WebElement> CIDWatchlistAddDirectorCheckboxes() {
+
+		List<WebElement> directorelementsCheckboxes=driver.findElements(By.cssSelector("input[type='checkbox']"));
+		
+		return directorelementsCheckboxes;
+	}
+	
+	// CID  - Watchlist Remove - Director checkboxes - with reference
+	
+	public List<WebElement> CIDWatchlistRemoveDirectorCheckboxeswithreference(String reference) {
+
+		List<WebElement> watchlistelementscheckboxes=driver.findElements(By.id(reference));
+			
+		return watchlistelementscheckboxes;
+	}
+	
+	// CID  - Watchlist Remove - Director checkboxes - without reference
+	
+	public List<WebElement> CIDWatchlistRemoveDirectorCheckboxeswithoutreference() {
+
+			List<WebElement> watchlistelementscheckboxes=driver.findElements(By.cssSelector("input[type='checkbox']"));
+				
+			return watchlistelementscheckboxes;
+	}
+	
+	// CID  - Bankruptcy - Matching elements checkbox
+	
+	public List<WebElement> CIDBankruptcyMatchCheckboxeselements() {
+
+			List<WebElement> matchcheckboxelements = driver.findElements(By.xpath(".//*[starts-with(@name,'namesCheckBox')]"));
+
+			return matchcheckboxelements;
+	}
+	
+	// CID  - Judgment - Matching Judgment elements checkbox
+	
+	public List<WebElement> CIDJudgmentMatchJudgmentCheckboxeselements() {
+
+		List<WebElement> judgmentchekboxelements = driver.findElements(By.xpath("//input[starts-with(@name, 'JUDG_NAME')]"));
+
+		return judgmentchekboxelements;
+	}
+	
+	// CID  - Judgment - Matching Lis Pendens elements checkbox
+	
+	public List<WebElement> CIDJudgmentMatchLispendensCheckboxeselements() {
+
+		List<WebElement> lispendcheckboxelements = driver.findElements(By.xpath("//input[starts-with(@name,'namesCheckBox')]"));
+
+		return lispendcheckboxelements;
+	}
 }

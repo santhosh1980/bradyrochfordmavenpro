@@ -130,9 +130,11 @@ public class myCIDCompanyImageDownload {
 				
 				
 				
-				mywaitvar = new WebDriverWait(driver, 80);
+				//mywaitvar = new WebDriverWait(driver, 80);
 
-				mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				//mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				
+				rbcid.CIDexplicitwaitdocbutton();
 				
 				//Get the count of image links with NO checkboxes
 				//List<WebElement> imagelinks=driver.findElements(By.cssSelector("table.costs tr td a"));
@@ -143,9 +145,13 @@ public class myCIDCompanyImageDownload {
 				
 				//List<WebElement> imagelinks = driver.findElements(By.xpath("//*[starts-with(@id, 'document-report') and contains(@id, '-0')]"));
 				
+				//Example usage - To get all elements which contains the  string mentioned below in class attribute
+				//List<WebElement> imagelinks = driver.findElements(By.xpath(".//*[contains(@class,'x-grid-tree-node-leaf')]"));
 				
 				//To get all the anchor links which contains the string mentioned below in href attribute
-				List<WebElement> imagelinks = driver.findElements(By.xpath(".//a[contains(@href,'sub-search-accept-charge')]"));
+				//List<WebElement> imagelinks = driver.findElements(By.xpath(".//a[contains(@href,'sub-search-accept-charge')]"));
+				List<WebElement> imagelinks = rbcid.CIDDocumentOrderlinks();
+				
 				int numberofimagelinks = imagelinks.size();
 				
 				if (numberofimagelinks>0)

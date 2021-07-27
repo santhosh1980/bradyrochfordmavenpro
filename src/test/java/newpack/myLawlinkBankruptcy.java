@@ -149,19 +149,26 @@ public class myLawlinkBankruptcy {
 
 			// Take cost, write to excel and Click accept charge button
 
-			String cost = driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[2]/input"))
-					.getAttribute("value");
+			//String cost = driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[2]/input")).getAttribute("value");
+			
+			String cost = rblawlink.LawlinkBankruptcyAcceptChargeCost();
 
 			System.out.println(cost);
 
 			excel.writeData(4, i, 20, cost);
+			
+			//Bankruptcy - Accept charge button
 
-			driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[2]/input")).click();
+			//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[2]/input")).click();
+			
+			rblawlink.clickLawlinkBankruptcyAcceptChargeButton();
 
 			// select bankruptcy matches
 
-			List<WebElement> elements = driver.findElements(By.xpath(".//*[starts-with(@name,'namesCheckBox')]"));
-
+			//List<WebElement> elements = driver.findElements(By.xpath(".//*[starts-with(@name,'namesCheckBox')]"));
+			
+			List<WebElement> elements = rblawlink.LawlinkBankruptcyMatchCheckboxes();
+			
 			int numberofelements = elements.size();
 
 			for (int k = 1; k <= numberofelements; k++) {

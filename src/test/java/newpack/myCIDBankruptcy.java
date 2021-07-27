@@ -166,9 +166,9 @@ public class myCIDBankruptcy {
 
 			// select bankruptcy matches
 
-			List<WebElement> elements = driver.findElements(By.xpath(".//*[starts-with(@name,'namesCheckBox')]"));
+			//List<WebElement> elements = driver.findElements(By.xpath(".//*[starts-with(@name,'namesCheckBox')]"));
 
-			
+			List<WebElement> elements=rbcid.CIDBankruptcyMatchCheckboxeselements();
 			
 			int numberofelements = elements.size();
 

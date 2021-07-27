@@ -145,33 +145,36 @@ public class myLawlinkJudgement {
 
 			// Take cost, write to excel and Click accept charge button
 
-			String cost = driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[3]/input"))
-					.getAttribute("value");
+			//String cost = driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[3]/input")).getAttribute("value");
+			
+			String cost = rblawlink.LawlinkJudgmentAcceptChargeCost();
 
 			System.out.println(cost);
 
 			excel.writeData(7, i, 20, cost);
 
-			driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[3]/input")).click();
+			//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/form/p[3]/input")).click();
+			
+			rblawlink.clickLawlinkJudgmentAcceptChargeButton();
 
 			// select judgement matches
 
-			List<WebElement> elements = driver.findElements(By.xpath(".//*[starts-with(@name,'JUDG_NAME')]"));
+			List<WebElement> judgmentelements = rblawlink.LawlinkJudgmentMatchCheckboxes();
 
-			int numberofelements = elements.size();
+			int judnumberofelements = judgmentelements.size();
 
-			for (int k = 1; k <= numberofelements; k++) {
+			for (int k = 1; k <= judnumberofelements; k++) {
 
 				driver.findElement(By.name("JUDG_NAME" + k)).click();
 			}
 
 			// select Lis Pendens matches
 
-			elements = driver.findElements(By.xpath(".//*[starts-with(@name,'namesCheckBox')]"));
+			List<WebElement> lispendenelements = rblawlink.LawlinkLispendenMatchCheckboxes();
 
-			numberofelements = elements.size();
+			int lisnumberofelements = lispendenelements.size();
 
-			for (int k = 1; k <= numberofelements; k++) {
+			for (int k = 1; k <= lisnumberofelements; k++) {
 
 				driver.findElement(By.name("namesCheckBox" + k)).click();
 			}

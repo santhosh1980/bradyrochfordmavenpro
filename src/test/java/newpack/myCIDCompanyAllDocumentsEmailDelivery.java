@@ -130,13 +130,18 @@ public class myCIDCompanyAllDocumentsEmailDelivery {
 				
 				
 				
-				mywaitvar = new WebDriverWait(driver, 80);
+				//mywaitvar = new WebDriverWait(driver, 80);
 
-				mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				//mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				
+				rbcid.CIDexplicitwaitdocbutton();
 				
 				//Get the count of image checkboxes
-				List<WebElement> imageboxes=driver.findElements(By.cssSelector("input[type='checkbox']"));
+				//List<WebElement> imageboxes=driver.findElements(By.cssSelector("input[type='checkbox']"));
+				List<WebElement> imageboxes=rbcid.CIDImageDownloadCheckboxes();
 				int numberofimageboxes = imageboxes.size();
+				
+				
 				//To restrict maximum document selection to 20
 				int maxdoc = 1;
 				
@@ -163,7 +168,9 @@ public class myCIDCompanyAllDocumentsEmailDelivery {
 					
 					//Assert the text for Number of Image boxes selected for viewing
 					
-					String imagetotaltext = driver.findElement(By.xpath("//*[@id=\"sub_content\"]/p[2]")).getText();
+					//String imagetotaltext = driver.findElement(By.xpath("//*[@id=\"sub_content\"]/p[2]")).getText();
+					
+					String imagetotaltext=rbcid.verifyCIDNumberofImagecheckboxViewText();
 					
 					System.out.println(imagetotaltext);
 					

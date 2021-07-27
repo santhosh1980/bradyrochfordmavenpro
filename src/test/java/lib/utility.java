@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -28,12 +29,15 @@ import org.apache.pdfbox.pdfparser.PDFParser;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -50,6 +54,26 @@ public class utility {
 	static String username = "";
 	static String password = "";
 	static Connection con;
+	
+	
+	public static void scrollscreen(WebDriver driver, int xaxis, int yaxis){
+
+		try {
+
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			
+			// This  will scroll  the page left/right or up/down by  mentioned pixel horizontal/vertical
+			//x axis 0 and y axis  1000 means vertical move down
+			//x axis 0 and y axis  -1000 means vertical move up
+	        js.executeScript("window.scrollBy(xaxis,yaxis)");
+
+			System.out.println("Scrolled");
+		} catch (Exception e) {
+			System.out.println("Exception while scrolling " + e.getMessage());
+		}
+
+	}
+	
 	
 
 	public static void screenshotcapture(WebDriver driver, String screenshotname) {
@@ -85,6 +109,37 @@ public class utility {
 		} catch (Exception e) {
 			System.out.println("Exception while taking screenshot" + e.getMessage());
 		}
+
+	}
+	
+	public static String extendedscreenshotcapture(WebDriver driver, String screenshotname) {
+		
+		String path=null;
+
+		try {
+
+			TakesScreenshot ts = (TakesScreenshot) driver;
+
+			File source = ts.getScreenshotAs(OutputType.FILE);
+			
+			path = System.getProperty("user.dir") + "/screenshot/" + screenshotname + String.valueOf(LocalDateTime.now()).replace(":", ".") + ".png";
+			
+			//path=System.getProperty("user.dir")+"/Screenshot/"+System.currentTimeMillis()+".png";
+			
+			File destination = new File(path);
+
+			FileUtils.copyFile(source, destination);
+			
+			
+
+			
+		} catch (Exception e) {
+			System.out.println("Exception while taking screenshot" + e.getMessage());
+		}
+		
+		return path;
+		
+		
 
 	}
 
@@ -343,6 +398,45 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 	public static void dbclose() throws Exception {
 		// closing DB Connection
 				con.close();
+	}
+	
+	public static WebDriver browserstart(String browsername) throws Exception {
+		
+		WebDriver driver = null;
+		
+		String driverpath;
+		
+		//chrome driver
+		if(browsername.equalsIgnoreCase("Chrome")) {
+			
+			//Set Chrome driver path and create chrome instance
+			driverpath="C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
+			System.setProperty("webdriver.chrome.driver", driverpath);
+			driver = new ChromeDriver();
+			
+		}
+		
+		//firefox driver
+		else if (browsername.equalsIgnoreCase("Firefox")) {
+			
+			//Set Firefox driver path and create firefox instance
+			driverpath="C:\\Users\\U35035\\eclipse-workspace\\geckodriver-v0.26.0-win64\\geckodriver.exe";
+			System.setProperty("webdriver.gecko.driver", driverpath);
+			driver = new FirefoxDriver();
+		}
+		
+		//internet explorer driver
+		else if (browsername.equalsIgnoreCase("IE")) {
+					
+			//Set IE driver path and create IE instance
+			driverpath="C:\\Users\\U35035\\eclipse-workspace\\Microsoftwebdriver\\MicrosoftWebDriver.exe";
+			System.setProperty("webdriver.edge.driver", driverpath);
+			driver = new EdgeDriver();
+		}
+		
+		String baseurl="https://uat.lawlink.ie";
+		driver.get(baseurl);
+		return driver;
 	}
 	
 

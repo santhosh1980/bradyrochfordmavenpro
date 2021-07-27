@@ -128,9 +128,9 @@ public class myLawlinkCompanySubmissionNumberSearchEmailDelivery {
 				
 				String verificationtext = "Your search results have been sent by email to";
 				
-				String emailtext = driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/table[1]/tbody/tr/td")).getText();
+				//String emailtext = driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/table[1]/tbody/tr/td")).getText();
 				
-				
+				String emailtext = rblawlink.verifyLawlinkImageDownloadEmailDeliveryText();
 												
 				Thread.sleep(30000);
 				

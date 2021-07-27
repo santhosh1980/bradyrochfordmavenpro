@@ -58,7 +58,7 @@ public class myLawlinkCompanyImageEmailDelivery {
 
 				// base url
 
-				String baseurl = "https://qa.lawlink.ie";
+				String baseurl = "https://uat.lawlink.ie";
 
 				driver.get(baseurl);
 
@@ -122,12 +122,15 @@ public class myLawlinkCompanyImageEmailDelivery {
 				rblawlink.clickLawlinkAcceptChargelink();
 
 						
-				mywaitvar = new WebDriverWait(driver, 80);
+				//mywaitvar = new WebDriverWait(driver, 80);
 
-				mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				//mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				
+				rblawlink.Lawlinkexplicitwaitdocbutton();	
 
 				//Get the count of image links with NO checkboxes
-				List<WebElement> imagelinks=driver.findElements(By.cssSelector("table.ReportChoiceInfo td.blue11 a"));
+				//List<WebElement> imagelinks=driver.findElements(By.cssSelector("table.ReportChoiceInfo td.blue11 a"));
+				List<WebElement> imagelinks = rblawlink.LawlinkDocumentOrderlinks();
 				int numberofimagelinks = imagelinks.size();
 				System.out.println("Number of Image links without Checkbox available are:" + numberofimagelinks);
 				

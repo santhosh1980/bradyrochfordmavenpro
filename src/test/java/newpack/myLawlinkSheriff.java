@@ -169,7 +169,7 @@ public class myLawlinkSheriff {
 
 				Thread.sleep(5000);
 
-				String sherifffirst = null;
+				/*String sherifffirst = null;
 				String sherifflast = null;
 				String sheriffaddress = null;
 				String sheriffcounty = null;
@@ -200,12 +200,32 @@ public class myLawlinkSheriff {
 
 				driver.findElement(By.xpath(sheriffaddress)).sendKeys(excel.getData(6, i, k + 2));
 
-				driver.findElement(By.xpath(sheriffcounty)).sendKeys(excel.getData(6, i, k + 3));
+				driver.findElement(By.xpath(sheriffcounty)).sendKeys(excel.getData(6, i, k + 3));*/
+				
+				//Enter Sheriff - First name
+				
+				rblawlink.setsherifffirstname(sheriffcnt, excel.getData(6, i, k));
+				
+				//Enter Sheriff - Last name
+				
+				rblawlink.setsherifflastname(sheriffcnt, excel.getData(6, i, k + 1));
+				
+				//Enter Sheriff - Address
+				
+				rblawlink.setsheriffaddress(sheriffcnt, excel.getData(6, i, k + 2));
+				
+				//Enter Sheriff - County
+				
+				rblawlink.setsheriffcounty(sheriffcnt, excel.getData(6, i, k + 3));
 
 				// click another sheriff search button
 
 				if (k + 4 < excel.getcolnum(6, i)) {
-					driver.findElement(By.xpath("//*[@id=\"sheriff1\"]/table/tbody/tr[6]/td/span/a")).click();
+					
+					//driver.findElement(By.xpath("//*[@id=\"sheriff1\"]/table/tbody/tr[6]/td/span/a")).click();
+					
+					rblawlink.clickLawlinkClosingAnotherSheriffSearchLink();
+					
 				}
 
 				sheriffcnt++;

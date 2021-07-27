@@ -59,7 +59,7 @@ public class myCIDCompanyImageEmailDelivery {
 
 				// base url
 
-				String baseurl = "https://qa.cid.ie";
+				String baseurl = "https://uat.cid.ie";
 
 				driver.get(baseurl);
 
@@ -130,12 +130,15 @@ public class myCIDCompanyImageEmailDelivery {
 				
 				
 				
-				mywaitvar = new WebDriverWait(driver, 80);
+				//mywaitvar = new WebDriverWait(driver, 80);
 
-				mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				//mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				
+				rbcid.CIDexplicitwaitdocbutton();
 				
 				//To get all the anchor links which contains the string mentioned below in href attribute
-				List<WebElement> imagelinks = driver.findElements(By.xpath(".//a[contains(@href,'sub-search-accept-charge')]"));
+				//List<WebElement> imagelinks = driver.findElements(By.xpath(".//a[contains(@href,'sub-search-accept-charge')]"));
+				List<WebElement> imagelinks = rbcid.CIDDocumentOrderlinks();
 				int numberofimagelinks = imagelinks.size();
 				
 				if (numberofimagelinks>0)

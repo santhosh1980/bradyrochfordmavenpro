@@ -109,19 +109,23 @@ public class myLawlinkDirector {
 
 				// Click accept charge button
 
-				driver.findElement(By.name("acceptCharge")).click();
+				//driver.findElement(By.name("acceptCharge")).click();
+				
+				rblawlink.clickLawlinkAcceptChargelink();
 
 				Thread.sleep(5000);
 
 				// take the count of number of directors
 
-				List<WebElement> boxes = driver.findElements(By.className("blue11"));
+				//List<WebElement> boxes = driver.findElements(By.className("blue11"));
+				
+				List<WebElement> directorboxes = rblawlink.LawlinkDirectorMatchCheckboxes();
 
-				int numberOfBoxes = boxes.size();
+				int dircount = directorboxes.size();
 
 				// System.out.println("Number of Directors listed is:" + numberOfBoxes);
 
-				int dircount = numberOfBoxes / 4;
+				//int dircount = numberOfBoxes / 4;
 
 				System.out.println("Number of Directors listed is:" + dircount);
 
@@ -130,18 +134,98 @@ public class myLawlinkDirector {
 				for (int m = 0; m < dircount; m++) {
 
 					driver.findElement(By.name("DIR" + m)).click();
+					Thread.sleep(5000);
 				}
 
 				Thread.sleep(5000);
-
+				
 				// Click Get Director Details button
+								
+				//driver.findElement(By.className("input")).click();
+				
+				rblawlink.clickLawlinkGetDirectorDetailslink();
+				
+				//Click on each Directorships and take screenshot - Stale element reference exception happens due to refresh of page
+				
+				/*List<WebElement> directorshiplinks = rblawlink.LawlinkDirectorshipMatchLinks();
+				
+				int directorshipcount=directorshiplinks.size();
+				
+				System.out.println("Number of Directorship listed is:" + directorshipcount);
+				
+				for (WebElement ele:directorshiplinks) {
+					
+					//Click Company number
+					ele.click();
+					utility.screenshotcapture(driver, "Director");
+					
+					//Select accept charge button
+					rblawlink.clickLawlinkAcceptChargelink();
+					utility.screenshotcapture(driver, "DirectorDetail");
+					
+					//Click PDF link
+					rblawlink.clickLawlinkJudgementPDFLink();
+					Thread.sleep(5000);
+					
+					// Switch to PDF screen and close it
+					ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+					driver.switchTo().window(tabs.get(1));
+					driver.close();
 
-				driver.findElement(By.xpath("/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/form/table/tbody/tr["
-						+ (dircount + 2) + "]/td/input")).click();
+					// Switch back to main screen and Go back to company select screen - 2 screen
+					// previous
+					driver.switchTo().window(tabs.get(0));
+					driver.navigate().back();
+					driver.navigate().back();
+					
+					
+				}*/
+				
+				//Number of web tables is displayed based on the number of directorships selected
+				//Count the number of company numbers from each web table and click on company number
+				
+				for (int directorship=1; directorship<=dircount; directorship++) {
+					
+					List<WebElement> webtabletabledirectorshiprows = rblawlink.LawlinkWebtableDirectorshipMatchLinks(directorship);
+					
+					int webtabletabledirectorshiprowssize = webtabletabledirectorshiprows.size();
+					
+					for (int webtabletabledirectorshipindividualrow=0; webtabletabledirectorshipindividualrow<(webtabletabledirectorshiprowssize-1); webtabletabledirectorshipindividualrow++  ) {
+						
+							
+							//Click Company number
+							rblawlink.clickLawlinkWebtableDirectorshipIndividualRowLink(directorship, webtabletabledirectorshipindividualrow);
+							utility.screenshotcapture(driver, "Director");
+							
+							//Select accept charge button
+							rblawlink.clickLawlinkAcceptChargelink();
+							utility.screenshotcapture(driver, "DirectorDetail");
+							
+							//Click PDF link
+							rblawlink.clickLawlinkJudgementPDFLink();
+							Thread.sleep(5000);
+							
+							// Switch to PDF screen and close it
+							ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+							driver.switchTo().window(tabs.get(1));
+							driver.close();
+
+							// Switch back to main screen and Go back to company select screen - 2 screen
+							// previous
+							driver.switchTo().window(tabs.get(0));
+							driver.navigate().back();
+							driver.navigate().back();
+						
+						
+					}
+				}
+				
+
+				
 
 				// Test - Select all company numbers from each table
 
-				for (int tab = 0; tab < dircount; tab++) {
+				/*for (int tab = 0; tab < dircount; tab++) {
 					String tableXpath = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[" + (tab + 1) + "]";
 					WebElement baseTable = driver.findElement(By.xpath(tableXpath));
 
@@ -176,7 +260,7 @@ public class myLawlinkDirector {
 						}
 						// System.out.println(tableRows.get(inTab).getText());
 					}
-				}
+				}*/
 
 				// Test - End select all company numbers
 

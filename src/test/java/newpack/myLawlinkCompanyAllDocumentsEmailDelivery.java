@@ -122,14 +122,15 @@ public class myLawlinkCompanyAllDocumentsEmailDelivery {
 				rblawlink.clickLawlinkAcceptChargelink();
 
 						
-				mywaitvar = new WebDriverWait(driver, 80);
+				//mywaitvar = new WebDriverWait(driver, 80);
 
-				mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
+				//mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
 
-								
+				rblawlink.Lawlinkexplicitwaitdocbutton();			
 				
 				//Get the count of image checkboxes
-				List<WebElement> imageboxes=driver.findElements(By.cssSelector("input[type='checkbox']"));
+				//List<WebElement> imageboxes=driver.findElements(By.cssSelector("input[type='checkbox']"));
+				List<WebElement> imageboxes = rblawlink.LawlinkImageDownloadCheckboxes();
 				int numberofimageboxes = imageboxes.size();
 				//To restrict maximum document selection to 20
 				int maxdoc = 1;
@@ -157,7 +158,9 @@ public class myLawlinkCompanyAllDocumentsEmailDelivery {
 					
 					//Assert the text for Number of Image boxes selected for viewing
 					
-					String imagetotaltext = driver.findElement(By.xpath("//*[@id=\"sub_content\"]/p")).getText();
+					//String imagetotaltext = driver.findElement(By.xpath("//*[@id=\"sub_content\"]/p")).getText();
+					
+					String imagetotaltext = rblawlink.verifyLawlinkNumberofImagecheckboxViewText();
 					
 					System.out.println(imagetotaltext);
 					

@@ -110,13 +110,17 @@ public class myCIDBusiness {
 
 				// driver.findElement(By.name("Submit")).click();
 
-				// Click search result link
+				// Click business search result link
 
-				driver.findElement(By.xpath("//*[@id=\"sub_content\"]/table/tbody/tr/td[1]/a")).click();
+				//driver.findElement(By.xpath("//*[@id=\"sub_content\"]/table/tbody/tr/td[1]/a")).click();
+				
+				rbcid.clickCIDBusinessSearchResultsLink();
 
 				// Take cost, write to excel and Click accept charge button
 
-				String cost = driver.findElement(By.name("acceptCharge")).getAttribute("value");
+				//String cost = driver.findElement(By.name("acceptCharge")).getAttribute("value");
+				
+				String cost = rbcid.verifyCIDBusinessSearchCostText();
 
 				System.out.println(cost);
 
@@ -124,7 +128,9 @@ public class myCIDBusiness {
 
 				// Click accept charge button
 
-				driver.findElement(By.name("acceptCharge")).click();
+				//driver.findElement(By.name("acceptCharge")).click();
+				
+				rbcid.clickCIDAcceptCharge();
 
 				Thread.sleep(5000);
 
@@ -132,7 +138,9 @@ public class myCIDBusiness {
 
 				utility.screenshotcapture(driver, "businessreport");
 
-				driver.findElement(By.xpath("//*[@id=\"topLinks\"]/tbody/tr[2]/td[2]/a")).click();
+				//driver.findElement(By.xpath("//*[@id=\"topLinks\"]/tbody/tr[2]/td[2]/a")).click();
+				
+				rbcid.clickCIDBusinessReportsLink();
 
 				Thread.sleep(5000);
 

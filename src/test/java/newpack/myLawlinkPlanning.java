@@ -138,7 +138,9 @@ public class myLawlinkPlanning {
 			rblawlink.setdeliverby();
 
 			// click Next button
-			driver.findElement(By.name("next")).click();
+			//driver.findElement(By.name("next")).click();
+			
+			rblawlink.clickLawlinkClosingNextLink();
 
 			// pass Surname and firstname for online search and then click add button
 
@@ -171,7 +173,7 @@ public class myLawlinkPlanning {
 
 				Thread.sleep(5000);
 
-				String planaddress = null;
+				/*String planaddress = null;
 				String plancounty = null;
 
 				if (plancnt == 1) {
@@ -189,12 +191,19 @@ public class myLawlinkPlanning {
 
 				driver.findElement(By.xpath(planaddress)).sendKeys(excel.getData(5, i, k));
 
-				driver.findElement(By.xpath(plancounty)).sendKeys(excel.getData(5, i, k + 1));
+				driver.findElement(By.xpath(plancounty)).sendKeys(excel.getData(5, i, k + 1));*/
+				
+				//Enter Planning address
+				rblawlink.setplanningaddress(plancnt, excel.getData(5, i, k));
+				
+				//Enter Planning county
+				rblawlink.setplanningcounty(plancnt, excel.getData(5, i, k + 1));
 
 				// click another planning search button
 
 				if (k + 2 < excel.getcolnum(5, i)) {
-					driver.findElement(By.xpath("//*[@id=\"plan1\"]/table/tbody/tr[4]/td/span/a")).click();
+					//driver.findElement(By.xpath("//*[@id=\"plan1\"]/table/tbody/tr[4]/td/span/a")).click();
+					rblawlink.clickLawlinkClosingAnotherPlanningSearchLink();
 				}
 
 				plancnt++;

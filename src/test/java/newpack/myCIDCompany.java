@@ -125,7 +125,9 @@ public class myCIDCompany {
 
 				utility.screenshotcapture(driver, "companyreport");
 
-				driver.findElement(By.xpath("//*[@id=\"topLinks\"]/tbody/tr[3]/td[2]/a")).click();
+				//driver.findElement(By.xpath("//*[@id=\"topLinks\"]/tbody/tr[3]/td[2]/a")).click();
+				
+				rbcid.clickCIDCompanyReportsLink();
 
 				Thread.sleep(5000);
 				

@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import lib.ExcelDataConfig;
 import lib.utility;
 import pagefactory.myRBCID;
