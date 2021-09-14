@@ -37,7 +37,7 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.*;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -406,7 +406,7 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 		
 		String driverpath;
 		
-		//chrome driver
+		//chrome driver 
 		if(browsername.equalsIgnoreCase("Chrome")) {
 			
 			//Set Chrome driver path and create chrome instance
@@ -423,6 +423,7 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 			driverpath="C:\\Users\\U35035\\eclipse-workspace\\geckodriver-v0.26.0-win64\\geckodriver.exe";
 			System.setProperty("webdriver.gecko.driver", driverpath);
 			driver = new FirefoxDriver();
+			
 		}
 		
 		//internet explorer driver
