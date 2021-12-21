@@ -207,6 +207,10 @@ public class myRBCID {
 
 	WebElement rbCIDAcceptCharge;
 	
+	@FindBy(name="btnAcceptChargeDir")
+
+	WebElement rbCIDDirectorSearchAcceptCharge;
+	
 	@FindBy(name="docButton")
 
 	WebElement rbCIDDocumentOrder;
@@ -263,6 +267,34 @@ public class myRBCID {
 
 	WebElement rbCIDDirectorAcceptChargeDirWatchAll;
 	
+	@FindBy(id = "viewLinkAll")
+
+	WebElement rbCIDViewLinkAll;
+	
+	@FindBy(name="btnAcceptChargeDirViewAll")
+
+	WebElement rbCIDDirectorAcceptChargeDirViewAllSelected;
+	
+	@FindBy(id = "selectViewLinkAll")
+
+	WebElement rbCIDSelectViewAllLink;
+	
+	@FindBy(name="btnAcceptChargeDirSelectViewAll")
+
+	WebElement rbCIDDirectorAcceptChargeDirSelectViewAll;
+	
+	@FindBy(id = "selectAll")
+
+	WebElement rbCIDSelectAllLink;
+	
+	@FindBy(id = "deselectAll")
+
+	WebElement rbCIDDeselectAllLink;
+	
+	
+	
+	
+	
 	@FindBy(name="continue")
 
 	WebElement rbCIDDirectorWatchlistContinue;
@@ -282,6 +314,8 @@ public class myRBCID {
 	@FindBy(xpath="//*[@id=\"sub_content\"]/p[2]")
 	
 	WebElement rbCIDNumberofImageboxesText;
+	
+	
 	
 
 	public myRBCID(WebDriver driver) {
@@ -630,6 +664,13 @@ public class myRBCID {
 		rbCIDAcceptCharge.click();
 	}
 	
+	// Click CID Director Search Accept Charge
+
+	public void clickCIDDirectorSearchAcceptCharge() {
+
+			rbCIDDirectorSearchAcceptCharge.click();
+	}
+	
 	// Click CID Document Order
 
 	public void clickCIDDocumentOrder() {
@@ -729,6 +770,50 @@ public class myRBCID {
 
 				rbCIDDirectorAcceptChargeDirWatchAll.click();
 	}
+	
+	// Click CID Director View All Selected button
+
+	public void clickCIDDirectorViewAllSelectedLink() {
+
+				rbCIDViewLinkAll.click();
+	}
+	
+	// Click CID Director Accept Charge Director View All Link
+
+	public void clickCIDDirectorAcceptChargeDirViewAllSelectedLink() {
+
+				rbCIDDirectorAcceptChargeDirViewAllSelected.click();
+	}
+	
+	
+	// Click CID Director Select View All button
+
+	public void clickCIDDirectorSelectViewAllLink() {
+
+			rbCIDSelectViewAllLink.click();
+	}
+	
+	// Click CID Director Accept Charge Select View All Link
+
+	public void clickCIDDirectorAcceptChargeDirSelectViewAllLink() {
+
+			rbCIDDirectorAcceptChargeDirSelectViewAll.click();
+	}
+	
+	// Click CID Director Select All button
+
+	public void clickCIDDirectorSelectAllLink() {
+
+			rbCIDSelectAllLink.click();
+	}
+	
+	// Click CID Director De-select All button
+
+	public void clickCIDDirectorDeselectAllLink() {
+
+			rbCIDDeselectAllLink.click();
+	}
+	
 	
 	// Click CID Director Watchlist - Director Added - Continue
 
@@ -867,5 +952,14 @@ public class myRBCID {
 		List<WebElement> lispendcheckboxelements = driver.findElements(By.xpath("//input[starts-with(@name,'namesCheckBox')]"));
 
 		return lispendcheckboxelements;
+	}
+	
+	// CID  - Director Search - Matching List of Directors
+	
+	public List<WebElement> CIDDirectorSearchMatchDirectorelements() {
+
+		List<WebElement> directorresults = driver.findElements(By.xpath(".//*[starts-with(@id,'directorLink')]"));
+		
+		return directorresults;
 	}
 }

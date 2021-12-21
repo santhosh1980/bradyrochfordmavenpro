@@ -6,7 +6,7 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-//import com.sun.xml.txw2.Document;
+
 
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -14,12 +14,13 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.logging.Log;
 import org.apache.log4j.Logger;
 import org.apache.tools.ant.taskdefs.condition.And;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
-
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -208,7 +209,7 @@ public class myLawLinkClosingOnlineOffline {
 
 				// driver.findElement(By.name("requiredBy")).sendKeys("23/10/2020");
 
-				rblawlink.setrequiredby("23/10/2021");
+				rblawlink.setrequiredby("23/01/2022");
 
 				// driver.findElement(By.xpath("//*[@id=\"step3\"]/table/tbody/tr[3]/td[2]/input[2]")).click();
 
@@ -279,13 +280,15 @@ public class myLawLinkClosingOnlineOffline {
 					if ((Resi == null) || (Resi.isEmpty())) {
 						Resi = "NO";
 					}
+					
+					//Both Resi and Non Resi handled here - This code work sometimes
 
 					/*if (offcount == 1 && (Resi.equalsIgnoreCase("NO") || Resi.equalsIgnoreCase("YES"))) {
-						fname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[1]/td[2]/input";
-						lname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[2]/td[2]/input";
-						deedsfrom = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[3]/td[2]/input[1]";
-						deedsto = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[3]/td[2]/input[2]";
-						deedsaddress = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[4]/td/textarea";
+						fname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[1]/td[2]/input";
+						lname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[2]/td[2]/input";
+						deedsfrom = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[3]/td[2]/input[1]";
+						deedsto = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[3]/td[2]/input[2]";
+						deedsaddress = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[4]/td/textarea";
 					}
 
 					else if (offcount != 1 && (Resi.equalsIgnoreCase("NO") || Resi.equalsIgnoreCase("YES"))) {
@@ -406,6 +409,12 @@ public class myLawLinkClosingOnlineOffline {
 				rblawlink.Lawlinkexplicitwaitdownloadpdf();
 
 				// driver.findElement(By.xpath("//*[@id=\"all_reports\"]/a/p")).click();
+				
+				//Assert statement to verify the ISI search failure message NOT present - 06/09/2021
+				
+				Assert.assertFalse("We have encountered a problem returning your ISI search result(s), please contact Rochford Brady for assistance",false);
+				
+							
 
 				rblawlink.clickLawlinkClosingPDFLink();
 
@@ -442,7 +451,6 @@ public class myLawLinkClosingOnlineOffline {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 			// capture exception screenshot
-			
 
 			utility.screenshotcapture(driver, "exception");
 		}

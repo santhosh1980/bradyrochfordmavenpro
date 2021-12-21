@@ -4,7 +4,6 @@
   <test name="Test">
     <classes>
       <class name="newpack.myLawLinkClosingOnlineOffline"/>
-      <class name="newpack.myLawLinkClosingOnline"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

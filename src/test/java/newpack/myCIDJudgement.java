@@ -64,7 +64,7 @@ public class myCIDJudgement {
 
 			// base url
 
-			String baseurl = "https://qa.cid.ie";
+			String baseurl = "https://staging.cid.ie";
 
 			driver.get(baseurl);
 

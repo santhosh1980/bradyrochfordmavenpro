@@ -64,7 +64,7 @@ public class myCIDISIStandalone {
 
 			// base url
 
-			String baseurl = "https://qa.cid.ie";
+			String baseurl = "https://uat.cid.ie";
 
 			driver.get(baseurl);
 
