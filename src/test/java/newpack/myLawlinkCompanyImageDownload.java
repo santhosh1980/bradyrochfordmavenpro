@@ -58,7 +58,7 @@ public class myLawlinkCompanyImageDownload {
 
 				// base url
 
-				String baseurl = "https://uat.lawlink.ie";
+				String baseurl = "https://nonprod.lawlink.ie";
 
 				driver.get(baseurl);
 

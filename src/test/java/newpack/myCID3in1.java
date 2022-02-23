@@ -52,7 +52,7 @@ public class myCID3in1 {
 
 				// base url login
 
-				String baseurl = "https://qa.cid.ie";
+				String baseurl = "https://nonprod.cid.ie";
 
 				driver.get(baseurl);
 
@@ -72,7 +72,7 @@ public class myCID3in1 {
 
 				driver.switchTo().window(tabs.get(1));
 
-				String directurl = "https://qa.cid.ie/CID/3in1search_new/";
+				String directurl = "https://nonprod.cid.ie/CID/3in1search_new/";
 
 				driver.get(directurl);
 

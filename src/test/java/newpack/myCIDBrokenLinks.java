@@ -27,7 +27,7 @@ public class myCIDBrokenLinks {
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-		String baseurl = "https://qa.cid.ie";
+		String baseurl = "https://nonprod.cid.ie";
 
 		String url = "";
 

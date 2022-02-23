@@ -27,7 +27,7 @@ public class myLawlinkBrokenLinks {
 		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
-		String baseurl = "https://qa.lawlink.ie";
+		String baseurl = "https://nonprod.lawlink.ie";
 
 		String url = "";
 

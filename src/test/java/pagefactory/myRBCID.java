@@ -93,7 +93,7 @@ public class myRBCID {
 
 	@FindBy(xpath = "//*[@id=\"sub_content\"]/form/table[2]/tbody/tr[7]/td/input[1]")
 
-	WebElement rbCIDJudgementSearch;
+	public WebElement rbCIDJudgementSearch;
 
 	@FindBy(xpath = "//*[@id=\"left_menu\"]/ul/li[9]/a")
 

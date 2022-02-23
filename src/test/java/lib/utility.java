@@ -1,5 +1,8 @@
 package lib;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -37,7 +40,7 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.*;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
@@ -406,7 +409,7 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 		
 		String driverpath;
 		
-		//chrome driver 
+		//chrome driver
 		if(browsername.equalsIgnoreCase("Chrome")) {
 			
 			//Set Chrome driver path and create chrome instance
@@ -423,7 +426,6 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 			driverpath="C:\\Users\\U35035\\eclipse-workspace\\geckodriver-v0.26.0-win64\\geckodriver.exe";
 			System.setProperty("webdriver.gecko.driver", driverpath);
 			driver = new FirefoxDriver();
-			
 		}
 		
 		//internet explorer driver
@@ -435,10 +437,26 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 			driver = new EdgeDriver();
 		}
 		
-		String baseurl="https://uat.lawlink.ie";
+		String baseurl="https://nonprod.lawlink.ie";
 		driver.get(baseurl);
 		return driver;
 	}
+	
+	public static void keyenter() throws Exception {
+		
+		Robot robot;
+		
+		try {
+			robot = new Robot();
+			robot.keyPress(KeyEvent.VK_ENTER); //press enter key
+			robot.keyRelease(KeyEvent.VK_ENTER); //release enter key
+		} catch (AWTException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 
 

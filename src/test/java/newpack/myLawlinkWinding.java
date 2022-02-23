@@ -71,7 +71,7 @@ public class myLawlinkWinding {
 
 			// base url
 
-			String baseurl = "https://qa.lawlink.ie";
+			String baseurl = "https://nonprod.lawlink.ie";
 
 			driver.get(baseurl);
 

@@ -50,7 +50,7 @@ public class myCIDDirectorWatchlistWithReference {
 
 				// base url
 
-				String baseurl = "https://qa.cid.ie";
+				String baseurl = "https://nonprod.cid.ie";
 
 				driver.get(baseurl);
 

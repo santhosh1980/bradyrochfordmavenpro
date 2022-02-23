@@ -59,7 +59,7 @@ public class myCIDCompanyAllDocumentsEmailDelivery {
 
 				// base url
 
-				String baseurl = "https://staging.cid.ie";
+				String baseurl = "https://nonprod.cid.ie";
 
 				driver.get(baseurl);
 

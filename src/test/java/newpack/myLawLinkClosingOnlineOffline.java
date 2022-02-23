@@ -104,7 +104,7 @@ public class myLawLinkClosingOnlineOffline {
 
 				// base url
 
-				 String baseurl="https://uat.lawlink.ie";
+				 String baseurl="https://nonprod.lawlink.ie";
 
 				// BVT
 
@@ -209,7 +209,7 @@ public class myLawLinkClosingOnlineOffline {
 
 				// driver.findElement(By.name("requiredBy")).sendKeys("23/10/2020");
 
-				rblawlink.setrequiredby("23/01/2022");
+				rblawlink.setrequiredby("23/01/2023");
 
 				// driver.findElement(By.xpath("//*[@id=\"step3\"]/table/tbody/tr[3]/td[2]/input[2]")).click();
 
@@ -223,7 +223,7 @@ public class myLawLinkClosingOnlineOffline {
 				
 				//scroll down to the lower of webpage and wait
 				
-				utility.scrollscreen(driver, 0, 1000);
+				//utility.scrollscreen(driver, 0, 1000);
 				
 				Thread.sleep(3000);
 
@@ -283,7 +283,7 @@ public class myLawLinkClosingOnlineOffline {
 					
 					//Both Resi and Non Resi handled here - This code work sometimes
 
-					/*if (offcount == 1 && (Resi.equalsIgnoreCase("NO") || Resi.equalsIgnoreCase("YES"))) {
+					if (offcount == 1 && (Resi.equalsIgnoreCase("NO") || Resi.equalsIgnoreCase("YES"))) {
 						fname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[1]/td[2]/input";
 						lname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[2]/td[2]/input";
 						deedsfrom = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[3]/td[2]/input[1]";
@@ -302,14 +302,36 @@ public class myLawLinkClosingOnlineOffline {
 								.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[3]/td[2]/input[2]");
 						deedsaddress = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
 								.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[4]/td/textarea");
-					}*/
+					}
 					
+					//Both Resi and Non Resi handled here - This code work in Dye & Durham
+					
+					/*if (offcount == 1 && (Resi.equalsIgnoreCase("NO") || Resi.equalsIgnoreCase("YES"))) {
+					fname = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[1]/td[2]/input";
+					lname = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[2]/td[2]/input";
+					deedsfrom = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[3]/td[2]/input[1]";
+					deedsto = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[3]/td[2]/input[2]";
+					deedsaddress = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form/table/tbody/tr[4]/td/textarea";
+				}
+
+				else if (offcount != 1 && (Resi.equalsIgnoreCase("NO") || Resi.equalsIgnoreCase("YES"))) {
+					fname = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[1]/td[2]/input");
+					lname = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[2]/td[2]/input");
+					deedsfrom = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[3]/td[2]/input[1]");
+					deedsto = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[3]/td[2]/input[2]");
+					deedsaddress = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
+							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[4]/td/textarea");
+				}/*
 					
 					
 					
 					//Non-RESI Handled here
 					
-					if (offcount == 1 && (Resi.equalsIgnoreCase("NO"))) {
+					/*if (offcount == 1 && (Resi.equalsIgnoreCase("NO"))) {
 					fname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[1]/td[2]/input";
 					lname = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[2]/td[2]/input";
 					deedsfrom = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[3]/td[2]/input[1]";
@@ -328,13 +350,13 @@ public class myLawLinkClosingOnlineOffline {
 							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[3]/td[2]/input[2]");
 					deedsaddress = "/html/body/div[1]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
 							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[4]/td/textarea");
-				}
+				}*/
 					
 					
 					
 					//RESI Handled here
 					
-					if (offcount == 1 && (Resi.equalsIgnoreCase("YES"))) {
+					/*if (offcount == 1 && (Resi.equalsIgnoreCase("YES"))) {
 					fname = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[1]/td[2]/input";
 					lname = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[2]/td[2]/input";
 					deedsfrom = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form[1]/table/tbody/tr[3]/td[2]/input[1]";
@@ -353,7 +375,7 @@ public class myLawLinkClosingOnlineOffline {
 							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[3]/td[2]/input[2]");
 					deedsaddress = "/html/body/div[2]/div[2]/div[2]/div[2]/div[2]/div[1]/table[2]/tbody/tr[4]/td/div/form["
 							.concat(String.valueOf(offcount)).concat("]/table/tbody/tr[4]/td/textarea");
-				}
+				}*/
 					
 					
 
@@ -380,7 +402,7 @@ public class myLawLinkClosingOnlineOffline {
 				
 				//Scroll up and wait
 				
-				utility.scrollscreen(driver, 0, -1000);
+				//utility.scrollscreen(driver, 0, -1000);
 				
 				Thread.sleep(3000);
 				
@@ -424,7 +446,7 @@ public class myLawLinkClosingOnlineOffline {
 
 				// verify pdf
 
-				utility.verifyPDFInURL(driver);
+				//utility.verifyPDFInURL(driver);
 
 				// Write to Excel - PDF URL
 

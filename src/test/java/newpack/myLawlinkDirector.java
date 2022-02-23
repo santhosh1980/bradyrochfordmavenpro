@@ -53,7 +53,7 @@ public class myLawlinkDirector {
 
 				// base url
 
-				String baseurl = "https://qa.lawlink.ie";
+				String baseurl = "https://nonprod.lawlink.ie";
 
 				driver.get(baseurl);
 
