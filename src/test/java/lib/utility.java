@@ -40,10 +40,12 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import bsh.Variable;
 import junit.framework.Assert;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
@@ -412,10 +414,24 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 		//chrome driver
 		if(browsername.equalsIgnoreCase("Chrome")) {
 			
+						
 			//Set Chrome driver path and create chrome instance
 			driverpath="C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
 			System.setProperty("webdriver.chrome.driver", driverpath);
-			driver = new ChromeDriver();
+			
+			//Code for chrome incognito window to open
+			//configure options parameter to chrome driver
+			ChromeOptions co = new ChromeOptions();
+			//add incognito parameter
+			co.addArguments("--incognito");
+			// DesiredCapabilities object
+			DesiredCapabilities dc = DesiredCapabilities.chrome();
+			//set capability to browser
+			dc.setCapability(ChromeOptions.CAPABILITY, co);
+			
+			
+			//driver = new ChromeDriver();
+			driver = new ChromeDriver(co);
 			
 		}
 		
@@ -432,8 +448,10 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 		else if (browsername.equalsIgnoreCase("IE")) {
 					
 			//Set IE driver path and create IE instance
-			driverpath="C:\\Users\\U35035\\eclipse-workspace\\Microsoftwebdriver\\MicrosoftWebDriver.exe";
+			//driverpath="C:\\Users\\U35035\\eclipse-workspace\\Microsoftwebdriver\\MicrosoftWebDriver.exe";
+			driverpath="C:\\Users\\U35035\\eclipse-workspace\\Microsoftwebdriver\\msedgedriver.exe";
 			System.setProperty("webdriver.edge.driver", driverpath);
+						
 			driver = new EdgeDriver();
 		}
 		
