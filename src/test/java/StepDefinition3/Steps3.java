@@ -1,24 +1,21 @@
 package StepDefinition3;
 
-import static org.testng.AssertJUnit.assertTrue;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Assert;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
 
-import cucumber.api.DataTable;
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.junit.Assert;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 
 
@@ -76,7 +73,7 @@ public class Steps3 {
 	
 	public void Enter_valid_Username_and_Password(DataTable usercredential) throws Exception {
 		
-		List<List<String>> data = usercredential.raw();
+		List<List<String>> data = usercredential.cells();
 		
 		driver.findElement(By.name("uid")).sendKeys(data.get(0).get(0));
 		
