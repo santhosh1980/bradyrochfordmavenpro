@@ -47,10 +47,39 @@ public class NumberofRadiobutton {
 		
 
 			Thread.sleep(3000);
+			
+			//Textbox fields
+			
+			WebElement fname = driver.findElement(By.name("firstname"));
+			
+			WebElement lname = driver.findElement(By.name("lastname"));
+			
+			fname.sendKeys("Testfirstname1");
+			
+			lname.sendKeys("Testlastname1");
+			
+			String ftext = fname.getAttribute("value");
+			
+			String ltext = lname.getAttribute("value");
+			
+			System.out.println("Firstname field value is:"+ftext);
+			
+			System.out.println("Lastname field value is:"+ltext);
+			
+//			if(fname.getText().equals("Testfirstname1")) {
+//				System.out.println("Firstname field value is:"+fname.getText());
+//			}
+//			
+//			if(lname.getText().equals("Testlastname1")) {
+//				System.out.println("Lastname field value is:"+lname.getText());
+//			}
+			
+			
+			//Radio buttons
 
 			//List<WebElement> radioelements = driver.findElements(By.xpath("input[type='radio']"));
 			
-			/*List<WebElement> radioelements = driver.findElements(By.name("exp"));
+			List<WebElement> radioelements = driver.findElements(By.name("exp"));
 
 			int sizeradioelements = radioelements.size();
 
@@ -69,10 +98,10 @@ public class NumberofRadiobutton {
 				}
 
 				
-			}*/
+			}
 			
 			
-			
+			//Drop-downs
 			
 			Select mydropdown = new Select(driver.findElement(By.name("continents")));
 			

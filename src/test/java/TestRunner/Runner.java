@@ -9,7 +9,7 @@ import io.cucumber.junit.Cucumber;
 
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features="Feature", glue= "StepDefinition3", tags= "@resetmultipledata",
+@CucumberOptions(features="Feature", glue= "StepDefinition4", tags= "@addCustomerMultiple",
 
 dryRun = false,
 monochrome = true,

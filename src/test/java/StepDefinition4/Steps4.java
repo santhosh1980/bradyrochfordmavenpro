@@ -42,7 +42,7 @@ public class Steps4 {
 
 	@Given("^Open the Chrome and launch the Guru99 Telecom Application$")
 	
-	public void Open_the_Chrome_and_launch_the_Guru99_Telecom_Application_and_click_Add_Customer_link() throws Exception {
+	public void Open_the_Chrome_and_launch_the_Guru99_Telecom_Application() throws Exception {
 		
 		System.setProperty("webdriver.chrome.driver", driverpath);
 		
@@ -69,6 +69,16 @@ public class Steps4 {
 		driver.findElement(By.xpath("//*[@id=\"one\"]/div/div[1]/div[1]/h3/a")).click();
 				
 		Thread.sleep(5000);
+		
+		String addurl = driver.getCurrentUrl();
+		
+		if(addurl.contains("https://demo.guru99.com/telecom/addcustomer.php")) {
+			System.out.println("Add Customer URL is displayed");
+		}
+		else
+		{
+			System.out.println("Add Customer URL is NOT displayed");
+		}
 				
 		
 	}
@@ -184,7 +194,7 @@ public class Steps4 {
 		
 		String cururl = driver.getCurrentUrl();
 		
-		if (cururl.contains("http://demo.guru99.com/telecom/access.php")) {
+		if (cururl.contains("https://demo.guru99.com/telecom/access.php")) {
 			
 					
 			String customerid = driver.findElement(By.xpath("//*[@id=\"main\"]/div/div/table/tbody/tr[1]/td[2]/h3")).getText();

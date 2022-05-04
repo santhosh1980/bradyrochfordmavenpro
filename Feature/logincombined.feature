@@ -1,8 +1,8 @@
 Feature: Login functionality of Application
 
 @smoke
-Scenario: Valid login test 
-Given Open the Chrome and launch the application	
+Scenario: Valid login test
+Given Open the Chrome and launch the application
 When Enter valid Username and Password
 |1303|Guru99|
 And Click Login button
