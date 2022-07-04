@@ -20,10 +20,10 @@ import pagefactory.myRBLawlink;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
-public class myLawlinkCRO {
+public class myLawLinkClosingOnlineSearchType {
 
 	@Test
-	public void myLawlinkCROViewResults() throws Exception {
+	public void myLawLinkClosingOnlineViewResults() throws Exception {
 
 		WebDriver driver;
 
@@ -31,7 +31,7 @@ public class myLawlinkCRO {
 
 		String driverpath = "C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe";
 
-		String datapath = "C:\\Users\\U35035\\eclipse-workspace\\Data\\TestDataOnlineOffline.xlsx";
+		String datapath = "C:\\Users\\U35035\\eclipse-workspace\\Data\\TestDataOnline.xlsx";
 
 		ExcelDataConfig excel = new ExcelDataConfig(datapath);
 
@@ -40,7 +40,7 @@ public class myLawlinkCRO {
 		// create chrome instance
 		System.setProperty("webdriver.chrome.driver", driverpath);
 
-		for (int i = 0; i <= excel.getrownum(1); i++) {
+		for (int i = 0; i <= excel.getrownum(8); i++) {
 
 			driver = new ChromeDriver();
 
@@ -86,9 +86,9 @@ public class myLawlinkCRO {
 
 			// pass credential and submit
 
-			rb.setusername(excel.getData(1, i, 0));
+			rb.setusername(excel.getData(5, i, 0));
 
-			rb.setpassword(excel.getData(1, i, 1));
+			rb.setpassword(excel.getData(5, i, 1));
 
 			Thread.sleep(5000);
 
@@ -116,70 +116,39 @@ public class myLawlinkCRO {
 
 			rbcom.setuserRef("myautotest" + rand.nextInt(1000));
 
-			// select the checkbox - Judgment/Bankruptcy & Personal Insolvency (ISI), CRO
+			// select the checkbox - Judgment/Bankruptcy & Personal Insolvency (ISI)
+			// searches and click Next button
 
 			//driver.findElement(By.id("chkJudg")).click();
 			
 			rblawlink.selectLawlinkClosingCheckJudgBox();
 
-			//driver.findElement(By.id("chkCRO")).click();
-			
-			rblawlink.selectLawlinkClosingCheckCROBox();
-
-			// click Next button
 			//driver.findElement(By.name("next")).click();
 			
 			rblawlink.clickLawlinkClosingNextLink();
+			
+			//click search type - Company
+			
+			rblawlink.clickLawlinkSearchTypeCompany();
 
-			// pass Surname and firstname for online search and then click add button
+			// pass Surname and firstname and then click add button
 
-			for (int j = 2; j < excel.getcolnum(1, i); j += 2) {
+			for (int j = 2; j < excel.getcolnum(8, i); j ++) {
 
-				//driver.findElement(By.name("surname")).sendKeys(excel.getData(1, i, j));
+				//driver.findElement(By.name("surname")).sendKeys(excel.getData(5, i, j));
 
-				//driver.findElement(By.name("firstName")).sendKeys(excel.getData(1, i, j + 1));
+				//driver.findElement(By.name("firstName")).sendKeys(excel.getData(5, i, j + 1));
 
 				//driver.findElement(By.id("AddName")).click();
 				
-				rbcom.setsurname(excel.getData(1, i, j));
+				rbcom.setsurname(excel.getData(8, i, j));
 				
-				rbcom.setfirstname(excel.getData(1, i, j + 1));
+				//rbcom.setfirstname(excel.getData(5, i, j + 1));
 				
 				rblawlink.clickLawlinkClosingAddNameLink();
 
 				Thread.sleep(5000);
 			}
-
-			// CRO search
-
-			for (int k = 0; k < excel.getcolnum(9, i); k++) {
-
-				Thread.sleep(5000);
-
-				// Pass company id
-
-				//driver.findElement(By.name("compNum")).sendKeys(excel.getNumericData(9, i, k));
-				
-				rblawlink.setclosingcompanynumber(excel.getNumericData(9, i, k));
-
-				// Click find button
-
-				//driver.findElement(By.className("right")).click();
-				
-				rblawlink.clickLawlinkClosingCompanyFindLink();
-
-				Thread.sleep(5000);
-				// Add company to the confirmed searches
-
-				//driver.findElement(By.xpath("//*[@id=\"0\"]")).click();
-				
-				rblawlink.clickLawlinkCompanyConfirm();
-
-				Thread.sleep(5000);
-
-			}
-
-			// end CRO search
 
 			// capture screenshot 2
 
@@ -189,9 +158,9 @@ public class myLawlinkCRO {
 
 			// Click submit button
 
-			//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/table[3]/tbody/tr[3]/td/input")).click();
+			//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/table[2]/tbody/tr[3]/td/input")).click();
 			
-			rblawlink.clickLawlinkClosingOfflineSubmitlink();
+			rblawlink.clickLawlinkClosingOnlineSubmitlink();
 
 			Thread.sleep(15000);
 
@@ -200,27 +169,29 @@ public class myLawlinkCRO {
 			mywaitvar = new WebDriverWait(driver, 30);
 
 			mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"all_reports\"]/a/p")));
-
+			
 			//driver.findElement(By.xpath("//*[@id=\"all_reports\"]/a/p")).click();
 			
 			rblawlink.clickLawlinkClosingPDFLink();
 
 			Thread.sleep(5000);
 
+			// verify pdf
+
+			//utility.verifyPDFInURL(driver);
+
 			// Write to Excel - PDF URL
 
 			String pdfurl = utility.getPDFURL(driver);
 
-			excel.writeData(9, i, 21, pdfurl);
-
-			// excel.writeData(1, i, 20);
+			excel.writeData(8, i, 21, pdfurl);
 
 			// Window handle
 
-			utility.windowhandle(driver);
+			// utility.windowhandle(driver);
 
 			// close chrome
-			// driver.quit();
+			driver.quit();
 
 			System.out.println("Browser closed");
 		}

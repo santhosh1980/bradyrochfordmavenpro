@@ -100,6 +100,14 @@ public class myRBLawlink {
 	@FindBy(id = "AddName")
 
 	WebElement rbLawlinkClosingAddName;
+	
+	@FindBy(id="pers")
+	
+	WebElement rblawlinksearchtypepersonal;
+	
+	@FindBy(id="comp")
+	
+	WebElement rblawlinksearchtypecompany;
 
 	@FindBy(xpath = "//*[@id=\"panel\"]/div[1]/table[2]/tbody/tr[3]/td/input")
 
@@ -384,6 +392,12 @@ public class myRBLawlink {
 	@FindBy(xpath="//*[@id=\"sub_content\"]/p")
 
 	WebElement rbLawlinkNumberofImageboxesText;
+	
+	@FindBy(xpath="//*[@id=\"0\"]")
+
+	WebElement rbLawlinkCompanyConfirm;
+	
+	
 
 
 	public myRBLawlink(WebDriver driver) {
@@ -850,6 +864,20 @@ public class myRBLawlink {
 
 		rbLawlinkEmailClosingSearchLink.click();
 	}
+	
+	// Click Lawlink Search type - Personal
+
+	public void clickLawlinkSearchTypePersonal() {
+
+		rblawlinksearchtypepersonal.click();
+	}
+	
+	// Click Lawlink Search type - Company
+
+	public void clickLawlinkSearchTypeCompany() {
+
+		rblawlinksearchtypecompany.click();
+	}
 
 	// set captcha email address
 
@@ -1025,6 +1053,13 @@ public class myRBLawlink {
 	public void clickLawlinkImageDownloadEmailRadioButton() {
 
 		rbLawlinkImageDownloadEmailRadioButton.click();
+	}
+	
+	// Click Company confirm button
+
+	public void clickLawlinkCompanyConfirm() {
+
+		rbLawlinkCompanyConfirm.click();
 	}
 
 	// Lawlink Company/Business - Document Order Links 

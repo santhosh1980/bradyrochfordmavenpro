@@ -14,7 +14,9 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import io.cucumber.java.bs.I.Is;
 import lib.utility;
+import pagefactory.examplepage;
 
 import org.junit.Assert;
 
@@ -37,6 +39,8 @@ public class NumberofRadiobutton {
 			driver = new ChromeDriver();
 
 			// WebDriver driver = new FirefoxDriver();
+			
+			examplepage ep = new examplepage(driver);
 
 			driver.manage().window().maximize();
 
@@ -50,21 +54,15 @@ public class NumberofRadiobutton {
 			
 			//Textbox fields
 			
-			WebElement fname = driver.findElement(By.name("firstname"));
+						
+			ep.setexamplefirstname("Testfirstname1");
 			
-			WebElement lname = driver.findElement(By.name("lastname"));
+			ep.setexamplelastname("Testlastname1");
 			
-			fname.sendKeys("Testfirstname1");
+						
+			System.out.println("Firstname field value is:"+ep.getexamplefirstname());
 			
-			lname.sendKeys("Testlastname1");
-			
-			String ftext = fname.getAttribute("value");
-			
-			String ltext = lname.getAttribute("value");
-			
-			System.out.println("Firstname field value is:"+ftext);
-			
-			System.out.println("Lastname field value is:"+ltext);
+			System.out.println("Lastname field value is:"+ep.getexamplelastname());
 			
 //			if(fname.getText().equals("Testfirstname1")) {
 //				System.out.println("Firstname field value is:"+fname.getText());
@@ -79,7 +77,7 @@ public class NumberofRadiobutton {
 
 			//List<WebElement> radioelements = driver.findElements(By.xpath("input[type='radio']"));
 			
-			List<WebElement> radioelements = driver.findElements(By.name("exp"));
+			List<WebElement> radioelements = ep.getexampleyearsradioelements();
 
 			int sizeradioelements = radioelements.size();
 
@@ -92,7 +90,7 @@ public class NumberofRadiobutton {
 				radio.click();
 				
 				if (radio.isSelected()){
-					System.out.println("Years of experience selected is: " + radio.getAttribute("value"));
+					System.out.println("Years of experience selected is: " + ep.getexampleyearradio(radio));
 					
 					Thread.sleep(3000);
 				}
@@ -103,9 +101,26 @@ public class NumberofRadiobutton {
 			
 			//Drop-downs
 			
-			Select mydropdown = new Select(driver.findElement(By.name("continents")));
+			Select mydropdown = ep.getexamplecontinentsdropdownelements();
+			
+			boolean check1 = mydropdown.isMultiple();
+			
+			if(check1==true) {
+				System.out.println("Allows selection of multiple items");
+			}
+			
+			else {
+				System.out.println("Allows selection of single item");
+			}
 			
 			List<WebElement> mydropdownelements = mydropdown.getOptions();
+			
+			System.out.println("Continents Options are:");
+			
+			for (WebElement ele:mydropdownelements) {
+				
+				System.out.println(ele.getText());
+			}
 			
 			int mydropdownsize = mydropdownelements.size();
 			
@@ -115,14 +130,64 @@ public class NumberofRadiobutton {
 				
 				mydropdown.selectByIndex(i);
 				
-				System.out.println("The selected value from dropdown is:" + mydropdown.getFirstSelectedOption().getText());
+				System.out.println("The selected value from continent dropdown is:" + mydropdown.getFirstSelectedOption().getText());
 				
 				Thread.sleep(3000);
 			}
 			
 			
 			
+			//multi-select Drop-downs	
+			
+			Select mymultiselectdropdown = ep.getexampleseleniumcommandsdropdownelements();
+			
+						
+			boolean check2 = mymultiselectdropdown.isMultiple();
+			
+			if(check2==true) {
+				System.out.println("Allows selection of multiple items");
+			}
+			
+			else {
+				System.out.println("Allows selection of single item");
+			}
+			
+			List<WebElement> mymultiselectdropdownelements = mymultiselectdropdown.getOptions();
+			
+			System.out.println("Selenium commands Options are:");
+			
+			for (WebElement ele:mymultiselectdropdownelements) {
+				
+				System.out.println(ele.getText());
+			}
+			
+			int mymultiselectdropdownsize = mymultiselectdropdownelements.size();
+			
+			for (int i=0;i<mymultiselectdropdownsize;i++) {
+				
+								
+				// key chord string
+				
+				//String mykeychord = Keys.chord(Keys.CONTROL,Keys.ENTER);
+				
+				
+				mymultiselectdropdown.selectByIndex(i);
+			
+				List<WebElement> myselectedoptions = mymultiselectdropdown.getAllSelectedOptions();
+				
+				System.out.println("The selected options from selenium commands are:");
+				
+				for(WebElement myele:myselectedoptions) {
 					
+					System.out.println(myele.getText());
+				}
+			
+				
+				
+				
+				
+				Thread.sleep(3000);
+			}
 			
 			driver.quit();
 

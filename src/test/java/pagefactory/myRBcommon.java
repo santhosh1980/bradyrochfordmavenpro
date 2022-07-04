@@ -3,14 +3,16 @@ package pagefactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.PageFactory;
 
 public class myRBcommon {
 
 	WebDriver driver;
-
-	@FindBy(name = "userRef")
-
+	
+	
+	@FindBy(id = "userRef")
+	
 	WebElement rbuserRef;
 
 	@FindBy(name = "surname")

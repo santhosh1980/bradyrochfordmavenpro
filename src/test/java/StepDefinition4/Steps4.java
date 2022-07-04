@@ -98,7 +98,7 @@ public class Steps4 {
 	
 	@When("^I enter BackgroundCheck as \"([^\"]*)\" and Firstname as \"([^\"]*)\" and Lastname as \"([^\"]*)\" and EmailAddress as \"([^\"]*)\" and CustomerAddress as \"([^\"]*)\" and MobileNumber as \"([^\"]*)\"$")
 	
-	public void I_enter_BackgroundCheck_as_and_Firstname_as_and_Lastname_as_EmailAddress_as_and_CustomerAddress_as_and_MobileNumber_as(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6) throws Exception {
+	public void I_enter_BackgroundCheck_as_and_Firstname_as_and_Lastname_as_and_EmailAddress_as_and_CustomerAddress_as_and_MobileNumber_as(String arg1, String arg2, String arg3, String arg4, String arg5, String arg6) throws Exception {
 				
 		//driver.findElement(By.id(arg1)).click();
 		
