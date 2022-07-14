@@ -22,6 +22,18 @@ public class examplepage {
 
 	WebElement exlastname;
 
+	/*
+	 * @FindBys({
+	 * 
+	 * @FindBy(id="calcSearchTerm"),
+	 * 
+	 * @FindBy(name="calcSearchTerm") })
+	 */
+
+	@FindBy(id = "calcSearchTerm")
+
+	WebElement calcsearchbox;
+
 	public examplepage(WebDriver driver) {
 
 		this.driver = driver;
@@ -81,6 +93,24 @@ public class examplepage {
 		return yearradiotext;
 	}
 
+	// checkbox elements - profession
+
+	public List<WebElement> getprofessioncheckboxelements() {
+
+		List<WebElement> checkboxelementsprofession = driver.findElements(By.name("profession"));
+
+		return checkboxelementsprofession;
+	}
+
+	// get selected profession checkbox
+
+	public String getexampleprofessioncheckbox(WebElement professioncheckbox) {
+
+		String professioncheckboxtext = professioncheckbox.getAttribute("value");
+
+		return professioncheckboxtext;
+	}
+
 	// drop down elements - Continents
 
 	public Select getexamplecontinentsdropdownelements() {
@@ -98,4 +128,39 @@ public class examplepage {
 
 		return mymultiselectdropdown;
 	}
+
+	// Link elements
+
+	public List<WebElement> getlinkelements() {
+
+		List<WebElement> linkelements = driver.findElements(By.tagName("a"));
+
+		return linkelements;
+	}
+
+	// get link text
+
+	public String getlinktext(WebElement linkele) {
+
+		String linktext = linkele.getText();
+
+		return linktext;
+	}
+
+	// set calculator search text value
+
+	public void setcalcseartchtext(String calctext) {
+
+		calcsearchbox.sendKeys(calctext);
+	}
+
+	// search anchor elements
+
+	public List<WebElement> getsearchanchorelements() {
+
+		List<WebElement> searchanchorelements = driver.findElements(By.cssSelector("div#calcSearchOut a"));
+
+		return searchanchorelements;
+	}
+
 }

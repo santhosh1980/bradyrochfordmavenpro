@@ -73,7 +73,7 @@ public class NumberofRadiobutton {
 //			}
 			
 			
-			//Radio buttons
+			//Radio buttons - Years of experience
 
 			//List<WebElement> radioelements = driver.findElements(By.xpath("input[type='radio']"));
 			
@@ -91,6 +91,29 @@ public class NumberofRadiobutton {
 				
 				if (radio.isSelected()){
 					System.out.println("Years of experience selected is: " + ep.getexampleyearradio(radio));
+					
+					Thread.sleep(3000);
+				}
+
+				
+			}
+			
+			//Checkbox - Profession
+			
+			List<WebElement> checkboxelements = ep.getprofessioncheckboxelements();
+
+			int sizecheckboxelements = checkboxelements.size();
+
+			System.out.println("Number of checkbox elements:" + sizecheckboxelements);
+			
+			for (int i=0;i<sizecheckboxelements;i++) {
+				
+				WebElement checkbox = checkboxelements.get(i);
+				
+				checkbox.click();
+				
+				if (checkbox.isSelected()){
+					System.out.println("Profession selected is: " + ep.getexampleprofessioncheckbox(checkbox));
 					
 					Thread.sleep(3000);
 				}
