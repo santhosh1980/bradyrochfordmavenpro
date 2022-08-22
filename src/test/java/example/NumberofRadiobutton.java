@@ -126,6 +126,8 @@ public class NumberofRadiobutton {
 			
 			Select mydropdown = ep.getexamplecontinentsdropdownelements();
 			
+			String dropdowntext = null;
+			
 			boolean check1 = mydropdown.isMultiple();
 			
 			if(check1==true) {
@@ -142,7 +144,8 @@ public class NumberofRadiobutton {
 			
 			for (WebElement ele:mydropdownelements) {
 				
-				System.out.println(ele.getText());
+				dropdowntext = ep.getdropdownelementtext(ele);
+				System.out.println(dropdowntext);
 			}
 			
 			int mydropdownsize = mydropdownelements.size();
@@ -154,6 +157,8 @@ public class NumberofRadiobutton {
 				mydropdown.selectByIndex(i);
 				
 				System.out.println("The selected value from continent dropdown is:" + mydropdown.getFirstSelectedOption().getText());
+				
+				
 				
 				Thread.sleep(3000);
 			}
@@ -181,7 +186,8 @@ public class NumberofRadiobutton {
 			
 			for (WebElement ele:mymultiselectdropdownelements) {
 				
-				System.out.println(ele.getText());
+				dropdowntext = ep.getdropdownelementtext(ele);
+				System.out.println(dropdowntext);
 			}
 			
 			int mymultiselectdropdownsize = mymultiselectdropdownelements.size();
@@ -202,7 +208,8 @@ public class NumberofRadiobutton {
 				
 				for(WebElement myele:myselectedoptions) {
 					
-					System.out.println(myele.getText());
+					dropdowntext = ep.getdropdownelementtext(myele);
+					System.out.println(dropdowntext);
 				}
 			
 				

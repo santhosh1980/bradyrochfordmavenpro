@@ -34,6 +34,22 @@ public class examplepage {
 
 	WebElement calcsearchbox;
 
+	@FindBy(id = "gen")
+
+	WebElement gender;
+
+	@FindBy(id = "n")
+
+	WebElement nameset;
+
+	@FindBy(id = "c")
+
+	WebElement country;
+
+	@FindBy(id = "genbtn")
+
+	WebElement generatebutton;
+
 	public examplepage(WebDriver driver) {
 
 		this.driver = driver;
@@ -129,6 +145,15 @@ public class examplepage {
 		return mymultiselectdropdown;
 	}
 
+	// get drop down element text
+
+	public String getdropdownelementtext(WebElement dropdownele) {
+
+		String dropdowntext = dropdownele.getText();
+
+		return dropdowntext;
+	}
+
 	// Link elements
 
 	public List<WebElement> getlinkelements() {
@@ -161,6 +186,54 @@ public class examplepage {
 		List<WebElement> searchanchorelements = driver.findElements(By.cssSelector("div#calcSearchOut a"));
 
 		return searchanchorelements;
+	}
+
+	// set fake gender
+
+	public void setfakegender(String strgender) {
+
+		gender.sendKeys(strgender);
+	}
+
+	// set fake name
+
+	public void setfakename(String strname) {
+
+		nameset.sendKeys(strname);
+	}
+
+	// set fake country
+
+	public void setfakecountry(String strcountry) {
+
+		country.sendKeys(strcountry);
+	}
+
+	// Click fake generate button
+
+	public void clickgenerate() {
+
+		generatebutton.click();
+	}
+
+	// get address result
+
+	public String getaddressresult() {
+
+		String addresses = driver.findElement(By.className("address")).getText();
+		
+		//String addresses = driver.findElement(By.cssSelector("div.address h3")).getText();
+
+		return addresses;
+	}
+
+	// get extra result
+
+	public String getextraresult() {
+
+		String extrares = driver.findElement(By.className("extra")).getText();
+
+		return extrares;
 	}
 
 }
