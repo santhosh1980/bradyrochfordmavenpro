@@ -73,13 +73,17 @@ public class Fakenamegenerator {
 				
 				
 								
-				String addressresult = ep.getaddressresult();
+				String nameresult = ep.getnameresult();
 				
-				String extraresult = ep.getextraresult();
+				String fulladdressresult = ep.getfulladdressresult();
 				
-				result[i][j]=addressresult;
+				String extrainforesult = ep.getextrainforesult();
 				
-				result[i][j+1]=extraresult;
+				result[i][j]=nameresult;
+				
+				result[i][j+1]=fulladdressresult;
+				
+				result[i][j+2]=extrainforesult;
 				
 				//excel.writeData(2, i, j, addressresult);
 				
@@ -91,6 +95,8 @@ public class Fakenamegenerator {
 				excel.writeData(2, i, k, result[i][j]);
 				
 				excel.writeData(2, i, k+1, result[i][j+1]);
+				
+				excel.writeData(2, i, k+2, result[i][j+2]);
 			}
 				
 

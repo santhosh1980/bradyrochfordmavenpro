@@ -216,24 +216,37 @@ public class examplepage {
 		generatebutton.click();
 	}
 
-	// get address result
+	// get name result
 
-	public String getaddressresult() {
+	public String getnameresult() {
 
-		String addresses = driver.findElement(By.className("address")).getText();
-		
-		//String addresses = driver.findElement(By.cssSelector("div.address h3")).getText();
+		// String addresses = driver.findElement(By.className("address")).getText();
 
-		return addresses;
+		String name = driver.findElement(By.cssSelector("div.address h3")).getText();
+
+		return name;
 	}
 
-	// get extra result
+	// get full address result
 
-	public String getextraresult() {
+	public String getfulladdressresult() {
 
-		String extrares = driver.findElement(By.className("extra")).getText();
+		// String extrares = driver.findElement(By.className("extra")).getText();
 
-		return extrares;
+		String fulladdress = driver.findElement(By.cssSelector("div.adr")).getText();
+
+		return fulladdress;
+	}
+
+	// get extra info result
+
+	public String getextrainforesult() {
+
+		// String extrares = driver.findElement(By.className("extra")).getText();
+
+		String extrainfo = driver.findElement(By.cssSelector("div.extra")).getText();
+
+		return extrainfo;
 	}
 
 }
