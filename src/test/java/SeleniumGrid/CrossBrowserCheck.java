@@ -71,6 +71,9 @@ public class CrossBrowserCheck {
 		//Click Input forms
 		//driver.findElement(By.xpath("//*[@id=\"treemenu\"]/li/ul/li[1]/a")).click();
 		driver.findElement(By.xpath("//*[@id=\"navbar-brand-centered\"]/ul[1]/li[1]/a")).click();
+		
+		//to fail test
+		//driver.findElement(By.xpath("//*[@id=\"navbar-centered\"]/ul[1]/li[1]/a")).click();
 		Thread.sleep(3000);
 		
 		//Click Simple form demo

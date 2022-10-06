@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite">
-  
-	<listeners>
-	<listener class-name="example.ListenerTest"/>
-	</listeners>
+<suite name="Suite" thread-count="2" parallel="tests">
+
+   <test name="FirefoxTest">
+   <parameter name="browserType" value="firefox" />
+      <classes>
+         <class name="SeleniumGrid.CrossBrowserCheck" />
+      </classes>
+   </test>
+
    <test name="ChromeTest">
    <parameter name="browserType" value="chrome" />
       <classes>
          <class name="SeleniumGrid.CrossBrowserCheck" />
       </classes>
    </test>
-</suite> <!-- Suite -->
+      
+</suite>
