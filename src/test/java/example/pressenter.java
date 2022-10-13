@@ -4,6 +4,7 @@ import static org.testng.Assert.assertEquals;
 
 import org.openqa.selenium.*;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -40,8 +41,14 @@ public class pressenter {
 
 			driver.manage().window().maximize();
 
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
+			//Selenium 3
+			
+			//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			
+			//Selenium 4
+			
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+			
 			driver.get("http://google.com");
 
 			driver.findElement(By.name("q")).sendKeys("selenium");

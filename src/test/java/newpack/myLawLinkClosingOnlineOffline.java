@@ -7,7 +7,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
-
+import java.time.Duration;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -100,7 +100,13 @@ public class myLawLinkClosingOnlineOffline {
 
 				driver.manage().window().maximize();
 				
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				//Selenium 3
+				
+				//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				
+				//Selenium 4
+				
+				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 				// base url
 

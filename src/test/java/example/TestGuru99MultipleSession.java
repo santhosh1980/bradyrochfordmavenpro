@@ -1,5 +1,6 @@
 package example;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -21,7 +22,13 @@ public class TestGuru99MultipleSession {
 
 		driver.get("http://demo.guru99.com/V4/");
 
-		driver.manage().timeouts().pageLoadTimeout(500, TimeUnit.SECONDS);
+		//Selenium 3
+		
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		//Selenium 4
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 		// fill username
 
@@ -36,11 +43,11 @@ public class TestGuru99MultipleSession {
 		driver.findElement(By.name("btnLogin")).click();
 
 		// logout
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		
 		driver.findElement(By.xpath("/html/body/div[3]/div/ul/li[15]/a")).click();
 
 		// get text from alert
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		
 		System.out.println("Alert text:" + driver.switchTo().alert().getText());
 
 		// alert accept
@@ -63,7 +70,13 @@ public class TestGuru99MultipleSession {
 
 		driver.get("http://demo.guru99.com/V4/");
 
-		driver.manage().timeouts().pageLoadTimeout(500, TimeUnit.SECONDS);
+		//Selenium 3
+		
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		//Selenium 4
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 		// fill username
 
@@ -78,11 +91,11 @@ public class TestGuru99MultipleSession {
 		driver.findElement(By.name("btnLogin")).click();
 
 		// logout
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		
 		driver.findElement(By.xpath("/html/body/div[3]/div/ul/li[15]/a")).click();
 
 		// get text from alert
-		driver.manage().timeouts().implicitlyWait(500, TimeUnit.SECONDS);
+		
 		System.out.println("Alert text:" + driver.switchTo().alert().getText());
 
 		// alert accept

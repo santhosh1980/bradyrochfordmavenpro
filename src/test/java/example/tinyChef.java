@@ -20,6 +20,7 @@ import org.testng.annotations.BeforeMethod;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
@@ -40,7 +41,13 @@ public class tinyChef {
 
 		driver.manage().window().maximize();
 		
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		//Selenium 3
+		
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		//Selenium 4
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 		driver.get("https://tinychef.ai/recipes/add-new/");
 		

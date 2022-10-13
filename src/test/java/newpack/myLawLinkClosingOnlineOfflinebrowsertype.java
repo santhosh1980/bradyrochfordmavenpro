@@ -7,7 +7,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
-
+import java.time.Duration;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -26,6 +26,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import lib.ExcelDataConfig;
@@ -34,6 +35,8 @@ import pagefactory.myRBLawlink;
 import pagefactory.myRBcommon;
 import pagefactory.myRBlogin;
 
+//use of listener in single class
+@Listeners(example.ListenerTest.class)
 public class myLawLinkClosingOnlineOfflinebrowsertype {
 
 	@Test
@@ -103,7 +106,13 @@ public class myLawLinkClosingOnlineOfflinebrowsertype {
 
 				driver.manage().window().maximize();
 				
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				//Selenium 3
+				
+				//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				
+				//Selenium 4
+				
+				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 				// base url
 
@@ -184,6 +193,8 @@ public class myLawLinkClosingOnlineOfflinebrowsertype {
 				rblawlink.clickLawlinkClosingSearchlink();
 
 				log.debug("Clicking Closing search button");
+				
+				
 				
 				
 

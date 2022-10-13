@@ -1,5 +1,6 @@
 package newpack;
 
+import java.time.Duration;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -43,7 +44,13 @@ public class myLawlinkLinksCheck {
 
 				driver.manage().window().maximize();
 				
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				//Selenium 3
+				
+				//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				
+				//Selenium 4
+				
+				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 				// base url
 

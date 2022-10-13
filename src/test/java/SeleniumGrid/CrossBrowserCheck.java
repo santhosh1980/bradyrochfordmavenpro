@@ -5,10 +5,12 @@ import org.testng.annotations.Test;
 import com.mysql.cj.jdbc.Driver;
 
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -20,15 +22,18 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
 
+//use of listener in single class
+//@Listeners(example.ListenerTest.class)
 public class CrossBrowserCheck {
   
 	public WebDriver driver;
 	public String URL = "http://demo.seleniumeasy.com/";
 	
-
-		
+			
 
 	@Parameters({ "browserType" })
+	
+	
 	@BeforeTest
 	public void launchbrowser(String browserType) throws MalformedURLException {
 		
@@ -63,7 +68,13 @@ public class CrossBrowserCheck {
 		// Launch website
 		driver.navigate().to(URL);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+		//Selenium 3
+		
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		//Selenium 4
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		Thread.sleep(3000);
 		//driver.findElement(By.id("at-cv-lightbox-close")).click();
 		

@@ -6,6 +6,7 @@ import org.testng.annotations.Parameters;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -49,7 +50,13 @@ public class SingleFirefoxTest {
 		// Launch website
 		driver.navigate().to(URL);
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//Selenium 3
+		
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		//Selenium 4
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		//sometimes this required for closing the opened pop up
 		driver.findElement(By.id("at-cv-lightbox-close")).click();
 				

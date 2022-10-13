@@ -2,42 +2,58 @@ package example;
 
 import org.testng.annotations.Test;
 
-
+import ch.lambdaj.group.Group;
+import ch.lambdaj.group.Groups;
 
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
 
+import java.time.Duration;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 
+//use of listener in single class
+@Listeners(example.ListenerTest.class)
 public class NewTestNGAnnotation {
 
 	WebDriver driver;
 	public String expected = null;
 	public String actual = null;
 
-	@BeforeTest
+	@BeforeTest ()
 	public void beforeTest() {
 
 		System.setProperty("webdriver.chrome.driver",
 				"C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");
-
+		
+		
+		
 		driver = new ChromeDriver();
 
 		driver.manage().window().maximize();
 		
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//Selenium 3
+		
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		//Selenium 4
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 		driver.get("http://demo.guru99.com/test/newtours/");
 	}
 	
-	@BeforeMethod
+	@BeforeMethod()
 	public void verifytitle() {
 
 		String expectedtitle = "Welcome: Mercury Tours";
@@ -52,6 +68,9 @@ public class NewTestNGAnnotation {
 	public void register() {
 
 		driver.findElement(By.linkText("REGISTER")).click();
+		
+		
+	
 
 		expected = "Register: Mercury Tours";
 
@@ -72,13 +91,15 @@ public class NewTestNGAnnotation {
 		Assert.assertEquals(expected, actual);
 	}
 	
-	@AfterMethod
-	public void gobacktohomepage() {
+	@AfterMethod()
+	public void gobacktohomepage() throws InterruptedException {
 
 		driver.findElement(By.linkText("Home")).click();
+		
+		Thread.sleep(5000);
 	}
 
-	@AfterTest
+	@AfterTest()
 	public void afterTest() {
 
 		driver.close();

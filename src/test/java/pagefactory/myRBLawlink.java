@@ -2,6 +2,7 @@ package pagefactory;
 
 import java.util.List;
 import java.sql.Date;
+import java.time.Duration;
 import java.util.jar.Attributes.Name;
 
 import org.openqa.selenium.By;
@@ -1112,8 +1113,14 @@ public class myRBLawlink {
 	public void Lawlinkexplicitwaitdocbutton() {
 
 		WebDriverWait mywaitvar = null;
+		
+		//Selenium 3
 
-		mywaitvar = new WebDriverWait(driver, 80);
+		//mywaitvar = new WebDriverWait(driver, 80);
+		
+		//Selenium 4
+		
+		mywaitvar = new WebDriverWait(driver, Duration.ofSeconds(80));
 
 		mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
 
@@ -1124,8 +1131,14 @@ public class myRBLawlink {
 	public void Lawlinkexplicitwaitdownloadpdf() {
 
 		WebDriverWait mywaitvar = null;
+		
+		//Selenium 3
 
-		mywaitvar = new WebDriverWait(driver, 50);
+		//mywaitvar = new WebDriverWait(driver, 50);
+		
+		//Selenium 4
+		
+		mywaitvar = new WebDriverWait(driver, Duration.ofSeconds(50));
 
 		mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"all_reports\"]/a/p")));
 

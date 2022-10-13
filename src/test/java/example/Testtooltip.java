@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -25,7 +26,13 @@ public class Testtooltip {
 
 		driver.manage().window().maximize();
 		
-		driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+		//Selenium 3
+		
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		//Selenium 4
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 		String baseurl = "https://www.guru99.com/";
 		
@@ -64,7 +71,7 @@ public class Testtooltip {
 			 
 			//replace everything that is not word character (a-z in any case, 0-9 or _) or whitespace or brackets or slash or period or  plus or hyphen sign or hash sign
 			 
-			 text=text.replaceAll("[^\\w\\s\\(\\)\\/\\.\\+\\-\\#]", "");
+			text=text.replaceAll("[^\\w\\s\\(\\)\\/\\.\\+\\-\\#]", "");
 			 
 
 			if (!tooltip.trim().equals(text.trim())) {
