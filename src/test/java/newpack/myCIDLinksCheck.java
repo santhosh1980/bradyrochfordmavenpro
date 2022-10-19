@@ -96,29 +96,29 @@ public class myCIDLinksCheck {
 				
 				utility.fullscreenshotcapture(driver, "CID Home");
 				
-				// Click CID About Us Link
+				// Click CID About Us Link - page removed
 				
-				rbcid.clickCIDAboutUsLink();
+				//rbcid.clickCIDAboutUsLink();
 				
-				Thread.sleep(5000);
+				//Thread.sleep(5000);
 				
-				utility.fullscreenshotcapture(driver, "CID About Us");
+				//utility.fullscreenshotcapture(driver, "CID About Us");
 				
-				// Click CID Subscribe Link
+				// Click CID Subscribe Link- page removed
 				
-				rbcid.clickCIDSubscribeLink();
+				//rbcid.clickCIDSubscribeLink();
 				
-				Thread.sleep(5000);
+				//Thread.sleep(5000);
 				
-				utility.fullscreenshotcapture(driver, "CID Subscribe");
+				//utility.fullscreenshotcapture(driver, "CID Subscribe");
 				
-				// Click CID Costs Link
+				// Click CID Costs Link- page removed
 				
-				rbcid.clickCIDCostsLink();
+				//rbcid.clickCIDCostsLink();
 				
-				Thread.sleep(5000);
+				//Thread.sleep(5000);
 				
-				utility.fullscreenshotcapture(driver, "CID Costs");
+				//utility.fullscreenshotcapture(driver, "CID Costs");
 				
 				// Click CID Support Link
 				

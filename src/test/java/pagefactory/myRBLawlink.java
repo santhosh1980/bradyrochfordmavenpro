@@ -250,11 +250,11 @@ public class myRBLawlink {
 
 	WebElement rbLawlinkCostsLink;
 
-	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[5]/a")
+	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[2]/a")
 
 	WebElement rbLawlinkSupportLink;
 
-	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[6]/a")
+	@FindBy(xpath = "//*[@id=\"header_right\"]/ul/li[3]/a")
 
 	WebElement rbLawlinkContactUsLink;
 
@@ -695,7 +695,9 @@ public class myRBLawlink {
 
 	public void clickLawlinkWathclistHereLink() {
 
-		rbLawlinkWatchlistHereLink.click();
+		//rbLawlinkWatchlistHereLink.click();
+		
+		driver.findElement(By.xpath(".//a[contains(@href,'watch-view')]")).click();
 	}
 
 	// Click Lawlink Delete Selected Watchlist Item Button
@@ -724,6 +726,13 @@ public class myRBLawlink {
 	public void clickLawlinkWatchlistFindLink() {
 
 		rbLawlinkWatchlistFind.click();
+	}
+	
+	// Click Lawlink Watchlist - Add Company to Confirmed Search
+
+	public void clickLawlinkWatchlistAddCompanytoConfirmedSearchLink() {
+
+		driver.findElement(By.xpath("//*[@id=\"0\"]")).click();
 	}
 
 	// Select Lawlink Watchlist Status Change

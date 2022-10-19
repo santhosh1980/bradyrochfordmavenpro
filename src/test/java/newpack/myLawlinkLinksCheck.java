@@ -98,27 +98,27 @@ public class myLawlinkLinksCheck {
 				
 				// Click Lawlink About Us Link
 				
-				rblawlink.clickLawlinkAboutUsLink();
+				//rblawlink.clickLawlinkAboutUsLink();
 				
-				Thread.sleep(5000);
+				//Thread.sleep(5000);
 				
-				utility.fullscreenshotcapture(driver, "Lawlink About Us");
+				//utility.fullscreenshotcapture(driver, "Lawlink About Us");
 				
 				// Click Lawlink Subscribe Link
 				
-				rblawlink.clickLawlinkSubscribeLink();
+				//rblawlink.clickLawlinkSubscribeLink();
 				
-				Thread.sleep(5000);
+				//Thread.sleep(5000);
 				
-				utility.fullscreenshotcapture(driver, "Lawlink Subscribe");
+				//utility.fullscreenshotcapture(driver, "Lawlink Subscribe");
 				
 				// Click Lawlink Costs Link
 				
-				rblawlink.clickLawlinkCostsLink();
+				//rblawlink.clickLawlinkCostsLink();
 				
-				Thread.sleep(5000);
+				//Thread.sleep(5000);
 				
-				utility.fullscreenshotcapture(driver, "Lawlink Costs");
+				//utility.fullscreenshotcapture(driver, "Lawlink Costs");
 				
 				// Click Lawlink Support Link
 				

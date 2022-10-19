@@ -36,7 +36,7 @@ public class myLawlinkDirectorWatchlistRemoveAll {
 			// create chrome instance
 			System.setProperty("webdriver.chrome.driver", driverpath);
 
-			for (int i = 0; i <= excel.getrownum(4); i++) {
+			for (int i = 0; i <= excel.getrownum(5); i++) {
 
 				driver = new ChromeDriver();
 
@@ -70,9 +70,9 @@ public class myLawlinkDirectorWatchlistRemoveAll {
 
 				// pass credential
 
-				rb.setusername(excel.getData(4, i, 0));
+				rb.setusername(excel.getData(5, i, 0));
 
-				rb.setpassword(excel.getData(4, i, 1));
+				rb.setpassword(excel.getData(5, i, 1));
 
 				// RESI value status of user
 

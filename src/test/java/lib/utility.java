@@ -425,7 +425,9 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 			//add incognito parameter
 			co.addArguments("--incognito");
 			
+					
 			//Desired capabilities are supported only selenium 3, not supported in selenium 4
+			
 			
 			// DesiredCapabilities object
 			//DesiredCapabilities dc = DesiredCapabilities.chrome();

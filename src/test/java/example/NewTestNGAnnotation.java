@@ -38,7 +38,6 @@ public class NewTestNGAnnotation {
 		
 		
 		
-		driver = new ChromeDriver();
 
 		driver.manage().window().maximize();
 		

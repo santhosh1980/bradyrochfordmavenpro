@@ -35,22 +35,22 @@ public class myLawlinkWatchlist {
 			// create chrome instance
 			System.setProperty("webdriver.chrome.driver", driverpath);
 
-			for (int i = 0; i <= excel.getrownum(4); i++) {
+			for (int i = 0; i <= excel.getrownum(5); i++) {
 
 				driver = new ChromeDriver();
 
 				myRBlogin rb = new myRBlogin(driver);
-				
+
 				myRBLawlink rblawlink = new myRBLawlink(driver);
 
 				driver.manage().window().maximize();
-				
-				//Selenium 3
-				
-				//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-				
-				//Selenium 4
-				
+
+				// Selenium 3
+
+				// driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
+				// Selenium 4
+
 				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
 				// base url
@@ -67,9 +67,9 @@ public class myLawlinkWatchlist {
 
 				// pass credential
 
-				rb.setusername(excel.getData(4, i, 0));
+				rb.setusername(excel.getData(5, i, 0));
 
-				rb.setpassword(excel.getData(4, i, 1));
+				rb.setpassword(excel.getData(5, i, 1));
 
 				// RESI value status of user
 
@@ -87,20 +87,20 @@ public class myLawlinkWatchlist {
 
 				// Click Watchlist link
 
-				//driver.findElement(By.xpath("//*[@id=\"leftmenu\"]/ul[1]/li[3]/a")).click();
-				
+				// driver.findElement(By.xpath("//*[@id=\"leftmenu\"]/ul[1]/li[3]/a")).click();
+
 				rblawlink.clickLawlinkWatchlistLink();
 
 				// Click New wathclist link
 
-				//driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/table/tbody/tr[2]/td[2]/a")).click();
-				
+				// driver.findElement(By.xpath("//*[@id=\"panel\"]/div[1]/table/tbody/tr[2]/td[2]/a")).click();
+
 				rblawlink.clickLawlinkNewWathclistLink();
 
 				// Select watch type
 
-				//driver.findElement(By.id("radCompany")).click();
-				
+				// driver.findElement(By.id("radCompany")).click();
+
 				rblawlink.clickLawlinkWatchType();
 
 				// Pass company name
@@ -109,38 +109,48 @@ public class myLawlinkWatchlist {
 
 				// Pass company id
 
-				//driver.findElement(By.name("compNum")).sendKeys(excel.getNumericData(0, i, 3));
-				
-				rblawlink.setwatchlistcompanynumber(excel.getNumericData(0, i, 3));
+				// driver.findElement(By.name("compNum")).sendKeys(excel.getNumericData(0, i,
+				// 3));
+				for (int j = 3; j < excel.getcolnum(5, i); j++) {
 
-				Thread.sleep(5000);
+					rblawlink.setwatchlistcompanynumber(excel.getNumericData(5, i, j));
 
-				// Click find button
+					Thread.sleep(5000);
 
-				//driver.findElement(By.xpath("//*[@id=\"companyWatch\"]/table/tbody/tr[2]/td[3]/input")).click();
-				
-				rblawlink.clickLawlinkWatchlistFindLink();
+					// Click find button
 
-				Thread.sleep(5000);
-				// Add company to the confirmed searches
+					// driver.findElement(By.xpath("//*[@id=\"companyWatch\"]/table/tbody/tr[2]/td[3]/input")).click();
 
-				driver.findElement(By.xpath("//*[@id=\"0\"]")).click();
+					rblawlink.clickLawlinkWatchlistFindLink();
+
+					Thread.sleep(5000);
+					// Add company to the confirmed searches
+
+					// driver.findElement(By.xpath("//*[@id=\"0\"]")).click();
+
+					rblawlink.clickLawlinkWatchlistAddCompanytoConfirmedSearchLink();
+
+				}
 
 				// Select the watches required - status change and annual return date
 
-				//driver.findElement(By.id("chkStatus")).click();
-				
+				// driver.findElement(By.id("chkStatus")).click();
+
 				rblawlink.clickLawlinkWatchlistStatusChange();
 
-				//driver.findElement(By.id("chkARD")).click();
-				
+				// driver.findElement(By.id("chkARD")).click();
+
 				rblawlink.clickLawlinkWatchlistARD();
 
 				// Click submit button
 
-				//driver.findElement(By.xpath("//*[@id=\"compform\"]/table/tbody/tr[6]/td[3]/input")).click();
-				
+				// driver.findElement(By.xpath("//*[@id=\"compform\"]/table/tbody/tr[6]/td[3]/input")).click();
+
 				rblawlink.clickLawlinkWatchlistSubmit();
+				
+				//Click here button to view watchlist
+				
+				rblawlink.clickLawlinkWathclistHereLink();
 
 				// excel.writeData(0, i, 3);
 

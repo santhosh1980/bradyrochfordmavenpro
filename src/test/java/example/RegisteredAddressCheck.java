@@ -41,7 +41,7 @@ public class RegisteredAddressCheck {
 	@Test(priority=1)
 	public void ContactusResults() throws Exception {
 
-		driver.findElement(By.xpath("//*[@id=\"header_right\"]/ul/li[6]/a")).click();
+		driver.findElement(By.xpath("//*[@id=\"header_right\"]/ul/li[3]/a")).click();
 			
 		if (driver.getPageSource().contains("39/40 Upper Mount"))		
 		{
@@ -58,7 +58,7 @@ public class RegisteredAddressCheck {
 	@Test(priority=2)
 	public void SupportResults() throws Exception {
 
-		driver.findElement(By.xpath("//*[@id=\"header_right\"]/ul/li[5]/a")).click();;
+		driver.findElement(By.xpath("//*[@id=\"header_right\"]/ul/li[2]/a")).click();;
 			
 		if (driver.getPageSource().contains("39/40 Upper Mount"))		
 		{
@@ -72,7 +72,7 @@ public class RegisteredAddressCheck {
 
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3, enabled=false)
 	public void CostResults() throws Exception {
 
 		driver.findElement(By.xpath("//*[@id=\"header_right\"]/ul/li[4]/a")).click();;
@@ -89,7 +89,7 @@ public class RegisteredAddressCheck {
 
 	}
 	
-	@Test(priority=4)
+	@Test(priority=4, enabled=false)
 	public void SubscribeResults() throws Exception {
 
 		driver.findElement(By.xpath("//*[@id=\"header_right\"]/ul/li[3]/a")).click();;
@@ -106,7 +106,7 @@ public class RegisteredAddressCheck {
 
 	}
 	
-	@Test(priority=5)
+	@Test(priority=5, enabled=false)
 	public void AboutusResults() throws Exception {
 
 		driver.findElement(By.xpath("//*[@id=\"header_right\"]/ul/li[2]/a")).click();;
@@ -141,7 +141,7 @@ public class RegisteredAddressCheck {
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 
-		String baseurl = "https://qa.lawlink.ie";
+		String baseurl = "https://nonprod.lawlink.ie";
 		
 		driver.get(baseurl);
 	}

@@ -142,9 +142,10 @@ public class myRBCID {
 	@FindBy(xpath = "//*[@id=\"compform\"]/table/tbody/tr[7]/td[3]/input")
 
 	WebElement rbCIDWatchlistSubmit;
+	
+	@FindBy(xpath = "//*[@id=\"sub_content\"]/p[2]/a")
 
-	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[1]/a")
-
+	
 	WebElement rbCIDHomeLink;
 
 	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[2]/a")
@@ -159,11 +160,11 @@ public class myRBCID {
 
 	WebElement rbCIDCostsLink;
 
-	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[5]/a")
+	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[2]/a")
 
 	WebElement rbCIDSupportLink;
 
-	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[6]/a")
+	@FindBy(xpath = "//*[@id=\"top_menu\"]/li[3]/a")
 
 	WebElement rbCIDContactUsLink;
 
@@ -499,7 +500,9 @@ public class myRBCID {
 
 	public void clickCIDWathclistHereLink() {
 
-		rbCIDWatchlistHereLink.click();
+		//rbCIDWatchlistHereLink.click();
+		
+		driver.findElement(By.xpath(".//a[contains(@href,'watch-view')]")).click();
 	}
 	
 	// Click CID Delete Selected Watchlist Item Button
@@ -530,6 +533,13 @@ public class myRBCID {
 
 		rbCIDWatchlistFind.click();
 	}
+	
+	// Click CID Watchlist - Add Company to Confirmed Search
+
+	public void clickCIDWatchlistAddCompanytoConfirmedSearchLink() {
+
+		driver.findElement(By.xpath("//*[@id=\"0\"]")).click();
+	}
 
 	// Select CID Watchlist Status Change
 
@@ -551,6 +561,8 @@ public class myRBCID {
 
 		rbCIDWatchlistSubmit.click();
 	}
+	
+	
 
 	// Click CID Home Link
 

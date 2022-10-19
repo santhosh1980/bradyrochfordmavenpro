@@ -29,7 +29,7 @@ public class tinyChef {
 
 	WebDriver driver;
 	
-	WebDriverWait mywaitvar;
+	WebDriverWait mywaitvar=null;
 
 	@BeforeTest
 	public void beforeTest() throws InterruptedException {
@@ -61,7 +61,7 @@ public class tinyChef {
 	@Test
 	public void typeanswer() throws Exception {
 		
-		mywaitvar = new WebDriverWait(driver, 30);
+		mywaitvar = new WebDriverWait(driver, Duration.ofSeconds(30));
 		
 		//Press enter
 		

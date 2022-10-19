@@ -130,7 +130,9 @@ public class myCIDWatchlist {
 					Thread.sleep(5000);
 					// Add company to the confirmed searches
 
-					driver.findElement(By.xpath("//*[@id=\"0\"]")).click();
+					//driver.findElement(By.xpath("//*[@id=\"0\"]")).click();
+					
+					rbcid.clickCIDWatchlistAddCompanytoConfirmedSearchLink();
 
 				}
 
@@ -149,6 +151,10 @@ public class myCIDWatchlist {
 				//driver.findElement(By.xpath("//*[@id=\"compform\"]/table/tbody/tr[7]/td[3]/input")).click();
 				
 				rbcid.clickCIDWatchlistSubmit();
+				
+				//Click here button to view watchlist
+				
+				rbcid.clickCIDWathclistHereLink();
 
 				// excel.writeData(0, i, 3);
 
