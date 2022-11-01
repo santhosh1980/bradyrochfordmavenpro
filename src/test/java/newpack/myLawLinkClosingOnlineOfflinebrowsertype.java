@@ -89,7 +89,7 @@ public class myLawLinkClosingOnlineOfflinebrowsertype {
 				
 				//Browser and URL information takes from Utility methods - latest 06/09/2021------
 				
-				driver = utility.browserstart("Chrome");
+				driver = utility.browserstart("Firefox");
 				
 				//driver = new ChromeDriver();
 				
@@ -223,7 +223,7 @@ public class myLawLinkClosingOnlineOfflinebrowsertype {
 
 				// driver.findElement(By.name("requiredBy")).sendKeys("23/10/2020");
 
-				rblawlink.setrequiredby("23/10/2022");
+				rblawlink.setrequiredby("23/10/2023");
 
 				// driver.findElement(By.xpath("//*[@id=\"step3\"]/table/tbody/tr[3]/td[2]/input[2]")).click();
 
