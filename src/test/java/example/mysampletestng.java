@@ -14,7 +14,7 @@ public class mysampletestng {
 
 	WebDriver driver;
 
-	@Test(priority = 0, groups = { "smoke" })
+	@Test(priority = 0, groups = { "smoke", "feature" })
 
 	public void openurl() throws Exception {
 
