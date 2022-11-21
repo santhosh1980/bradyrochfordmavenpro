@@ -89,7 +89,7 @@ public class myLawLinkClosingOnlineOfflinebrowsertype {
 				
 				//Browser and URL information takes from Utility methods - latest 06/09/2021------
 				
-				driver = utility.browserstart("Firefox");
+				driver = utility.browserstart("Chrome");
 				
 				//driver = new ChromeDriver();
 				
