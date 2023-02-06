@@ -30,6 +30,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import lib.ExcelDataConfig;
+import lib.ScreenRecorderUtil;
 import lib.utility;
 import pagefactory.myRBLawlink;
 import pagefactory.myRBcommon;
@@ -40,7 +41,7 @@ import pagefactory.myRBlogin;
 public class myLawLinkClosingOnlineOfflinebrowsertype {
 
 	@Test
-	public void myLawLinkClosingOnlineOfflineViewResults() {
+	public void myLawLinkClosingOnlineOfflineViewResults() throws Exception {
 		WebDriver driver = null;
 
 		WebDriverWait mywaitvar = null;
@@ -81,6 +82,9 @@ public class myLawLinkClosingOnlineOfflinebrowsertype {
 		extent.attachReporter(reporter);
 		  
 		logger1 = extent.createTest("Closing deeds search");
+		
+		//starting video capture
+		ScreenRecorderUtil.startRecord("verify video capture");
 
 		try {
 
@@ -89,7 +93,11 @@ public class myLawLinkClosingOnlineOfflinebrowsertype {
 				
 				//Browser and URL information takes from Utility methods - latest 06/09/2021------
 				
-				driver = utility.browserstart("Chrome");
+				//driver = utility.browserstart("Chrome");
+				
+				//Web driver manager utility
+				
+				driver = utility.webdrivermanagebrowser("Chrome");
 				
 				//driver = new ChromeDriver();
 				
@@ -483,7 +491,9 @@ public class myLawLinkClosingOnlineOfflinebrowsertype {
 				System.out.println("Browser closed");
 			}
 
-		} catch (Exception e) {
+		} 
+		
+		catch (Exception e) {
 			// TODO: handle exception
 			System.out.println(e.getMessage());
 			// capture exception screenshot
@@ -491,7 +501,8 @@ public class myLawLinkClosingOnlineOfflinebrowsertype {
 			utility.screenshotcapture(driver, "exception");
 		}
 		// utility.dbclose();
-
+		//video capture ending  
+		  ScreenRecorderUtil.stopRecord();
 	}
 
 }

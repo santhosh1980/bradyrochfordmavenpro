@@ -46,6 +46,7 @@ import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import bsh.Variable;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import junit.framework.Assert;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
@@ -405,6 +406,29 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 				con.close();
 	}
 	
+	public static WebDriver webdrivermanagebrowser(String browsername) throws Exception {
+		
+		WebDriver driver = null;
+		
+		//Webdriver manager for chrome
+		if(browsername.equalsIgnoreCase("Chrome")){
+		  driver = WebDriverManager.chromedriver().create();
+		}
+		
+		  //Webdriver manager for firefox
+		else if (browsername.equalsIgnoreCase("Firefox")){
+		  driver = WebDriverManager.firefoxdriver().create();
+		}
+		
+		  //Webdriver manager for edge
+		else if (browsername.equalsIgnoreCase("Edge")){
+		  driver = WebDriverManager.edgedriver().create();
+		}
+		  String baseurl="https://nonprod.lawlink.ie";
+			driver.get(baseurl);
+			return driver;
+	}
+	
 	public static WebDriver browserstart(String browsername) throws Exception {
 		
 		WebDriver driver = null;
@@ -452,7 +476,7 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 		}
 		
 		//internet explorer driver
-		else if (browsername.equalsIgnoreCase("IE")) {
+		else if (browsername.equalsIgnoreCase("Edge")) {
 					
 			//Set IE driver path and create IE instance
 			//driverpath="C:\\Users\\U35035\\eclipse-workspace\\Microsoftwebdriver\\MicrosoftWebDriver.exe";

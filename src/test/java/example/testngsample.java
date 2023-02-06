@@ -19,7 +19,7 @@ public class testngsample {
     //public WebDriver driver ; 
 	System.setProperty("webdriver.chrome.driver", "C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");
 	
-	//starting vodeo capture
+	//starting video capture
 	ScreenRecorderUtil.startRecord("verify video capture");
 	  
 	  for (int i=1;i<=5;i++) {

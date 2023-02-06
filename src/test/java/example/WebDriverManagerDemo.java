@@ -14,9 +14,14 @@ public class WebDriverManagerDemo {
   public void WebDriverManagerDemoTest() throws InterruptedException {
 	  
 	
+	  //Webdriver manager for chrome
+	  //WebDriver driver = WebDriverManager.chromedriver().create();
+	
+	  //Webdriver manager for firefox
+	  //WebDriver driver = WebDriverManager.firefoxdriver().create();
 	  
-	  WebDriver driver = WebDriverManager.chromedriver().create();
-				 
+	  //Webdriver manager for edge
+	  WebDriver driver = WebDriverManager.edgedriver().create();
 	  
 	  driver.manage().window().maximize();
 	  
