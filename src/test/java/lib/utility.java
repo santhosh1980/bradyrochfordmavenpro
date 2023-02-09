@@ -24,6 +24,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import javax.imageio.ImageIO;
+import javax.swing.text.Document;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.pdfbox.cos.COSDocument;
@@ -72,6 +73,27 @@ public class utility {
 			//x axis 0 and y axis  1000 means vertical move down
 			//x axis 0 and y axis  -1000 means vertical move up
 	        js.executeScript("window.scrollBy(xaxis,yaxis)");
+	        
+	       
+
+			System.out.println("Scrolled");
+		} catch (Exception e) {
+			System.out.println("Exception while scrolling " + e.getMessage());
+		}
+
+	}
+	
+	
+	public static void scrollendofpage(WebDriver driver){
+
+		try {
+
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			
+			        
+	        //scroll till end of page
+			
+	        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 
 			System.out.println("Scrolled");
 		} catch (Exception e) {

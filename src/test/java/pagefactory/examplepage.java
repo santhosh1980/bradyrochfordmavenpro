@@ -46,6 +46,10 @@ public class examplepage {
 
 	WebElement country;
 
+	@FindBy(id = "california")
+
+	WebElement californialink;
+
 	@FindBy(id = "genbtn")
 
 	WebElement generatebutton;
@@ -247,6 +251,13 @@ public class examplepage {
 		String extrainfo = driver.findElement(By.cssSelector("div.extra")).getText();
 
 		return extrainfo;
+	}
+
+	// Click state button
+
+	public void clickstate(String state) {
+
+		driver.findElement(By.name(state)).click();
 	}
 
 }
