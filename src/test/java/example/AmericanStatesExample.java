@@ -1,9 +1,11 @@
 package example;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
@@ -64,7 +66,17 @@ public class AmericanStatesExample {
 			
 			//driver.findElement(By.xpath("//*[name()='svg']//*[local-name()='g']//*[local-name()='g']//*[local-name()='g']//*[local-name()='g']//*[local-name()='path' and @name='California']")).click();
 			
-			driver.findElement(By.xpath("//*[name()='svg']//*[name()='g']//*[name()='g']//*[name()='g']//*[name()='g']//*[name()='path' and @name='California']")).click();
+			//driver.findElement(By.xpath("//*[name()='svg']//*[name()='g']//*[name()='g']//*[name()='g']//*[name()='g']//*[name()='path' and @name='California']")).click();
+			
+			//List<WebElement> regionelements = driver.findElements(By.xpath(".//g[contains(@class,'region')]"));
+			
+			//List<WebElement> regionelements = driver.findElements(By.xpath("//*[name()='svg']//*[local-name()='g']//*[local-name()='g']"));
+			
+			//int numberregionelements = regionelements.size();
+			
+			//System.out.println("Number of regions:"+numberregionelements);
+			
+			driver.findElement(By.xpath("//*[@id=\"5\"]")).getText();
 
 			//Sleep for 5 seconds
 			

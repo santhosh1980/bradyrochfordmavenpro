@@ -37,6 +37,8 @@ public class myAbstract {
 	public static void main(String[] args) {
 		
 		maruthi obj1 = new maruthi();
+		
+		
 		System.out.println(obj1.weight);
 		System.out.println(obj1.height);
 		System.out.println(obj1.width);
