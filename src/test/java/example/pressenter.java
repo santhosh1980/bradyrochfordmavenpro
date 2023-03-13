@@ -51,7 +51,7 @@ public class pressenter {
 			
 			driver.get("http://google.com");
 
-			driver.findElement(By.name("q")).sendKeys("selenium");
+			driver.findElement(By.name("q")).sendKeys("infosys");
 
 			driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
 
