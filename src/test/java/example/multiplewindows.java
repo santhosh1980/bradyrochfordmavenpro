@@ -11,10 +11,12 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import lib.utility;
 
 import org.junit.Assert;
@@ -30,12 +32,29 @@ public class multiplewindows {
 
 			// assert test
 
-			System.setProperty("webdriver.chrome.driver",
-					"C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");
+			/*System.setProperty("webdriver.chrome.driver",
+					"C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");*/
 
 			// System.setProperty("webdriver.gecko.driver","C:\\Users\\U35035\\eclipse-workspace\\geckodriver-v0.26.0-win64\\geckodriver.exe");
 
-			driver = new ChromeDriver();
+			//driver = new ChromeDriver();
+			
+			//Code for chrome incognito window to open
+			//configure options parameter to chrome driver
+			//ChromeOptions co = new ChromeOptions();
+			//chrome 111 issue to resolve - After the Chrome 111 update, you can no longer kick off a chromedriver instance unless you add an additional chrome option
+			//co.addArguments("--remote-allow-origins=*");
+			//add incognito parameter
+			//co.addArguments("--incognito");
+			
+			//driver = new ChromeDriver(co);
+			
+			// Setup ChromeDriver using WebDriverManager
+			  WebDriverManager.chromedriver().setup();
+			  ChromeOptions co = new ChromeOptions();
+			  co.addArguments("--remote-allow-origins=*");
+			// Create instance of ChromeDriver
+		      driver = new ChromeDriver(co);
 
 			// WebDriver driver = new FirefoxDriver();
 

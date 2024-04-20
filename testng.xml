@@ -3,7 +3,7 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="newpack.myLawLinkClosingOnlineOfflinebrowsertype"/>
+      <class name="example.multiplewindows"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -1,5 +1,6 @@
 package StepDefinition2;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -47,7 +48,13 @@ public class Steps2 {
 		
 		driver.manage().window().maximize();
 		
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//Selenium 3
+		
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
+		//Selenium 4
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
 		driver.get("http://demo.guru99.com/v4");
 		

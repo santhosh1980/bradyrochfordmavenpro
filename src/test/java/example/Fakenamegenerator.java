@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
@@ -28,7 +29,17 @@ public class Fakenamegenerator {
 
 			// System.setProperty("webdriver.gecko.driver","C:\\Users\\U35035\\eclipse-workspace\\geckodriver-v0.26.0-win64\\geckodriver.exe");
 
-			driver = new ChromeDriver();
+			
+			
+			//Code for chrome incognito window to open
+			//configure options parameter to chrome driver
+			ChromeOptions co = new ChromeOptions();
+			//chrome 111 issue to resolve - After the Chrome 111 update, you can no longer kick off a chromedriver instance unless you add an additional chrome option
+			co.addArguments("--remote-allow-origins=*");
+			//add incognito parameter
+			co.addArguments("--incognito");
+			
+			driver = new ChromeDriver(co);
 
 			examplepage ep = new examplepage(driver);
 

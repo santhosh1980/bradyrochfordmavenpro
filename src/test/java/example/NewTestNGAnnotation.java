@@ -37,6 +37,15 @@ public class NewTestNGAnnotation {
 				"C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");
 		
 		
+		//Code for chrome incognito window to open
+				//configure options parameter to chrome driver
+				ChromeOptions co = new ChromeOptions();
+				//chrome 111 issue to resolve - After the Chrome 111 update, you can no longer kick off a chromedriver instance unless you add an additional chrome option
+				co.addArguments("--remote-allow-origins=*");
+				//add incognito parameter
+				co.addArguments("--incognito");
+				
+				driver = new ChromeDriver(co);
 		
 
 		driver.manage().window().maximize();
@@ -48,6 +57,9 @@ public class NewTestNGAnnotation {
 		//Selenium 4
 		
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		
+		
+		
 
 		driver.get("http://demo.guru99.com/test/newtours/");
 	}

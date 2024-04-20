@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 
@@ -38,7 +39,17 @@ public class AmericanStatesExample {
 			 
 			//Web driver 
 			
-			 driver = new ChromeDriver();
+			 //driver = new ChromeDriver();
+			 
+			//Code for chrome incognito window to open
+				//configure options parameter to chrome driver
+				ChromeOptions co = new ChromeOptions();
+				//chrome 111 issue to resolve - After the Chrome 111 update, you can no longer kick off a chromedriver instance unless you add an additional chrome option
+				co.addArguments("--remote-allow-origins=*");
+				//add incognito parameter
+				co.addArguments("--incognito");
+				
+				driver = new ChromeDriver(co);
 				
 			//Maximize browser window
 			
@@ -83,18 +94,22 @@ public class AmericanStatesExample {
 			
 			//driver.findElement(By.xpath("//*[local-name()='div' and @id='capc-map-app']/*[local-name()='div' and @class='map-content']/*[local-name()='div' and @id='map-component']/*[local-name()='svg' and @id='map-svg']/*[local-name()='g' and @id='features']/*[local-name()='g' and @id='regions']/*[local-name()='g' and @id='california']/*[local-name()='g' and @class='rpath']/*[local-name()='path' and @name='California']")).click();
 			
-			WebElement m = driver.findElement(By.xpath("//*[local-name()='div' and @id='capc-map-app']/*[local-name()='div' and @class='map-content']/*[local-name()='div' and @id='map-component']/*[local-name()='svg' and @id='map-svg']/*[local-name()='g' and @id='features']/*[local-name()='g' and @id='regions']/*[local-name()='g' and @id='california']/*[local-name()='g' and @class='rpath']/*[local-name()='path' and @name='California']"));
+			//WebElement m = driver.findElement(By.xpath("//*[local-name()='div' and @id='capc-map-app']/*[local-name()='div' and @class='map-content']/*[local-name()='div' and @id='map-component']/*[local-name()='svg' and @id='map-svg']/*[local-name()='g' and @id='features']/*[local-name()='g' and @id='regions']/*[local-name()='g' and @id='california']/*[local-name()='g' and @class='rpath']/*[local-name()='path' and @name='California']"));
 			
 			//using javascriptexecutor
 						
-			((JavascriptExecutor)driver).executeScript("arguments[0].click();",m);
+			//((JavascriptExecutor)driver).executeScript("arguments[0].click();",m);
 			
 			//using action class
 			//Action class to move and click element
 			
-			Actions a = new Actions(driver);
+			//Actions a = new Actions(driver);
 			
-			a.moveToElement(m).click().build().perform();
+			//a.moveToElement(m).click().build().perform();
+			
+			List<WebElement> states=driver.findElements(By.xpath("(//*[local-name()='svg' and @id='map-svg'])[1]//*[name()='rect']"));
+			
+			System.out.println(states);
 
 			//Sleep for 5 seconds
 			

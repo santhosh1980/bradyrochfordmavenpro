@@ -434,7 +434,9 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 		
 		//Webdriver manager for chrome
 		if(browsername.equalsIgnoreCase("Chrome")){
+			
 		  driver = WebDriverManager.chromedriver().create();
+		  
 		}
 		
 		  //Webdriver manager for firefox
@@ -468,6 +470,8 @@ public static String getPDFURL(WebDriver driver) throws Exception {
 			//Code for chrome incognito window to open
 			//configure options parameter to chrome driver
 			ChromeOptions co = new ChromeOptions();
+			//chrome 111 issue to resolve - After the Chrome 111 update, you can no longer kick off a chromedriver instance unless you add an additional chrome option
+			co.addArguments("--remote-allow-origins=*");
 			//add incognito parameter
 			co.addArguments("--incognito");
 			

@@ -4,7 +4,10 @@ import java.time.Duration;
 
 
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -14,14 +17,20 @@ public class WebDriverManagerDemo {
   public void WebDriverManagerDemoTest() throws InterruptedException {
 	  
 	
-	  //Webdriver manager for chrome
-	  //WebDriver driver = WebDriverManager.chromedriver().create();
-	
-	  //Webdriver manager for firefox
-	  //WebDriver driver = WebDriverManager.firefoxdriver().create();
+	// Setup ChromeDriver using WebDriverManager
+	  WebDriverManager.chromedriver().setup();
+	  ChromeOptions co = new ChromeOptions();
+	  co.addArguments("--remote-allow-origins=*");
+	// Create instance of ChromeDriver
+      WebDriver driver = new ChromeDriver(co);
 	  
-	  //Webdriver manager for edge
-	  WebDriver driver = WebDriverManager.edgedriver().create();
+   // Setup GeckoDriver (Firefox) using WebDriverManager
+      //WebDriverManager.firefoxdriver().setup();
+      //WebDriver driver = new FirefoxDriver();
+	  
+	// Setup EdgeDriver using WebDriverManager
+	  //WebDriverManager.edgedriver().setup();
+	  //WebDriver driver = new EdgeDriver();
 	  
 	  driver.manage().window().maximize();
 	  

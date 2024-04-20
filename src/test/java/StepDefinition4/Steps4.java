@@ -1,5 +1,6 @@
 package StepDefinition4;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
@@ -7,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.cucumber.java.After;
@@ -46,11 +48,27 @@ public class Steps4 {
 		
 		System.setProperty("webdriver.chrome.driver", driverpath);
 		
-		driver= new ChromeDriver();
+		//Code for chrome incognito window to open
+		//configure options parameter to chrome driver
+		ChromeOptions co = new ChromeOptions();
+		//chrome 111 issue to resolve - After the Chrome 111 update, you can no longer kick off a chromedriver instance unless you add an additional chrome option
+		co.addArguments("--remote-allow-origins=*");
+		//add incognito parameter
+		co.addArguments("--incognito");
+		
+		driver = new ChromeDriver(co);
+		
+		//driver= new ChromeDriver();
 		
 		driver.manage().window().maximize();
 		
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		//Selenium 3
+		
+		//driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				
+		//Selenium 4
+				
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
 		
 		driver.get("http://demo.guru99.com/telecom/index.html");
 		
@@ -69,6 +87,10 @@ public class Steps4 {
 		driver.findElement(By.xpath("//*[@id=\"one\"]/div/div[1]/div[1]/h3/a")).click();
 				
 		Thread.sleep(5000);
+		
+		//Advertisement pop up handling
+		
+		driver.findElement(By.xpath("//*[@id=\"dismiss-button\"]/div/svg")).click();
 		
 		String addurl = driver.getCurrentUrl();
 		
