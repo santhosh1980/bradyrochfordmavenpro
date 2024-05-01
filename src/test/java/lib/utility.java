@@ -46,7 +46,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import bsh.Variable;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import junit.framework.Assert;
 import ru.yandex.qatools.ashot.AShot;

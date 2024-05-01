@@ -1,11 +1,12 @@
 package example;
 
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 import java.util.Random;
 
 import org.apache.commons.logging.Log;
 import org.apache.log4j.Logger;
-import org.apache.tools.ant.taskdefs.condition.And;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -297,7 +298,7 @@ public class POMLawLinkClosingOnlineOffline {
 			
 			//Click download pdf button
 			
-			mywaitvar = new WebDriverWait(driver, 50);
+			mywaitvar = new WebDriverWait(driver, Duration.ofSeconds(50));
 			
 			mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"all_reports\"]/a/p")));
 			

@@ -13,9 +13,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Windowhandle {
 
@@ -49,10 +52,14 @@ public class Windowhandle {
 	@BeforeTest
 	public void beforeTest() {
 
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");
-
-		driver = new ChromeDriver();
+		/*System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\U35035\\eclipse-workspace\\chromedriver_win32\\chromedriver.exe");*/
+		// Setup ChromeDriver using WebDriverManager
+		  WebDriverManager.chromedriver().setup();
+		  ChromeOptions co = new ChromeOptions();
+		  co.addArguments("--remote-allow-origins=*");
+		// Create instance of ChromeDriver
+		driver = new ChromeDriver(co);
 	}
 
 	/*@AfterTest

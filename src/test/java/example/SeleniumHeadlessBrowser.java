@@ -27,8 +27,12 @@ public class SeleniumHeadlessBrowser {
 	  //another way to set headless browser in chrome
 	  
 	  //co.addArguments("headless");
+	 
+	 co.addArguments("--headless=new");
 	  
-	  co.setHeadless(true);
+	  //co.setHeadless(true);
+	  
+	  
 	  	  
 	  ChromeDriver driver = new ChromeDriver(co);
 	  
@@ -49,7 +53,9 @@ public class SeleniumHeadlessBrowser {
 	  
 	  FirefoxOptions co = new FirefoxOptions();
 	  
-	 co.setHeadless(true);
+	 //co.setHeadless(true);
+	  
+	  co.addArguments("--headless=new");
 	  
 		 
 	  FirefoxDriver driver = new FirefoxDriver(co);
@@ -71,7 +77,9 @@ public class SeleniumHeadlessBrowser {
 	  
 	  EdgeOptions co = new EdgeOptions();
 	  
-	co.setHeadless(true);
+	//co.setHeadless(true);
+	  
+	  co.addArguments("--headless=new");
 	  
 	  EdgeDriver driver = new EdgeDriver(co);
 	  

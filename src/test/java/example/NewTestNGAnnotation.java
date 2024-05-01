@@ -2,9 +2,6 @@ package example;
 
 import org.testng.annotations.Test;
 
-import ch.lambdaj.group.Group;
-import ch.lambdaj.group.Groups;
-
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
 import org.openqa.selenium.Alert;

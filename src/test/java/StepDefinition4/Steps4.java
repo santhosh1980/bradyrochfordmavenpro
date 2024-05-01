@@ -17,6 +17,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 
 
@@ -46,15 +47,21 @@ public class Steps4 {
 	
 	public void Open_the_Chrome_and_launch_the_Guru99_Telecom_Application() throws Exception {
 		
-		System.setProperty("webdriver.chrome.driver", driverpath);
+		//System.setProperty("webdriver.chrome.driver", driverpath);
 		
 		//Code for chrome incognito window to open
 		//configure options parameter to chrome driver
-		ChromeOptions co = new ChromeOptions();
+		//ChromeOptions co = new ChromeOptions();
 		//chrome 111 issue to resolve - After the Chrome 111 update, you can no longer kick off a chromedriver instance unless you add an additional chrome option
-		co.addArguments("--remote-allow-origins=*");
+		//co.addArguments("--remote-allow-origins=*");
 		//add incognito parameter
-		co.addArguments("--incognito");
+		//co.addArguments("--incognito");
+		
+		// Setup ChromeDriver using WebDriverManager
+		  WebDriverManager.chromedriver().setup();
+		  ChromeOptions co = new ChromeOptions();
+		  co.addArguments("--remote-allow-origins=*");
+		// Create instance of ChromeDriver
 		
 		driver = new ChromeDriver(co);
 		

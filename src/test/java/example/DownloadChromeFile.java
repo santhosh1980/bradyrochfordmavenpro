@@ -25,7 +25,8 @@ public class DownloadChromeFile {
 	       options.setExperimentalOption("prefs", chromePrefs);
 	       options.addArguments("--test-type");
 	       options.addArguments("--disable-extensions"); //to disable browser extension popup
-	       options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+	       //options.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
+	       options.setAcceptInsecureCerts(true);
  
 	       driver = new ChromeDriver(options);  
 	       driver.get("http://www.seleniumhq.org/download/");

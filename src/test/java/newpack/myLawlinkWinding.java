@@ -215,7 +215,7 @@ public class myLawlinkWinding {
 
 			// Click download pdf button
 
-			mywaitvar = new WebDriverWait(driver, 30);
+			mywaitvar = new WebDriverWait(driver, Duration.ofSeconds(50));
 
 			mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"all_reports\"]/a/p")));
 

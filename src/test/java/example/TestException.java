@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -36,7 +37,7 @@ public class TestException {
 
 			driver.get(baseurl);
 			
-			mywaitvar = new WebDriverWait(driver, 10);
+			mywaitvar = new WebDriverWait(driver, Duration.ofSeconds(50));
 			
 			mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("cusid")));
 			

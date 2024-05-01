@@ -1,5 +1,6 @@
 package pagefactory;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -906,7 +907,7 @@ public class myRBCID {
 
 			WebDriverWait mywaitvar = null;
 			
-			mywaitvar = new WebDriverWait(driver, 80);
+			mywaitvar = new WebDriverWait(driver, Duration.ofSeconds(90));
 
 			mywaitvar.until(ExpectedConditions.visibilityOfElementLocated(By.name("docButton")));
 
