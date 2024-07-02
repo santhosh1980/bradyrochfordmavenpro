@@ -48,7 +48,7 @@ public class SeleniumHeadlessBrowser {
   @Test
   public void firefoxheadless() {
 	  
-	  System.setProperty("webdriver.gecko.driver", "C:\\Users\\U35035\\eclipse-workspace\\geckodriver-v0.26.0-win64\\geckodriver.exe");
+	  System.setProperty("webdriver.gecko.driver", "C:\\Users\\U35035\\eclipse-workspace\\geckodriver-v0.31.0-win64\\geckodriver.exe");
 	  //code for firefox headless browser
 	  
 	  FirefoxOptions co = new FirefoxOptions();
@@ -69,10 +69,10 @@ public class SeleniumHeadlessBrowser {
 	  driver.close();
   }
   
-  @Test(enabled=false)
+  @Test
   public void edgeheadless() {
 	  
-	  System.setProperty("webdriver.edge.driver", "C:\\Users\\U35035\\eclipse-workspace\\Microsoftwebdriver\\msedgedriver.exe");
+	  System.setProperty("webdriver.edge.driver", "C:\\Users\\U35035\\eclipse-workspace\\edgedriver_win64\\msedgedriver.exe");
 	  //code for edge headless browser
 	  
 	  EdgeOptions co = new EdgeOptions();
