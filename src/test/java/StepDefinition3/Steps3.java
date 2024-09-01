@@ -153,7 +153,7 @@ public class Steps3 {
 		
 		String cururl = driver.getCurrentUrl();
 		
-		if (cururl.equalsIgnoreCase("http://demo.guru99.com/v4/index.php")) {
+		if (cururl.equalsIgnoreCase("https://demo.guru99.com/v4/index.php")) {
 			
 			System.out.println("Test pass");
 		}
